@@ -54,6 +54,14 @@ class TheSet(unittest.TestCase):
         self.assertNotIn("<REPO>", text)
         self.assertIn("URTC-EXAMPLE", text)
 
+    def test_compiled_files_left_by_a_run_are_not_part_of_the_set(self):
+        with tempfile.TemporaryDirectory() as folder:
+            files = Path(folder) / "files"
+            (files / "tools" / "__pycache__").mkdir(parents=True)
+            (files / "tools" / "x.py").write_text("x = 1\n", encoding="utf-8")
+            (files / "tools" / "__pycache__" / "x.cpython-312.pyc").write_bytes(b"\xcb\r\n")
+            self.assertEqual(devtools_set.shared_files(files), ["tools/x.py"])
+
     def test_this_repository_carries_every_file_of_the_set_unedited(self):
         self.assertEqual(devtools_set.check_own_copies(), [])
 

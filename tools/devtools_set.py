@@ -34,8 +34,8 @@ def version() -> str:
 
 
 def shared_files(files: Path = FILES) -> list[str]:
-    """The relative paths of the canonical files, sorted."""
-    return sorted(p.relative_to(files).as_posix() for p in files.rglob("*") if p.is_file())
+    """The relative paths of the canonical files, sorted (compiled files left by a run are not part of the set)."""
+    return sorted(p.relative_to(files).as_posix() for p in files.rglob("*") if p.is_file() and "__pycache__" not in p.parts and p.suffix != ".pyc")
 
 
 def canonical_text(relative: str, files: Path = FILES) -> str:

@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-15-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-16-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | 版本 | `0.0.1` |
 | 成熟度 | 雏形 |
-| 测试 | 15 (`python -m unittest discover -s tests`) |
+| 测试 | 16 (`python -m unittest discover -s tests`) |
 | 技术栈 | Python / GitHub Actions / JSON |
 | 目标 | 使用者的电脑 |
 | 真实硬件 | 不适用：这里的内容不在硬件上运行 |
@@ -81,7 +81,7 @@ python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工�
 
 ## 🧪 测试
 
-测试套件共有 15 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
+测试套件共有 16 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
 
 ## 🏗️ 构建与发布
 
