@@ -1,0 +1,169 @@
+{
+  "repo": "URTC-DEVTOOLS",
+  "ecosystem": "urtc",
+  "tagline": "The shared repository tools of the URTC family as one set with a version and a lock.",
+  "description": "URTC-DEVTOOLS holds the canonical copy of the ten files that every repository of the family carries as the same file (the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice). The version of this repository is the version of the set. URTC-DOCS puts the files into a repository and writes tools/devtools.lock.json with that version and the SHA-256 of every copy, so an edited copy and a copy that fell behind are both found. Everything is tested on a computer; no repository other than this one has taken the lock yet.",
+  "columns": [
+    "WHO TAKES IT",
+    "THIS REPOSITORY",
+    "WHAT IT WRITES"
+  ],
+  "nodes": [
+    {
+      "id": "docs",
+      "column": 0,
+      "level": "external",
+      "title": "URTC-DOCS",
+      "lines": [
+        "sync_repo_tools.py puts the",
+        "files in and writes the lock;",
+        "check_repo_tools.py compares"
+      ]
+    },
+    {
+      "id": "fam",
+      "column": 0,
+      "level": "external",
+      "title": "Repositories",
+      "lines": [
+        "each one carries the copies",
+        "and builds with its own",
+        "checkout, with no network"
+      ]
+    },
+    {
+      "id": "files",
+      "column": 1,
+      "level": "contract",
+      "title": "files/",
+      "lines": [
+        "the ten canonical files, the",
+        "name of the repository",
+        "written <REPO>"
+      ],
+      "code": [
+        "files/bump_manifest_version.py",
+        "files/tools/pretty_run.py"
+      ]
+    },
+    {
+      "id": "set",
+      "column": 1,
+      "level": "tested",
+      "title": "devtools_set.py",
+      "lines": [
+        "lists the set with the hash",
+        "of each file; check compares",
+        "this repository's own copies"
+      ],
+      "code": [
+        "tools/devtools_set.py"
+      ]
+    },
+    {
+      "id": "ver",
+      "column": 1,
+      "level": "contract",
+      "title": "Version of the set",
+      "lines": [
+        "the version of the manifest",
+        "of this repository"
+      ],
+      "code": [
+        "urtc.project.json",
+        "CHANGELOG.md"
+      ]
+    },
+    {
+      "id": "tests",
+      "column": 1,
+      "level": "tested",
+      "title": "Tests and nightly",
+      "lines": [
+        "unit tests, the repository",
+        "check and a nightly comparison",
+        "with the other repositories"
+      ],
+      "code": [
+        "tests/test_devtools_set.py",
+        ".github/workflows/nightly.yml"
+      ]
+    },
+    {
+      "id": "lock",
+      "column": 2,
+      "level": "config",
+      "title": "devtools.lock.json",
+      "lines": [
+        "in each repository: the version",
+        "of the set and the SHA-256",
+        "of every copy it carries"
+      ],
+      "code": [
+        "tools/devtools.lock.json"
+      ]
+    },
+    {
+      "id": "dash",
+      "column": 2,
+      "level": "external",
+      "title": "Central dashboard",
+      "lines": [
+        "told by the notice workflow",
+        "that a repository changed",
+        "after a green CI"
+      ],
+      "code": [
+        "files/.github/workflows/dashboard-dispatch.yml"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "docs",
+      "to": "files",
+      "label": "takes",
+      "level": "tested"
+    },
+    {
+      "from": "fam",
+      "to": "ver",
+      "label": "names",
+      "level": "config"
+    },
+    {
+      "from": "files",
+      "to": "set",
+      "level": "tested"
+    },
+    {
+      "from": "set",
+      "to": "tests",
+      "level": "tested"
+    },
+    {
+      "from": "files",
+      "to": "lock",
+      "label": "hashes",
+      "level": "config"
+    },
+    {
+      "from": "ver",
+      "to": "lock",
+      "level": "config"
+    },
+    {
+      "from": "files",
+      "to": "dash",
+      "label": "notice",
+      "level": "tested"
+    }
+  ],
+  "legend": {
+    "tested": "covered by tests on a computer",
+    "contract": "the source of the rest",
+    "config": "written by URTC-DOCS; no other repository has taken it yet",
+    "external": "another repository or service"
+  },
+  "footer": "Only this repository carries a lock so far; the others move one at a time."
+}

@@ -1,0 +1,11 @@
+# Static checks run by CI: unused names, bare re-raises inside except, syntax errors.
+exclude = [".venv", "venv", "build", "dist", "__pycache__", "node_modules"]
+# the shared tools are copied from the canonical files and are not edited (or linted) here; the canonical files themselves are not linted either
+extend-exclude = ["files", "tools/_readme_svg.py", "tools/make_architecture.py", "tools/make_structure.py", "tools/status_lights.py"]
+
+[lint]
+select = ["F", "B904", "E9"]
+
+[lint.per-file-ignores]
+# copied from the shared tooling; not edited here
+"tools/ci_validate.py" = ["F401"]

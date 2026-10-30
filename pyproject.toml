@@ -1,0 +1,18 @@
+[project]
+name = "urtc-devtools"
+version = "0.0.1"
+description = "The shared repository tools of the URTC family as a versioned set."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+    { name = "JuanenRac (Electro Hobby 3D)", email = "electrohobby3d@gmail.com" },
+]
+keywords = ["urtc", "tooling", "ci", "readme"]
+
+[project.urls]
+Homepage = "https://github.com/JuanenRac/URTC-DEVTOOLS"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tools", "tests"]

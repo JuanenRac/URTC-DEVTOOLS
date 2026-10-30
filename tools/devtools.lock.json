@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "source": "URTC-DEVTOOLS",
+  "version": "0.0.1",
+  "files": {
+    ".github/workflows/dashboard-dispatch.yml": "ac35cf6d2a9dd21e94d7f1edb73c3bb7066264023e5d894620521cd64c6ff88f",
+    "bump_manifest_version.py": "6f0732737b4cfd75bcc9f43b959fffdbfc7a6bde7a09246d9db86a10c51c3003",
+    "tools/_doc_policy.py": "25aeb830044e3524557ce150a18ab0e33e3c7f8446cd2291ea7446a9fb5d22be",
+    "tools/_readme_parity.py": "0cd9418b8ab97209c8d8bb52214ae3982ee01cd83a23e8e59056ff375a172fca",
+    "tools/_readme_svg.py": "7bb8388deb11c15dfbc202c8da1b808540853ec2c263260795d3cb2664d6f94d",
+    "tools/_tracked_names.py": "30b7dcc0ee68b976c09a6a1316c094e244b582321a4a4ccea289347015f89b91",
+    "tools/make_architecture.py": "9df7d6c00af0f1178c44eae8e849c31218bae196984ec718a7fdc63daa2e2fa9",
+    "tools/make_structure.py": "27615e9b6374cbb6cc21b52d52bad4e9db1c9307319a8910b4b75c4ecb9fe5c8",
+    "tools/pretty_run.py": "1698bfec531568afaf5319f0a220e9bf7c0087f39cbf5e6e88e7035bfc1327c5",
+    "tools/status_lights.py": "e9373e84eb7be9c2c342528c0719c30430d104a5c94dfd2067b649d3fdf10ea5"
+  }
+}

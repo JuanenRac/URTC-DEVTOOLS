@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+# Shell scripts keep LF, Windows batch files keep CRLF on every platform.
+*.sh text eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# The canonical files and the lock are compared by hash with the line endings read as newlines; they keep LF on every platform anyway.
+files/** text eol=lf
+tools/devtools.lock.json text eol=lf

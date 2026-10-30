@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "ecosystem": "URTC",
+  "name": "URTC-DEVTOOLS",
+  "version": "0.0.1",
+  "role": "tool",
+  "stack": "python",
+  "technologies": [
+    "Python",
+    "GitHub Actions",
+    "JSON"
+  ],
+  "deployment_target": "user-pc",
+  "maturity": "scaffolding",
+  "evidence": "host-test",
+  "family": "Ecosystem Operations",
+  "parent": null,
+  "build": "python tools/build_test.py",
+  "notes": "The shared repository tools of the URTC family as a versioned set: the canonical copy of the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice (files/), with the version of the repository as the version of the set. A repository takes the set with the synchroniser of URTC-DOCS, which writes a lock file with the version and the SHA-256 of every file; the check compares the lock with the files, so a hand edit and a copy that fell behind are both found. Every repository stays buildable with its own checkout. Scaffolding on purpose: the repositories of the family have not yet moved to the lock.",
+  "native_version": {
+    "file": "pyproject.toml",
+    "pattern": "^version\\s*=\\s*\"(\\d+)\\.(\\d+)\\.(\\d+)\""
+  }
+}

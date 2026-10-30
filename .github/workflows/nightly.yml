@@ -1,0 +1,58 @@
+# =============================================================================
+# URTC-DEVTOOLS - the nightly comparison with the repositories of the family
+# Copyright (C) 2026 JuanenRac (Electro Hobby 3D) <electrohobby3d@gmail.com>
+# GPL-3.0-or-later - see LICENSE
+# =============================================================================
+# The CI of this repository sees only this repository. Whether the copies in the other repositories are the set, and whether a lock names an older
+# version, can only be told with them side by side, so every night, and when asked, they are fetched next to this one and URTC-DOCS compares them.
+# A failing night opens (or updates) one issue.
+name: URTC nightly comparison
+
+on:
+  schedule:
+    - cron: "37 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  siblings:
+    name: Compare the copies and the locks of the family
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v5
+        with:
+          path: URTC-DEVTOOLS
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Fetch the repositories next to it
+        run: |
+          for repository in URTC URTC-COMMON URTC-DOCS URTC-FLASHER URTC-GATEWAY URTC-SMART-RACK URTC-TESTER URTC-UPDATER URTC-VISION-TOOL URTC-WEB-STUDIO; do
+            git clone --quiet --depth 1 "https://github.com/JuanenRac/${repository}.git" "${repository}" || echo "::warning::could not fetch ${repository}"
+          done
+          ls -d URTC* | wc -l
+
+      - name: This repository against the template of URTC-DOCS
+        working-directory: URTC-DEVTOOLS
+        run: python -m unittest tests.test_repository -v
+
+      - name: The copies and the locks of every repository
+        working-directory: URTC-DOCS
+        run: python tools/check_repo_tools.py --require-siblings
+
+      - name: Open an issue when the night failed
+        if: ${{ failure() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="The nightly comparison of the shared tools failed"
+          existing=$(gh issue list --repo "${{ github.repository }}" --state open --search "${title} in:title" --json number --jq '.[0].number')
+          body="A copy of the shared tools, or a lock, no longer agrees with the set: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          if [ -n "$existing" ]; then gh issue comment "$existing" --repo "${{ github.repository }}" --body "$body"; else gh issue create --repo "${{ github.repository }}" --title "$title" --body "$body"; fi
