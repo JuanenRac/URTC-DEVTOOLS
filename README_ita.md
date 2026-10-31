@@ -123,7 +123,7 @@ URTC-DEVTOOLS/
 
 **Limiti noti oggi**
 
-* Il lock è scritto e controllato da URTC-DOCS; questo è finora l'unico repository che ne porta uno.
+* Il lock è scritto e controllato da URTC-DOCS (`tools/sync_repo_tools.py` e `tools/check_repo_tools.py`); ormai ogni repository della famiglia ne porta uno (`tools/devtools.lock.json`).
 * URTC-DOCS conserva ancora il proprio modello, che il sincronizzatore legge; un test confronta i due quando sono accanto.
 * I file che esistono anche nei progetti fratelli non vengono spostati qui da soli: lo stesso file in tutte le famiglie, o nessuno.
 * Niente qui è stato eseguito su hardware; gli strumenti girano su un computer.

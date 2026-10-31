@@ -123,7 +123,7 @@ URTC-DEVTOOLS/
 
 **Limites conhecidos hoje**
 
-* O bloqueio é escrito e verificado pelo URTC-DOCS; este é, por agora, o único repositório que leva um.
+* O bloqueio é escrito e verificado pelo URTC-DOCS (`tools/sync_repo_tools.py` e `tools/check_repo_tools.py`); todos os repositórios da família levam agora um (`tools/devtools.lock.json`).
 * O URTC-DOCS ainda guarda o seu próprio modelo, que é o que o sincronizador lê; um teste compara os dois quando estão lado a lado.
 * Os ficheiros que existem também nos projetos irmãos não se movem para aqui sozinhos: o mesmo ficheiro em todas as famílias, ou nenhum.
 * Nada disto foi executado em hardware; as ferramentas funcionam num computador.

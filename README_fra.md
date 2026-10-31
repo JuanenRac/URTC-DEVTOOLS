@@ -123,7 +123,7 @@ URTC-DEVTOOLS/
 
 **Limites connues aujourd'hui**
 
-* Le verrou est écrit et contrôlé par URTC-DOCS ; ce dépôt est le seul à en porter un pour l'instant.
+* Le verrou est écrit et contrôlé par URTC-DOCS (`tools/sync_repo_tools.py` et `tools/check_repo_tools.py`) ; chaque dépôt de la famille en porte un désormais (`tools/devtools.lock.json`).
 * URTC-DOCS garde encore son propre modèle, que lit le synchroniseur ; un test compare les deux quand ils sont côte à côte.
 * Les fichiers qui existent aussi dans les projets frères ne sont pas déplacés ici seuls : le même fichier dans toutes les familles, ou aucun.
 * Rien ici n'a tourné sur du matériel ; les outils fonctionnent sur un ordinateur.

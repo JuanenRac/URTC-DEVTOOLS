@@ -123,7 +123,7 @@ URTC-DEVTOOLS/
 
 **目前已知的限制**
 
-* 锁由 URTC-DOCS 写入和检查；目前只有本仓库带有锁。
+* 锁由 URTC-DOCS（`tools/sync_repo_tools.py` 和 `tools/check_repo_tools.py`）写入和检查；现在家族中的每个仓库都带有锁（`tools/devtools.lock.json`）。
 * URTC-DOCS 仍保留自己的模板，同步工具读取的就是它；两者并排放置时由一个测试比较。
 * 姊妹项目中同样存在的文件不会单独搬到这里：要么所有家族一起搬，要么都不搬。
 * 这里的任何内容都没有在硬件上运行过；这些工具在电脑上运行。

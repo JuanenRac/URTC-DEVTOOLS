@@ -123,7 +123,7 @@ URTC-DEVTOOLS/
 
 **Bekannte Grenzen heute**
 
-* Die Sperrdatei schreibt und prüft URTC-DOCS; dies ist bisher das einzige Repository mit einer.
+* Die Sperrdatei schreibt und prüft URTC-DOCS (`tools/sync_repo_tools.py` und `tools/check_repo_tools.py`); inzwischen trägt jedes Repository der Familie eine (`tools/devtools.lock.json`).
 * URTC-DOCS hält noch seine eigene Vorlage, die der Synchronisierer liest; ein Test vergleicht beide, wenn sie nebeneinander liegen.
 * Dateien, die es auch in den Schwesterprojekten gibt, werden nicht allein hierher verschoben: dieselbe Datei in allen Familien oder keine.
 * Nichts davon lief auf Hardware; die Werkzeuge laufen auf einem Computer.
