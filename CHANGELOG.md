@@ -4,6 +4,9 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+### Changed
+- The status-light check states in every `zip()` whether its lengths must match, so the copy each repository carries is clean for the stricter linter of the other families; the behaviour is the same.
+
 ## [0.0.1]
 
 ### Added
