@@ -32,6 +32,9 @@ EXPECTED = {
     "tools/make_structure.py",
     "tools/pretty_run.py",
     "tools/status_lights.py",
+    "tools/universal_readme_check.py",
+    "test.sh",
+    "test.bat",
 }
 
 

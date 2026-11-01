@@ -30,17 +30,17 @@
     {
       "path": "tools/universal_readme_check.py",
       "kind": "identical",
-      "in_set": false,
+      "in_set": true,
       "same_in": [
         "URTC",
         "HYDRA",
         "ARMOR"
       ],
-      "reason": "The check of the layout of the README does not depend on the family. It is not in the set yet: URTC repositories carry the copy of this repository's tools folder.",
+      "reason": "The check of the layout of the README does not depend on the family.",
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",
-          "path": "tools/universal_readme_check.py"
+          "path": "files/tools/universal_readme_check.py"
         },
         "HYDRA": {
           "repo": "HYDRA-UMC-SDK",
@@ -108,7 +108,7 @@
         "URTC",
         "ARMOR"
       ],
-      "reason": "Same text in URTC and A.R.M.O.R. HYDRA-UMC adds the comparison with the generated glance data of its documentation hub, so its text is a superset and stays its own.",
+      "reason": "Same text in URTC and A.R.M.O.R. HYDRA-UMC adds the comparison with the generated glance data of its documentation hub, which only that family has, so its text is a superset and stays its own: giving it to the other families would carry code they cannot run.",
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",
@@ -128,7 +128,7 @@
     {
       "path": "test.sh",
       "kind": "identical",
-      "in_set": false,
+      "in_set": true,
       "same_in": [
         "URTC",
         "HYDRA"
@@ -137,19 +137,19 @@
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",
-          "path": "test.sh"
+          "path": "files/test.sh"
         },
         "HYDRA": {
           "repo": "HYDRA-UMC-SDK",
           "path": "test.sh"
         }
       },
-      "urtc_sha256": "ff14d18b249625a6495afff03d05fd5563901e934fc1d14d83cf730fff582a33"
+      "urtc_sha256": "fe6c82fdba3c1808e30f3e404cf64fb76371ef76cf528a198733473a2acaf3e5"
     },
     {
       "path": "test.bat",
       "kind": "identical",
-      "in_set": false,
+      "in_set": true,
       "same_in": [
         "URTC",
         "HYDRA"
@@ -158,21 +158,24 @@
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",
-          "path": "test.bat"
+          "path": "files/test.bat"
         },
         "HYDRA": {
           "repo": "HYDRA-UMC-SDK",
           "path": "test.bat"
         }
       },
-      "urtc_sha256": "7065e4856b83aca3e9943b1271b4175dc55c443ca568af78e273be631ea98547"
+      "urtc_sha256": "3a0aacb39c3dde7591239b33c0679843e9a48316f0b9c95af5619c0131f6e734"
     },
     {
       "path": "bump_manifest_version.py",
-      "kind": "ecosystem",
+      "kind": "identical",
       "in_set": true,
-      "same_in": [],
-      "reason": "Each family names its own manifest file and its own version rules in the script, so the text is the family's.",
+      "same_in": [
+        "URTC",
+        "HYDRA"
+      ],
+      "reason": "One text for the URTC and HYDRA-UMC families: it finds the manifest of the family by its name (hydra-umc.project.json or urtc.project.json) and carries the native-file rules (Cargo, pubspec, npm) that only some repositories use. A.R.M.O.R. has its own bump scripts.",
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",
@@ -183,14 +186,14 @@
           "path": "tools/canonical/bump_manifest_version.py"
         }
       },
-      "urtc_sha256": "25b1561dd764cf7772f3d8135fa6c533d88afcaa68b5a2d18b5d2f29f50d413c"
+      "urtc_sha256": "fbd3433f100e701457c2053495e2ba86771f9cb25f8d396eba2d173ef5462bda"
     },
     {
       "path": "tools/_doc_policy.py",
       "kind": "ecosystem",
       "in_set": true,
       "same_in": [],
-      "reason": "The HYDRA-UMC text has checks the URTC text does not (such as a fallback for a checkout without Git); moving one onto the other is a decision for the owners of both.",
+      "reason": "Stays apart on purpose: the HYDRA-UMC text also fails a build script that raises a version and a script that activates a virtual environment, and URTC build scripts do raise the version of the repository by design, so the same rule cannot apply. The part that is generic (the check of a checkout without Git) is not worth a second copy until the rule about builds is the same.",
       "sources": {
         "URTC": {
           "repo": "URTC-DEVTOOLS",

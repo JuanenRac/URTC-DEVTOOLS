@@ -19,7 +19,7 @@
 
 ---
 
-**Comprobación de honestidad - lo que funciona hoy:** este repositorio contiene los diez ficheros que los repositorios de la familia llevan como la misma copia, una pequeña herramienta que los lista y comprueba las copias que lleva el propio repositorio, pruebas y documentación. Todo se ejecuta y se prueba en la CI. El fichero de bloqueo lo escribe y lo comprueba URTC-DOCS; hasta ahora solo este repositorio lleva uno, los demás no han tomado el conjunto todavía, y nada de esto se ha ejecutado en hardware.
+**Comprobación de honestidad - lo que funciona hoy:** este repositorio contiene los 14 ficheros que los repositorios de la familia llevan como la misma copia, una pequeña herramienta que los lista y comprueba las copias que lleva el propio repositorio, pruebas y documentación. Todo se ejecuta y se prueba en la CI. El fichero de bloqueo lo escribe y lo comprueba URTC-DOCS; hasta ahora solo este repositorio lleva uno, los demás no han tomado el conjunto todavía, y nada de esto se ha ejecutado en hardware.
 
 ---
 
@@ -51,7 +51,7 @@
 
 Las herramientas que cada repositorio de la familia lleva como la misma copia, reunidas en un solo sitio y con una versión:
 
-* [`files/`](files): la copia canónica de los diez ficheros compartidos (las comprobaciones de política de documentación y de paridad de README, los generadores de dibujos, el panel en vivo de los scripts de compilación, el que sube la versión del manifiesto, la comprobación de las luces de estado y el aviso al panel). El nombre del repositorio se escribe `<REPO>` y se sustituye al poner un fichero en un repositorio.
+* [`files/`](files): la copia canónica de los 14 ficheros compartidos (las comprobaciones de política de documentación y de paridad de README, los generadores de dibujos, el panel en vivo de los scripts de compilación, el que sube la versión del manifiesto, la comprobación de las luces de estado y el aviso al panel). El nombre del repositorio se escribe `<REPO>` y se sustituye al poner un fichero en un repositorio.
 * La **versión de este repositorio es la versión del conjunto**; el [registro de cambios](CHANGELOG.md) dice qué cambió en cada versión.
 * Un **fichero de bloqueo** en cada repositorio, `tools/devtools.lock.json`, escrito por `tools/sync_repo_tools.py` de URTC-DOCS: la versión del conjunto y el SHA-256 de cada copia. `tools/check_repo_tools.py` encuentra una copia editada a mano y, cuando este repositorio está junto a los demás, una copia desfasada. Véase [el formato del bloqueo](docs/LOCK_FORMAT.md).
 * Cada repositorio sigue pudiéndose compilar y comprobar con su propia copia de trabajo: el bloqueo es un fichero del repositorio y nada necesita la red.
@@ -99,7 +99,7 @@ La batería tiene 28 pruebas (`python -m unittest discover -s tests`). Comprueba
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     los diez ficheros canónicos, en la ruta que tienen en cada repositorio
+├── files/                                     los 14 ficheros canónicos, en la ruta que tienen en cada repositorio
 ├── tools/                                     la comprobación del conjunto, la validación del repositorio y las copias que lleva este repositorio
 ├── tests/                                     pruebas del conjunto, del candado y del repositorio
 ├── docs/                                      el formato del candado y cómo tomar el conjunto

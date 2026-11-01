@@ -16,7 +16,8 @@ The files under `files/` are the canonical copy of what every repository of the 
 |---|---|
 | Documentation checks | `tools/_doc_policy.py`, `tools/_readme_parity.py`, `tools/_tracked_names.py` |
 | Pictures | `tools/_readme_svg.py`, `tools/make_architecture.py`, `tools/make_structure.py` |
-| Scripts | `tools/pretty_run.py`, `bump_manifest_version.py`, `tools/status_lights.py` |
+| Scripts | `tools/pretty_run.py`, `bump_manifest_version.py`, `tools/status_lights.py`, `test.sh`, `test.bat` (the test launchers) |
+| README layout check | `tools/universal_readme_check.py` |
 | Workflow | `.github/workflows/dashboard-dispatch.yml` |
 | Composite action | `.github/actions/urtc-baseline/action.yml` (the steps every workflow runs first: Python, the validation of the project and the compilation of the sources) |
 

@@ -19,7 +19,7 @@
 
 ---
 
-**Honesty check - what actually runs today:** this repository holds the ten files that the repositories of the family carry as the same copy, a small tool that lists them and checks the copies this repository carries itself, tests and documentation. All of it runs and is tested in CI. The lock file is written and checked by URTC-DOCS; so far only this repository carries a lock, the other repositories have not taken the set yet, and nothing here has run on hardware.
+**Honesty check - what actually runs today:** this repository holds the 14 files that the repositories of the family carry as the same copy, a small tool that lists them and checks the copies this repository carries itself, tests and documentation. All of it runs and is tested in CI. The lock file is written and checked by URTC-DOCS; so far only this repository carries a lock, the other repositories have not taken the set yet, and nothing here has run on hardware.
 
 ---
 
@@ -51,7 +51,7 @@
 
 The tools that every repository of the family carries as the same copy, gathered in one place and given a version:
 
-* [`files/`](files): the canonical copy of the ten shared files (the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice). The name of the repository is written `<REPO>` and replaced when a file is put into a repository.
+* [`files/`](files): the canonical copy of the 14 shared files (the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice). The name of the repository is written `<REPO>` and replaced when a file is put into a repository.
 * The **version of this repository is the version of the set**; the [changelog](CHANGELOG.md) says what changed in each version.
 * A **lock file** in each repository, `tools/devtools.lock.json`, written by `tools/sync_repo_tools.py` of URTC-DOCS: the version of the set and the SHA-256 of every copy. `tools/check_repo_tools.py` finds a copy that was edited by hand and, when this repository is next to the others, a copy that fell behind. See [the lock format](docs/LOCK_FORMAT.md).
 * Every repository stays buildable and checkable with its own checkout: the lock is a file of the repository and nothing needs the network.
@@ -99,7 +99,7 @@ The suite has 28 tests (`python -m unittest discover -s tests`). They check that
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     the ten canonical files, at the path they have in every repository
+├── files/                                     the 14 canonical files, at the path they have in every repository
 ├── tools/                                     the check of the set, the repository validation and the copies this repository carries
 ├── tests/                                     unit tests of the set, of the lock and of the repository
 ├── docs/                                      the lock format and how to take the set

@@ -19,7 +19,7 @@
 
 ---
 
-**Ehrlichkeits-Check - was heute wirklich läuft:** Dieses Repository enthält die zehn Dateien, die die Repositories der Familie als dieselbe Kopie tragen, ein kleines Werkzeug, das sie auflistet und die Kopien des Repositorys selbst prüft, Tests und Dokumentation. Alles läuft und wird in der CI getestet. Die Sperrdatei schreibt und prüft URTC-DOCS; bisher trägt nur dieses Repository eine, die anderen haben den Satz noch nicht übernommen, und nichts davon lief auf Hardware.
+**Ehrlichkeits-Check - was heute wirklich läuft:** Dieses Repository enthält die 14 Dateien, die die Repositories der Familie als dieselbe Kopie tragen, ein kleines Werkzeug, das sie auflistet und die Kopien des Repositorys selbst prüft, Tests und Dokumentation. Alles läuft und wird in der CI getestet. Die Sperrdatei schreibt und prüft URTC-DOCS; bisher trägt nur dieses Repository eine, die anderen haben den Satz noch nicht übernommen, und nichts davon lief auf Hardware.
 
 ---
 
@@ -51,7 +51,7 @@
 
 Die Werkzeuge, die jedes Repository der Familie als dieselbe Kopie trägt, an einem Ort gesammelt und mit einer Version versehen:
 
-* [`files/`](files): die kanonische Kopie der zehn gemeinsamen Dateien (die Prüfungen der Dokumentationsregeln und der README-Parität, die Bildgeneratoren, die Live-Anzeige der Build-Skripte, das Hochzählen der Manifest-Version, die Prüfung der Statusampeln und die Meldung an das Dashboard). Der Name des Repositorys steht als `<REPO>` und wird beim Ablegen einer Datei ersetzt.
+* [`files/`](files): die kanonische Kopie der 14 gemeinsamen Dateien (die Prüfungen der Dokumentationsregeln und der README-Parität, die Bildgeneratoren, die Live-Anzeige der Build-Skripte, das Hochzählen der Manifest-Version, die Prüfung der Statusampeln und die Meldung an das Dashboard). Der Name des Repositorys steht als `<REPO>` und wird beim Ablegen einer Datei ersetzt.
 * Die **Version dieses Repositorys ist die Version des Satzes**; das [Änderungsprotokoll](CHANGELOG.md) sagt, was sich in jeder Version geändert hat.
 * Eine **Sperrdatei** in jedem Repository, `tools/devtools.lock.json`, geschrieben von `tools/sync_repo_tools.py` aus URTC-DOCS: die Version des Satzes und der SHA-256 jeder Kopie. `tools/check_repo_tools.py` findet eine von Hand geänderte Kopie und, wenn dieses Repository neben den anderen liegt, eine veraltete Kopie. Siehe [das Format der Sperrdatei](docs/LOCK_FORMAT.md).
 * Jedes Repository bleibt mit seinem eigenen Checkout baubar und prüfbar: Die Sperrdatei ist eine Datei des Repositorys und nichts braucht das Netz.
@@ -99,7 +99,7 @@ Die Suite hat 28 Tests (`python -m unittest discover -s tests`). Sie prüfen, da
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     die zehn kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben
+├── files/                                     die 14 kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben
 ├── tools/                                     die Prüfung des Satzes, die Validierung des Repositorys und die Kopien, die es selbst trägt
 ├── tests/                                     Tests des Satzes, der Sperrdatei und des Repositorys
 ├── docs/                                      das Format der Sperrdatei und wie man den Satz übernimmt
