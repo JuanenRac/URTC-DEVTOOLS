@@ -16,6 +16,7 @@ A repository that takes the shared tools carries `tools/devtools.lock.json`. It 
   "source": "URTC-DEVTOOLS",
   "version": "0.0.1",
   "files": {
+    ".github/actions/urtc-baseline/action.yml": "<sha256>",
     ".github/workflows/dashboard-dispatch.yml": "<sha256>",
     "tools/_doc_policy.py": "<sha256>"
   }

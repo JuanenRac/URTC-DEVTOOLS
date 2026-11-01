@@ -18,6 +18,20 @@ The files under `files/` are the canonical copy of what every repository of the 
 | Pictures | `tools/_readme_svg.py`, `tools/make_architecture.py`, `tools/make_structure.py` |
 | Scripts | `tools/pretty_run.py`, `bump_manifest_version.py`, `tools/status_lights.py` |
 | Workflow | `.github/workflows/dashboard-dispatch.yml` |
+| Composite action | `.github/actions/urtc-baseline/action.yml` (the steps every workflow runs first: Python, the validation of the project and the compilation of the sources) |
+
+## Using the composite action
+
+A workflow checks the repository out and then runs the baseline in one step; what is its own (linting, type checks, tests) stays in the workflow:
+
+```yaml
+      - name: Check out repository
+        uses: actions/checkout@v5
+      - name: Baseline (Python, project validation and compilation of the sources)
+        uses: ./.github/actions/urtc-baseline
+```
+
+`python-version` (default `3.12`) is the one input. The action is one of the shared files: edited by hand in a repository, or left behind, it is found by the check like any other copy.
 
 ## Taking the set into a repository
 

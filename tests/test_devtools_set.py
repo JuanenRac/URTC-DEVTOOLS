@@ -22,6 +22,7 @@ import devtools_set  # noqa: E402
 # the files every repository of the family carries as the same copy (the list of URTC-DOCS: src/urtc_docs/drift.py)
 EXPECTED = {
     ".github/workflows/dashboard-dispatch.yml",
+    ".github/actions/urtc-baseline/action.yml",
     "bump_manifest_version.py",
     "tools/_doc_policy.py",
     "tools/_readme_parity.py",
