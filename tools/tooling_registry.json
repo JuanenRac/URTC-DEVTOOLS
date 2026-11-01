@@ -299,6 +299,20 @@
         }
       },
       "urtc_sha256": "be3790d38d93ee0f316101ad232c010296587cb9f751bc2975eedeae2637f229"
+    },
+    {
+      "path": "tools/run_host_tests.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The executor of the host logic suites of the C firmware (ctest, sanitizers, static analysis, coverage floor) is shared by the URTC firmware repositories, each with its own tools/host_tests.json; HYDRA-UMC and A.R.M.O.R. build their firmware with ESP-IDF and test it another way.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/run_host_tests.py"
+        }
+      },
+      "urtc_sha256": "633624934397bd62e4f22d020316ce8861f4f911fcd9b2461c200c59d2866aab"
     }
   ]
 }

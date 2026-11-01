@@ -19,7 +19,7 @@
 
 ---
 
-**Contrôle d'honnêteté - ce qui fonctionne aujourd'hui :** ce dépôt contient les 14 fichiers que les dépôts de la famille portent comme la même copie, un petit outil qui les liste et contrôle les copies que le dépôt porte lui-même, des tests et de la documentation. Tout cela s'exécute et est testé en CI. Le fichier de verrou est écrit et contrôlé par URTC-DOCS ; pour l'instant seul ce dépôt en porte un, les autres n'ont pas encore pris l'ensemble, et rien ici n'a tourné sur du matériel.
+**Contrôle d'honnêteté - ce qui fonctionne aujourd'hui :** ce dépôt contient les 15 fichiers que les dépôts de la famille portent comme la même copie, un petit outil qui les liste et contrôle les copies que le dépôt porte lui-même, des tests et de la documentation. Tout cela s'exécute et est testé en CI. Le fichier de verrou est écrit et contrôlé par URTC-DOCS ; pour l'instant seul ce dépôt en porte un, les autres n'ont pas encore pris l'ensemble, et rien ici n'a tourné sur du matériel.
 
 ---
 
@@ -51,7 +51,7 @@
 
 Les outils que chaque dépôt de la famille porte comme la même copie, réunis en un seul endroit et dotés d'une version :
 
-* [`files/`](files) : la copie canonique des 14 fichiers partagés (les contrôles de la politique de documentation et de la parité des README, les générateurs d'images, le panneau en direct des scripts de compilation, l'outil qui monte la version du manifeste, le contrôle des feux d'état et l'avis au tableau de bord). Le nom du dépôt est écrit `<REPO>` et remplacé quand un fichier est placé dans un dépôt.
+* [`files/`](files) : la copie canonique des 15 fichiers partagés (les contrôles de la politique de documentation et de la parité des README, les générateurs d'images, le panneau en direct des scripts de compilation, l'outil qui monte la version du manifeste, le contrôle des feux d'état et l'avis au tableau de bord). Le nom du dépôt est écrit `<REPO>` et remplacé quand un fichier est placé dans un dépôt.
 * La **version de ce dépôt est la version de l'ensemble** ; le [journal des modifications](CHANGELOG.md) dit ce qui a changé à chaque version.
 * Un **fichier de verrou** dans chaque dépôt, `tools/devtools.lock.json`, écrit par `tools/sync_repo_tools.py` d'URTC-DOCS : la version de l'ensemble et le SHA-256 de chaque copie. `tools/check_repo_tools.py` trouve une copie modifiée à la main et, quand ce dépôt est à côté des autres, une copie en retard. Voir [le format du verrou](docs/LOCK_FORMAT.md).
 * Chaque dépôt reste compilable et contrôlable avec sa propre copie de travail : le verrou est un fichier du dépôt et rien n'a besoin du réseau.
@@ -99,7 +99,7 @@ La suite compte 28 tests (`python -m unittest discover -s tests`). Ils vérifien
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     les 14 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt
+├── files/                                     les 15 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt
 ├── tools/                                     le contrôle de l'ensemble, la validation du dépôt et les copies que porte ce dépôt
 ├── tests/                                     tests de l'ensemble, du verrou et du dépôt
 ├── docs/                                      le format du verrou et comment prendre l'ensemble

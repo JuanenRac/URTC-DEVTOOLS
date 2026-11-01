@@ -31,6 +31,7 @@ EXPECTED = {
     "tools/make_architecture.py",
     "tools/make_structure.py",
     "tools/pretty_run.py",
+    "tools/run_host_tests.py",
     "tools/status_lights.py",
     "tools/universal_readme_check.py",
     "test.sh",
