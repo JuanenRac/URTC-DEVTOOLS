@@ -16,3 +16,9 @@ Homepage = "https://github.com/JuanenRac/URTC-DEVTOOLS"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["tools", "tests"]
+
+[tool.mypy]
+# the shared picture tools are copied from the family's canonical copy and are not edited (or checked) here
+exclude = ['^tools/(_readme_svg|make_architecture|make_structure)\.py$']
+files = ["tools", "tests"]
+ignore_missing_imports = true
