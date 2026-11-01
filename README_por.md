@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-16-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-28-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Versão | `0.0.1` |
 | Maturidade | Estrutura inicial |
-| Testes | 16 (`python -m unittest discover -s tests`) |
+| Testes | 28 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
 | Destino | O PC de quem o usa |
 | Em hardware real | Não aplicável: nada aqui corre em hardware |
@@ -75,13 +75,14 @@ Como se encaixam as partes deste repositório: quem toma o conjunto, o que cont�
 ```bash
 python tools/devtools_set.py list            # a versão do conjunto e o SHA-256 de cada ficheiro
 python tools/devtools_set.py check           # as cópias que este repositório leva são os ficheiros canónicos
+python tools/tooling_registry.py check       # o registo das ferramentas que as famílias partilham: hashes e fontes iguais
 python -m unittest discover -s tests         # os testes
 python tools/sync_repo_tools.py --apply      # a partir do URTC-DOCS: pôr o conjunto e os bloqueios nos repositórios ao lado
 ```
 
 ## 🧪 Testes
 
-A bateria tem 16 testes (`python -m unittest discover -s tests`). Verificam que `files/` contém exatamente os ficheiros partilhados, que cada um é válido e se gera com o nome de um repositório, que uma cópia editada ou em falta é encontrada, que o bloqueio deste repositório corresponde aos seus ficheiros e à sua versão, e o manifesto, o registo de alterações e os documentos. Um teste compara `files/` com o modelo do URTC-DOCS e é ignorado quando esse repositório não está ao lado. A lógica do bloqueio é testada no URTC-DOCS.
+A bateria tem 28 testes (`python -m unittest discover -s tests`). Verificam que `files/` contém exatamente os ficheiros partilhados, que cada um é válido e se gera com o nome de um repositório, que uma cópia editada ou em falta é encontrada, que o bloqueio deste repositório corresponde aos seus ficheiros e à sua versão, e o manifesto, o registo de alterações e os documentos. Um teste compara `files/` com o modelo do URTC-DOCS e é ignorado quando esse repositório não está ao lado. A lógica do bloqueio é testada no URTC-DOCS.
 
 ## 🏗️ Compilação e publicação
 

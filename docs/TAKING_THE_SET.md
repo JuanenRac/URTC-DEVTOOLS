@@ -55,3 +55,14 @@ The synchroniser writes the files that differ and then the lock of each reposito
 ## Files shared with other families
 
 Some of the files exist, byte for byte apart from the name, in the repositories of the sister projects. They are not moved by this repository: a change made here alone would give the family two versions of the same file. They move last, together, and only with the agreement of the owners of those repositories.
+
+What is the same, and where each family keeps its source, is written in `tools/tooling_registry.json` (one entry per file: how two sources are compared, the families where the text is the same, the reason when it is not, and the SHA-256 of the URTC source). `tools/tooling_registry.py` reads it:
+
+```
+python tools/tooling_registry.py check     # the registry against files/, and the sources that must be equal when the other families are next to this repository
+python tools/tooling_registry.py report    # for each file, how many repositories of each family carry the same text as its source
+python tools/tooling_registry.py update    # write the hashes of the URTC sources into the registry after a change to files/ (or to a file the registry lists)
+```
+
+`check` needs nothing but this repository (the hashes and the list of the set); next to the repositories of the other families it also compares their sources. It never writes to another repository. A new file of the set needs an entry, and the check fails until it has one.
+

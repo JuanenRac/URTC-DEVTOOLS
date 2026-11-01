@@ -1,0 +1,301 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "path": "tools/pretty_run.py",
+      "kind": "identical",
+      "in_set": true,
+      "same_in": [
+        "URTC",
+        "HYDRA",
+        "ARMOR"
+      ],
+      "reason": "The live panel of the build and test scripts has no family-specific logic: one text in all three families.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/pretty_run.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/canonical/pretty_run.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/pretty_run.py"
+        }
+      },
+      "urtc_sha256": "1698bfec531568afaf5319f0a220e9bf7c0087f39cbf5e6e88e7035bfc1327c5"
+    },
+    {
+      "path": "tools/universal_readme_check.py",
+      "kind": "identical",
+      "in_set": false,
+      "same_in": [
+        "URTC",
+        "HYDRA",
+        "ARMOR"
+      ],
+      "reason": "The check of the layout of the README does not depend on the family. It is not in the set yet: URTC repositories carry the copy of this repository's tools folder.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "tools/universal_readme_check.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/canonical/universal_readme_check.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/universal_readme_check.py"
+        }
+      },
+      "urtc_sha256": "ddb5f9986119a8b16800cba627d8a13af8b39ff1e044adc992fd06defea301e5"
+    },
+    {
+      "path": "tools/_readme_svg.py",
+      "kind": "same_after_banner",
+      "in_set": true,
+      "same_in": [
+        "URTC",
+        "HYDRA",
+        "ARMOR"
+      ],
+      "reason": "The drawing code of the README pictures is the same; only the name in the banner line differs.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/_readme_svg.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/_readme_svg.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/_readme_svg.py"
+        }
+      },
+      "urtc_sha256": "7bb8388deb11c15dfbc202c8da1b808540853ec2c263260795d3cb2664d6f94d"
+    },
+    {
+      "path": "tools/_readme_parity.py",
+      "kind": "same_after_banner",
+      "in_set": true,
+      "same_in": [
+        "URTC",
+        "HYDRA"
+      ],
+      "reason": "The parity check of the README sections is the same in URTC and HYDRA-UMC (only the banner differs); the A.R.M.O.R. family keeps its own, older check under another name.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/_readme_parity.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/_readme_parity.py"
+        }
+      },
+      "urtc_sha256": "c7e73b6a46d06b98eb6cb0d664e1d9fae2324f62d50b522e43fd0b6f45698868"
+    },
+    {
+      "path": "tools/status_lights.py",
+      "kind": "identical",
+      "in_set": true,
+      "same_in": [
+        "URTC",
+        "ARMOR"
+      ],
+      "reason": "Same text in URTC and A.R.M.O.R. HYDRA-UMC adds the comparison with the generated glance data of its documentation hub, so its text is a superset and stays its own.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/status_lights.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/canonical/status_lights.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/status_lights.py"
+        }
+      },
+      "urtc_sha256": "7e71dd24c828a07a3b842446dbab7921784df1e5538a463e88a1f33181550019"
+    },
+    {
+      "path": "test.sh",
+      "kind": "identical",
+      "in_set": false,
+      "same_in": [
+        "URTC",
+        "HYDRA"
+      ],
+      "reason": "The test launcher is the same in URTC and HYDRA-UMC once the name of the repository is written as a placeholder; A.R.M.O.R. launches through the scripts of ARMOR-COMMON instead.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "test.sh"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "test.sh"
+        }
+      },
+      "urtc_sha256": "ff14d18b249625a6495afff03d05fd5563901e934fc1d14d83cf730fff582a33"
+    },
+    {
+      "path": "test.bat",
+      "kind": "identical",
+      "in_set": false,
+      "same_in": [
+        "URTC",
+        "HYDRA"
+      ],
+      "reason": "Same as test.sh, for Windows.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "test.bat"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "test.bat"
+        }
+      },
+      "urtc_sha256": "7065e4856b83aca3e9943b1271b4175dc55c443ca568af78e273be631ea98547"
+    },
+    {
+      "path": "bump_manifest_version.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "Each family names its own manifest file and its own version rules in the script, so the text is the family's.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/bump_manifest_version.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/canonical/bump_manifest_version.py"
+        }
+      },
+      "urtc_sha256": "25b1561dd764cf7772f3d8135fa6c533d88afcaa68b5a2d18b5d2f29f50d413c"
+    },
+    {
+      "path": "tools/_doc_policy.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The HYDRA-UMC text has checks the URTC text does not (such as a fallback for a checkout without Git); moving one onto the other is a decision for the owners of both.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/_doc_policy.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/_doc_policy.py"
+        }
+      },
+      "urtc_sha256": "71ac980f57d5ec8350a1d96c5cc568c05d757cc12c50e83a00d5f581c97bcf4b"
+    },
+    {
+      "path": "tools/_tracked_names.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "Only the URTC family carries it.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/_tracked_names.py"
+        }
+      },
+      "urtc_sha256": "24e1ba0a2b688fe57649e3318e156fcd90fb9455e3a6083ff1174c17d7534b17"
+    },
+    {
+      "path": "tools/make_architecture.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The architecture picture of each family follows its own data file and drawing style.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/make_architecture.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/make_architecture.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/make_architecture.py"
+        }
+      },
+      "urtc_sha256": "9df7d6c00af0f1178c44eae8e849c31218bae196984ec718a7fdc63daa2e2fa9"
+    },
+    {
+      "path": "tools/make_structure.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The structure picture of each family follows its own data file and drawing style.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/make_structure.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/make_structure.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/make_structure.py"
+        }
+      },
+      "urtc_sha256": "27615e9b6374cbb6cc21b52d52bad4e9db1c9307319a8910b4b75c4ecb9fe5c8"
+    },
+    {
+      "path": ".github/workflows/dashboard-dispatch.yml",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The notice to the central dashboard names the family it belongs to.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/.github/workflows/dashboard-dispatch.yml"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-SDK",
+          "path": "tools/canonical/dashboard-dispatch.yml"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": ".github/workflows/dashboard-dispatch.yml"
+        }
+      },
+      "urtc_sha256": "fa4852d0f489ee8a701a6418e24cbe3c8978b1bbc5c38b904981b8e2445b440a"
+    },
+    {
+      "path": ".github/actions/urtc-baseline/action.yml",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The baseline steps of the workflows of the URTC family; the other families run theirs through their own validator.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/.github/actions/urtc-baseline/action.yml"
+        }
+      },
+      "urtc_sha256": "be3790d38d93ee0f316101ad232c010296587cb9f751bc2975eedeae2637f229"
+    }
+  ]
+}

@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-16-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-28-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | バージョン | `0.0.1` |
 | 成熟度 | 足場段階 |
-| テスト | 16 (`python -m unittest discover -s tests`) |
+| テスト | 28 (`python -m unittest discover -s tests`) |
 | 技術 | Python / GitHub Actions / JSON |
 | 対象 | 利用者の PC |
 | 実機での確認 | 対象外：ここにあるものはハードウェア上では動きません |
@@ -75,13 +75,14 @@ URTC-DEVTOOLS は、共有ツールに名前と版数を与える場所です。
 ```bash
 python tools/devtools_set.py list            # セットの版数と各ファイルの SHA-256
 python tools/devtools_set.py check           # このリポジトリのコピーが正規ファイルと一致
+python tools/tooling_registry.py check       # 各ファミリーが共有するツールの登録簿：ハッシュと同一ソースの確認
 python -m unittest discover -s tests         # テスト
 python tools/sync_repo_tools.py --apply      # URTC-DOCS から：隣のリポジトリにセットとロックを置く
 ```
 
 ## 🧪 テスト
 
-テストスイートは 16 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
+テストスイートは 28 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
 
 ## 🏗️ ビルドとリリース
 
