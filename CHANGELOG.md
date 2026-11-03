@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **`tools/workflow_templates.py` compares the workflows of the repositories that sit side by side:** it checks that every third-party action is pinned to a commit hash, that every workflow has a top-level `permissions:` block and none runs on `pull_request_target`, and it reports the copies of one workflow that differ (after comments, schedules and repository names are removed) and every action pinned to more than one hash. `--strict` makes a drift fail too.
+
 ## [0.0.2] - The set shared by the family has the host-test executor, three more files, a composite action for the baseline steps and a registry of the shared tooling, and its CI runs a type check
 
 - **The executor of the host tests of the firmware is in the set** (`tools/run_host_tests.py`, with the data file `tools/host_tests.json` that each repository keeps itself): ctest where cmake is installed, direct compiler calls elsewhere, sanitizers, static analysis, coverage floor and the run through WSL. It is carried by the three firmware repositories of the family and registered as an ecosystem file in the registry (the other families test their firmware another way).
