@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Version | `0.0.1` |
+| Version | `0.0.2` |
 | Reifegrad | Gerüst |
 | Tests | 28 (`python -m unittest discover -s tests`) |
 | Technik | Python / GitHub Actions / JSON |

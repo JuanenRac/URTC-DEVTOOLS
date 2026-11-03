@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+## [0.0.2] - The set shared by the family has the host-test executor, three more files, a composite action for the baseline steps and a registry of the shared tooling, and its CI runs a type check
+
 - **The executor of the host tests of the firmware is in the set** (`tools/run_host_tests.py`, with the data file `tools/host_tests.json` that each repository keeps itself): ctest where cmake is installed, direct compiler calls elsewhere, sanitizers, static analysis, coverage floor and the run through WSL. It is carried by the three firmware repositories of the family and registered as an ecosystem file in the registry (the other families test their firmware another way).
 
 - **Three more files in the set, and one text for the version bumper** (`test.sh`, `test.bat`, `tools/universal_readme_check.py`; `bump_manifest_version.py` finds the manifest of its family by name and carries the native-file rules of the HYDRA-UMC family, so URTC and HYDRA-UMC share one text). The registry lists them and `status_lights.py` and `_doc_policy.py` now say why they stay different between the families.
@@ -15,6 +17,10 @@ All notable changes to this repository are listed here. The version of this repo
 ### Changed
 - The CI now runs a type check (`mypy`, pinned) over the tools and the tests of this repository; the copies of the shared picture tools, which are not edited here, are left out of it (a `[tool.mypy]` section in `pyproject.toml` says so).
 - The status-light check states in every `zip()` whether its lengths must match, so the copy each repository carries is clean for the stricter linter of the other families; the behaviour is the same.
+
+## [0.0.2]
+
+- Build version synchronized with `urtc.project.json` and the repository-native version source.
 
 ## [0.0.1]
 
