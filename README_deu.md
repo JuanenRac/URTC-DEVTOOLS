@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-45-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-55-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.2` |
 | Reifegrad | Gerüst |
-| Tests | 45 (`python -m unittest discover -s tests`) |
+| Tests | 55 (`python -m unittest discover -s tests`) |
 | Technik | Python / GitHub Actions / JSON |
 | Ziel | Der PC der Person, die es benutzt |
 | Auf echter Hardware | Nicht zutreffend: nichts hiervon läuft auf Hardware |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # aus URTC-DOCS: den Satz und die S
 
 ## 🧪 Tests
 
-Die Suite hat 45 Tests (`python -m unittest discover -s tests`). Sie prüfen, dass `files/` genau die gemeinsamen Dateien enthält, dass jede gültig ist und sich mit dem Namen eines Repositorys erzeugen lässt, dass eine geänderte oder fehlende Kopie gefunden wird, dass die Sperrdatei dieses Repositorys zu seinen Dateien und seiner Version passt, sowie Manifest, Änderungsprotokoll und Dokumente. Ein Test vergleicht `files/` mit der Vorlage von URTC-DOCS und wird übersprungen, wenn dieses Repository nicht daneben liegt. Die Logik der Sperrdatei wird in URTC-DOCS getestet.
+Die Suite hat 55 Tests (`python -m unittest discover -s tests`). Sie prüfen, dass `files/` genau die gemeinsamen Dateien enthält, dass jede gültig ist und sich mit dem Namen eines Repositorys erzeugen lässt, dass eine geänderte oder fehlende Kopie gefunden wird, dass die Sperrdatei dieses Repositorys zu seinen Dateien und seiner Version passt, sowie Manifest, Änderungsprotokoll und Dokumente. Ein Test vergleicht `files/` mit der Vorlage von URTC-DOCS und wird übersprungen, wenn dieses Repository nicht daneben liegt. Die Logik der Sperrdatei wird in URTC-DOCS getestet.
 
 ## 🏗️ Build und Veröffentlichung
 

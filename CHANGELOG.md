@@ -4,6 +4,7 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The build check of the repository is one text for the whole family, with a light mode that CI runs:** `tools/build_test.py` is the same file in every repository of the family (taken from the shared set); what used to differ between its seven variants is data in an optional `tools/build_test.json`. `python tools/build_test.py --check` looks at the manifest, the stack and the files the full check needs and compiles the Python sources, builds and runs nothing, and the baseline step of the workflow now runs it.
 - **`tools/workflow_templates.py` compares the workflows of the repositories that sit side by side:** it checks that every third-party action is pinned to a commit hash, that every workflow has a top-level `permissions:` block and none runs on `pull_request_target`, and it reports the copies of one workflow that differ (after comments, schedules and repository names are removed) and every action pinned to more than one hash. `--strict` makes a drift fail too.
 
 ## [0.0.2] - The set shared by the family has the host-test executor, three more files, a composite action for the baseline steps and a registry of the shared tooling, and its CI runs a type check

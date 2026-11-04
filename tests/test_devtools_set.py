@@ -28,6 +28,7 @@ EXPECTED = {
     "tools/_readme_parity.py",
     "tools/_readme_svg.py",
     "tools/_tracked_names.py",
+    "tools/build_test.py",
     "tools/make_architecture.py",
     "tools/make_structure.py",
     "tools/pretty_run.py",

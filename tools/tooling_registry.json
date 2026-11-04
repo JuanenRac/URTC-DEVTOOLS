@@ -298,7 +298,7 @@
           "path": "files/.github/actions/urtc-baseline/action.yml"
         }
       },
-      "urtc_sha256": "be3790d38d93ee0f316101ad232c010296587cb9f751bc2975eedeae2637f229"
+      "urtc_sha256": "db27c4695add07f6f4fcc023ace57282c463925ea678dbc34e3fa3d9c4c8bcdb"
     },
     {
       "path": "tools/run_host_tests.py",
@@ -313,6 +313,20 @@
         }
       },
       "urtc_sha256": "633624934397bd62e4f22d020316ce8861f4f911fcd9b2461c200c59d2866aab"
+    },
+    {
+      "path": "tools/build_test.py",
+      "kind": "ecosystem",
+      "in_set": true,
+      "same_in": [],
+      "reason": "The non-versioning build check of a repository: one text for the URTC repositories (the differences between them are data in an optional tools/build_test.json, and --check is the light mode that CI runs); HYDRA-UMC keeps its own, older text in HYDRA-UMC-SDK, which a change here does not touch.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/build_test.py"
+        }
+      },
+      "urtc_sha256": "387b4610d911faec44626f6d3110d399140bef7b917661bd36cc94056459dddc"
     }
   ]
 }
