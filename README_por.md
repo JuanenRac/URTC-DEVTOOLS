@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Versão | `0.0.2` |
+| Versão | `0.0.3` |
 | Maturidade | Estrutura inicial |
 | Testes | 58 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
