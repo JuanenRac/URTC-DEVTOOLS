@@ -5,6 +5,7 @@
 # =============================================================================
 """The shared build check (files/tools/build_test.py): the light mode builds and runs nothing, and the data of tools/build_test.json drives the rest."""
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -96,6 +97,37 @@ class FullCheck(unittest.TestCase):
             result = run(make_repo(Path(tmp), "python", {"a.py": "x = 1\n", "tests/test_bad.py": "raise SystemExit(3)\n"}))
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertNotIn("UNIT_TESTS", result.stdout)
+
+
+class LocalBuildLock(unittest.TestCase):
+    """The full check of a stack that compiles is locked on a developer PC: skipped with exit 2, never a pass, and nothing is invoked."""
+
+    def full(self, stack, **env):
+        base = {k: v for k, v in os.environ.items() if k not in ("CI", "GITHUB_ACTIONS", "ALLOW_LOCAL_BUILD")}
+        base.update(env)
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = make_repo(Path(tmp), stack, {"Cargo.toml": "", "build_firmware.sh": "exit 9\n", "gradlew": "", "gradlew.bat": "", "pubspec.yaml": "", "go.mod": ""})
+            return subprocess.run([sys.executable, str(repo / "tools" / "build_test.py")], capture_output=True, text=True, cwd=repo, env={**base, "PATH": ""})
+
+    def test_every_stack_that_compiles_is_skipped_without_permission(self):
+        for stack in ("rust", "go", "android", "flutter", "firmware-c"):
+            result = self.full(stack)
+            self.assertEqual(result.returncode, 2, stack + result.stderr)
+            self.assertIn("BUILD_TEST=SKIPPED", result.stdout)
+            self.assertNotIn("BUILD_TEST=PASS", result.stdout)
+
+    def test_the_permission_lets_the_build_start(self):
+        for env in ({"CI": "true"}, {"GITHUB_ACTIONS": "true"}, {"ALLOW_LOCAL_BUILD": "1"}):
+            result = self.full("rust", **env)
+            self.assertNotEqual(result.returncode, 2)   # it tried to run cargo (not found on the empty PATH), which is a failure, not a skip
+            self.assertNotIn("BUILD_TEST=SKIPPED", result.stdout)
+
+    def test_the_light_check_and_the_python_stack_are_not_locked(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = make_repo(Path(tmp), "rust", {"Cargo.toml": ""})
+            self.assertEqual(run(repo, "--check").returncode, 0)
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(run(make_repo(Path(tmp), "python", {"a.py": "x = 1\n"})).returncode, 0)
 
 
 if __name__ == "__main__":

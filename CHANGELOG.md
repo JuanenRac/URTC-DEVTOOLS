@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The full build check compiles only on CI or when allowed:** for the stacks that compile (`rust`, `go`, `android`, `flutter`, `firmware-c`), `tools/build_test.py` asks `tools/local_build.py` first (or the same rule inline when a repository has not taken the helper) and prints `BUILD_TEST=SKIPPED` with exit status 2 on a plain PC, never a pass; `ALLOW_LOCAL_BUILD=1` allows it and a CI runner always may. The light check (`--check`) and the Python, Qt Quick and node stacks are not locked.
+
 - **The host C suites compile only on CI or when allowed:** `tools/run_host_tests.py` asks `tools/local_build.py` first and says SKIPPED (exit status 2) on a plain PC; `ALLOW_LOCAL_BUILD=1` allows it and a CI runner always may.
 
 - **The build check of the repository is one text for the whole family, with a light mode that CI runs:** `tools/build_test.py` is the same file in every repository of the family (taken from the shared set); what used to differ between its seven variants is data in an optional `tools/build_test.json`. `python tools/build_test.py --check` looks at the manifest, the stack and the files the full check needs and compiles the Python sources, builds and runs nothing, and the baseline step of the workflow now runs it.
