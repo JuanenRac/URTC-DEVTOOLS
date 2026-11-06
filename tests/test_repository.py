@@ -54,7 +54,8 @@ class WithTheDocsRepository(unittest.TestCase):
 
     def test_files_is_the_template_of_urtc_docs(self):
         template = DOCS / "template" / "eh3d-repo-template"
-        mine = set(devtools_set.shared_files())
+        # files only the URTC set carries: the template kept in URTC-DOCS (for the other ecosystem) does not have them
+        mine = set(devtools_set.shared_files()) - {"tools/sync_manifests.py"}
         theirs = {p.relative_to(template).as_posix() for p in template.rglob("*") if p.is_file() and p.name != "TEMPLATE.md"}
         self.assertEqual(mine, theirs)
         differing = [relative for relative in sorted(mine)

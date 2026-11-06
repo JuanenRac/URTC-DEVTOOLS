@@ -34,6 +34,7 @@ EXPECTED = {
     "tools/pretty_run.py",
     "tools/run_host_tests.py",
     "tools/status_lights.py",
+    "tools/sync_manifests.py",
     "tools/universal_readme_check.py",
     "test.sh",
     "test.bat",
