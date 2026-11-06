@@ -2,6 +2,10 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
+## [Unreleased]
+
+- **The tests of this repository are held to a coverage floor:** the CI measures the code the repository owns (`tools/devtools_set.py`, `tools/tooling_registry.py`, `tools/workflow_templates.py`; 92 percent measured) and fails under 85 percent; the files of the set are left out of the measure because they run, and are tested, in the repositories that carry them (`[tool.coverage.run]` in `pyproject.toml` lists them).
+
 ## [0.0.3] - The full build check compiles only on CI or when allowed: for the stacks that compile (rust, go, android, flutter, firmware-c), tools/buildtest.py asks tools/localbuild.py first (or the same rule inline when a repository has... (and 3 more changes)
 
 - **The full build check compiles only on CI or when allowed:** for the stacks that compile (`rust`, `go`, `android`, `flutter`, `firmware-c`), `tools/build_test.py` asks `tools/local_build.py` first (or the same rule inline when a repository has not taken the helper) and prints `BUILD_TEST=SKIPPED` with exit status 2 on a plain PC, never a pass; `ALLOW_LOCAL_BUILD=1` allows it and a CI runner always may. The light check (`--check`) and the Python, Qt Quick and node stacks are not locked.
