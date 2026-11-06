@@ -31,7 +31,7 @@ source = ["tools"]
 omit = [
     "tools/_doc_policy.py", "tools/_readme_parity.py", "tools/_readme_svg.py", "tools/_tracked_names.py", "tools/build_test.py",
     "tools/ci_validate.py", "tools/local_build.py", "tools/make_architecture.py", "tools/make_structure.py", "tools/pretty_run.py",
-    "tools/run_host_tests.py", "tools/status_lights.py", "tools/universal_readme_check.py",
+    "tools/run_host_tests.py", "tools/status_lights.py", "tools/sync_manifests.py", "tools/universal_readme_check.py",
 ]
 
 [tool.coverage.report]
