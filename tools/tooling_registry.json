@@ -327,6 +327,32 @@
         }
       },
       "urtc_sha256": "51880e5d74cee59eca939a19b3c20b1f666a71602182bf3c51a5c95ef76e80b4"
+    },
+    {
+      "path": "tools/sync_manifests.py",
+      "kind": "identical",
+      "in_set": true,
+      "same_in": [
+        "URTC",
+        "HYDRA",
+        "ARMOR"
+      ],
+      "reason": "The check of the manifest against what can be computed about the repository (shipped version, changelog, tests, simulation) does not depend on the family: the family is read from the manifest it finds.",
+      "sources": {
+        "URTC": {
+          "repo": "URTC-DEVTOOLS",
+          "path": "files/tools/sync_manifests.py"
+        },
+        "HYDRA": {
+          "repo": "HYDRA-UMC-DOCS",
+          "path": "tools/sync_manifests.py"
+        },
+        "ARMOR": {
+          "repo": "ARMOR-COMMON",
+          "path": "tools/sync_manifests.py"
+        }
+      },
+      "urtc_sha256": "5ca8257fe91b5fad8c86d330ae5d907a36bb7a022d299067af922af9cf86fc03"
     }
   ]
 }
