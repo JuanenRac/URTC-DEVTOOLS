@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The manifest says which version of the shared contracts it needs:** `min_common` in `urtc.project.json` is the oldest version of URTC-COMMON among the copies this repository carries, the value the updater compares with what is installed (a warning only). `tools/min_common.py` of URTC-COMMON checks it and a new copy brings it up to date.
+
 - **More tests for the set tool, the registry and the workflow comparison:** the commands of the set, a copy that is missing, changed or in a different line ending, every shape problem of a registry entry, a source that is gone or whose hash is stale (and the update that repairs it), and the security findings, the drift and the exit codes of the workflow comparison on temporary repositories. The suite has 95 tests.
 
 - **The repository check compares the manifest with what can be computed:** `tools/ci_validate.py` now also runs the shared `tools/sync_manifests.py` offline, which compares the shipped version, the newest released heading of this changelog, the presence of tests and the claimed level of evidence with the manifest. It is part of the shared set of tools, so the copy is pinned by the lock.

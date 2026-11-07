@@ -3,6 +3,7 @@
   "ecosystem": "URTC",
   "name": "URTC-DEVTOOLS",
   "version": "0.0.3",
+  "min_common": "0.1.9",
   "role": "tool",
   "stack": "python",
   "technologies": [
