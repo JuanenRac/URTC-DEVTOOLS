@@ -58,7 +58,7 @@ Las herramientas que cada repositorio de la familia lleva como la misma copia, r
 
 ## 🧩 Papel en URTC
 
-URTC-DEVTOOLS es donde las herramientas compartidas reciben un nombre y una versión. Un cambio en una de ellas era un cambio en unos diez repositorios sin que nada dijera qué versión llevaba cada uno; ahora el conjunto tiene versión, cada repositorio dice cuál tomó y se avisa de una copia editada o atrasada. Por sí mismo no cambia nada en los repositorios: URTC-DOCS pone los ficheros y escribe los bloqueos, un repositorio cada vez.
+URTC-DEVTOOLS es donde las herramientas compartidas reciben un nombre y una versión. Un cambio en una de ellas era un cambio en unos diez repositorios sin que nada dijera qué versión llevaba cada uno; ahora el conjunto tiene versión, cada repositorio dice cuál adoptó y se avisa de una copia editada o atrasada. Por sí mismo no cambia nada en los repositorios: URTC-DOCS pone los ficheros y escribe los bloqueos, un repositorio cada vez.
 
 ## 🏛️ Arquitectura
 
@@ -86,7 +86,7 @@ La batería tiene 95 pruebas (`python -m unittest discover -s tests`). Comprueba
 
 ## 🏗️ Compilación y publicación
 
-`build.sh` / `build.bat` suben la versión del conjunto, comprueban las copias y ejecutan las pruebas; `build-test.sh` / `build-test.bat` comprueban sin cambiar ninguna versión; `run.sh` / `run.bat` listan el conjunto. Una versión nueva del conjunto se hace cambiando un fichero de `files/` y su copia, subiendo la versión una sola vez por lote y tomando el conjunto en los repositorios; véase [la guía](docs/TAKING_THE_SET.md).
+`build.sh` / `build.bat` suben la versión del conjunto, comprueban las copias y ejecutan las pruebas; `build-test.sh` / `build-test.bat` comprueban sin cambiar ninguna versión; `run.sh` / `run.bat` listan el conjunto. Una versión nueva del conjunto se hace cambiando un fichero de `files/` y su copia, subiendo la versión una sola vez por lote y adoptando el conjunto en los repositorios; véase [la guía](docs/TAKING_THE_SET.md).
 
 ## 📂 Estructura del repositorio
 

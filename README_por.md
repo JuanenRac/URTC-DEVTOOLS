@@ -58,7 +58,7 @@ As ferramentas que cada repositório da família leva como a mesma cópia, reuni
 
 ## 🧩 Papel no URTC
 
-O URTC-DEVTOOLS é onde as ferramentas partilhadas recebem um nome e uma versão. Alterar uma delas era alterar cerca de dez repositórios sem que nada dissesse que versão cada um levava; agora o conjunto tem versão, cada repositório diz qual tomou e uma cópia editada ou atrasada é assinalada. Por si só não altera nada nos repositórios: o URTC-DOCS coloca os ficheiros e escreve os bloqueios, um repositório de cada vez.
+O URTC-DEVTOOLS é onde as ferramentas partilhadas recebem um nome e uma versão. Alterar uma delas era alterar cerca de dez repositórios sem que nada dissesse que versão cada um levava; agora o conjunto tem versão, cada repositório diz qual adotou e uma cópia editada ou atrasada é assinalada. Por si só não altera nada nos repositórios: o URTC-DOCS coloca os ficheiros e escreve os bloqueios, um repositório de cada vez.
 
 ## 🏛️ Arquitetura
 
@@ -86,7 +86,7 @@ A bateria tem 95 testes (`python -m unittest discover -s tests`). Verificam que 
 
 ## 🏗️ Compilação e publicação
 
-`build.sh` / `build.bat` sobem a versão do conjunto, verificam as cópias e executam os testes; `build-test.sh` / `build-test.bat` verificam sem alterar nenhuma versão; `run.sh` / `run.bat` listam o conjunto. Uma nova versão do conjunto faz-se alterando um ficheiro de `files/` e a sua cópia, subindo a versão uma só vez por lote e tomando o conjunto nos repositórios; veja [o guia](docs/TAKING_THE_SET.md).
+`build.sh` / `build.bat` sobem a versão do conjunto, verificam as cópias e executam os testes; `build-test.sh` / `build-test.bat` verificam sem alterar nenhuma versão; `run.sh` / `run.bat` listam o conjunto. Uma nova versão do conjunto faz-se alterando um ficheiro de `files/` e a sua cópia, subindo a versão uma só vez por lote e adotando o conjunto nos repositórios; veja [o guia](docs/TAKING_THE_SET.md).
 
 ## 📂 Estrutura do repositório
 
