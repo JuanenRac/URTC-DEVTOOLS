@@ -14,7 +14,7 @@ name: Notify central ecosystem dashboard
 on:
   workflow_run:
     workflows:
-      - URTC-DEVTOOLS CI baseline
+      - URTC CI baseline
     types:
       - completed
     branches:
