@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Version | `0.0.3` |
+| Version | `0.0.4` |
 | Maturity | Scaffolding |
 | Tests | 95 (`python -m unittest discover -s tests`) |
 | Stack | Python / GitHub Actions / JSON |

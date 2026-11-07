@@ -2,7 +2,7 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
-## [Unreleased]
+## [0.0.4] - The manifest says which version of the shared contracts it needs: mincommon in urtc.project.json is the oldest version of URTC-COMMON among the copies this repository carries, the value the updater compares with what is... (and 4 more changes)
 
 - **The manifest says which version of the shared contracts it needs:** `min_common` in `urtc.project.json` is the oldest version of URTC-COMMON among the copies this repository carries, the value the updater compares with what is installed (a warning only). `tools/min_common.py` of URTC-COMMON checks it and a new copy brings it up to date.
 
@@ -12,6 +12,10 @@ All notable changes to this repository are listed here. The version of this repo
 
 - **The shared set carries `tools/sync_manifests.py`:** the check of a manifest against what can be computed about its repository is the same file in the three families and is registered in the tooling registry.
 - **The tests of this repository are held to a coverage floor:** the CI measures the code the repository owns (`tools/devtools_set.py`, `tools/tooling_registry.py`, `tools/workflow_templates.py`; 92 percent measured) and fails under 85 percent; the files of the set are left out of the measure because they run, and are tested, in the repositories that carry them (`[tool.coverage.run]` in `pyproject.toml` lists them).
+
+## [0.0.4]
+
+- Build version synchronized with `urtc.project.json` and the repository-native version source.
 
 ## [0.0.3] - The full build check compiles only on CI or when allowed: for the stacks that compile (rust, go, android, flutter, firmware-c), tools/buildtest.py asks tools/localbuild.py first (or the same rule inline when a repository has... (and 3 more changes)
 

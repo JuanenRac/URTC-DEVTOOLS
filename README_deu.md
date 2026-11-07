@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Version | `0.0.3` |
+| Version | `0.0.4` |
 | Reifegrad | Gerüst |
 | Tests | 95 (`python -m unittest discover -s tests`) |
 | Technik | Python / GitHub Actions / JSON |

@@ -1,6 +1,6 @@
 [project]
 name = "urtc-devtools"
-version = "0.0.3"
+version = "0.0.4"
 description = "The shared repository tools of the URTC family as a versioned set."
 readme = "README.md"
 requires-python = ">=3.10"
