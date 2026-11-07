@@ -143,8 +143,8 @@ README とテキストは、英語、スペイン語、フランス語、イタ�
 URTC は独立したリポジトリで構成され、それぞれに固有のバージョン、テスト、README があります。グループ別のファミリーは次のとおりです：
 
 * **URTC Tool Platform:**
-  * [URTC](https://github.com/JuanenRac/URTC) - ツールヘッドボードのファームウェア(25 のツールプロファイル、CAN ブートローダー)と CAN プロトコルのリファレンス。
-  * [URTC-COMMON](https://github.com/JuanenRac/URTC-COMMON) - 一度だけデータとして書かれた CAN プロトコル(仕様、生成された表、適合ベクトル)と、各プログラムが共有するコード。
+  * [URTC](https://github.com/JuanenRac/URTC) - ツールヘッドボードのファームウェア（25 のツールプロファイル、CAN ブートローダー）と CAN プロトコルのリファレンス。
+  * [URTC-COMMON](https://github.com/JuanenRac/URTC-COMMON) - 一度だけデータとして書かれた CAN プロトコル（仕様、生成された表、適合ベクトル）と、各プログラムが共有するコード。
   * [URTC-FLASHER](https://github.com/JuanenRac/URTC-FLASHER) - CAN または SWD/JTAG でボードのファームウェアを更新するデスクトップツール。
   * [URTC-GATEWAY](https://github.com/JuanenRac/URTC-GATEWAY) - CAN バスの手前に置くゲートウェイ。一覧にある識別子だけを通し、レートを制限し、セッション鍵を求めます。
   * [URTC-SMART-RACK](https://github.com/JuanenRac/URTC-SMART-RACK) - 予熱とライフサイクル追跡を備えたツールラック向けの、ハードウェア非依存の C ロジックとコマンドプロトコル。
