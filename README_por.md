@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-58-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-95-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Versão | `0.0.3` |
 | Maturidade | Estrutura inicial |
-| Testes | 58 (`python -m unittest discover -s tests`) |
+| Testes | 95 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
 | Destino | O PC de quem o usa |
 | Em hardware real | Não aplicável: nada aqui corre em hardware |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # a partir do URTC-DOCS: pôr o con
 
 ## 🧪 Testes
 
-A bateria tem 58 testes (`python -m unittest discover -s tests`). Verificam que `files/` contém exatamente os ficheiros partilhados, que cada um é válido e se gera com o nome de um repositório, que uma cópia editada ou em falta é encontrada, que o bloqueio deste repositório corresponde aos seus ficheiros e à sua versão, e o manifesto, o registo de alterações e os documentos. Um teste compara `files/` com o modelo do URTC-DOCS e é ignorado quando esse repositório não está ao lado. A lógica do bloqueio é testada no URTC-DOCS.
+A bateria tem 95 testes (`python -m unittest discover -s tests`). Verificam que `files/` contém exatamente os ficheiros partilhados, que cada um é válido e se gera com o nome de um repositório, que uma cópia editada ou em falta é encontrada, que o bloqueio deste repositório corresponde aos seus ficheiros e à sua versão, e o manifesto, o registo de alterações e os documentos. Um teste compara `files/` com o modelo do URTC-DOCS e é ignorado quando esse repositório não está ao lado. A lógica do bloqueio é testada no URTC-DOCS.
 
 ## 🏗️ Compilação e publicação
 
