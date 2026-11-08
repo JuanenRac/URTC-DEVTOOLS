@@ -175,7 +175,7 @@ Wo man mehr liest:
 
 * Führen Sie vor einem Pull Request `URTC_CI=1 python tools/ci_validate.py` aus: Es muss bestehen. Siehe [CONTRIBUTING.md](CONTRIBUTING.md) und den [Verhaltenskodex](CODE_OF_CONDUCT.md).
 * Die README gibt es in acht Sprachen: Eine Textänderung wird in allen acht Dateien gemacht.
-* Beschreibe nicht als auf einer Platine funktionierend, was nur gebaut wurde.
+* Beschreiben Sie nicht als auf einer Platine funktionierend, was nur gebaut wurde.
 * Melden Sie eine Sicherheitslücke privat: [SECURITY.md](SECURITY.md). Fragen, Ideen und Meldungen: electrohobby3d@gmail.com ([SUPPORT.md](SUPPORT.md)).
 
 ## 👤 AUTOR
