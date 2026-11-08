@@ -2,7 +2,7 @@
   "repo": "URTC-DEVTOOLS",
   "ecosystem": "urtc",
   "tagline": "The shared repository tools of the URTC family as one set with a version and a lock.",
-  "description": "URTC-DEVTOOLS holds the canonical copy of the ten files that every repository of the family carries as the same file (the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice). The version of this repository is the version of the set. URTC-DOCS puts the files into a repository and writes tools/devtools.lock.json with that version and the SHA-256 of every copy, so an edited copy and a copy that fell behind are both found. Everything is tested on a computer; no repository other than this one has taken the lock yet.",
+  "description": "URTC-DEVTOOLS holds the canonical copy of the eighteen files that every repository of the family carries as the same file (the documentation-policy and README-parity checks, the picture generators, the live panel of the build scripts, the manifest version bumper, the status-light check and the dashboard notice). The version of this repository is the version of the set. URTC-DOCS puts the files into a repository and writes tools/devtools.lock.json with that version and the SHA-256 of every copy, so an edited copy and a copy that fell behind are both found. Everything is tested on a computer; every repository of the family carries the lock.",
   "columns": [
     "WHO TAKES IT",
     "THIS REPOSITORY",
@@ -162,8 +162,8 @@
   "legend": {
     "tested": "covered by tests on a computer",
     "contract": "the source of the rest",
-    "config": "written by URTC-DOCS; no other repository has taken it yet",
+    "config": "written by URTC-DOCS into each repository",
     "external": "another repository or service"
   },
-  "footer": "Only this repository carries a lock so far; the others move one at a time."
+  "footer": "Every repository of the family carries a lock; URTC-DOCS writes them."
 }

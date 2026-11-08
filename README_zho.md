@@ -19,7 +19,7 @@
 
 ---
 
-**诚实声明 - 今天真正能运行的内容：** 本仓库包含家族各仓库作为同一份副本携带的15 个文件、一个列出它们并检查本仓库自带副本的小工具，以及测试和文档。这些全部可以运行，并在 CI 中测试。锁文件由 URTC-DOCS 写入和检查；目前只有本仓库带有锁，其他仓库还没有采用这套工具，这里的任何内容也都没有在硬件上运行过。
+**诚实声明 - 今天真正能运行的内容：** 本仓库包含家族各仓库作为同一份副本携带的 18 个文件、一个列出它们并检查本仓库自带副本的小工具，以及测试和文档。这些全部可以运行，并在 CI 中测试。锁文件由 URTC-DOCS 写入和检查；家族中的每个仓库都带有锁，这里的任何内容也都没有在硬件上运行过。
 
 ---
 
@@ -51,7 +51,7 @@
 
 家族中每个仓库都作为同一份副本携带的工具，集中在一处并带有版本：
 
-* [`files/`](files)：15 个共用文件的规范副本（文档规则检查和 README 一致性检查、图片生成器、构建脚本的实时面板、清单版本提升工具、状态灯检查和给仪表板的通知）。仓库名写作 `<REPO>`，文件放入仓库时会被替换。
+* [`files/`](files)：18 个共用文件的规范副本（文档规则检查和 README 一致性检查、图片生成器、构建脚本的实时面板、清单版本提升工具、状态灯检查和给仪表板的通知）。仓库名写作 `<REPO>`，文件放入仓库时会被替换。
 * **本仓库的版本就是整套工具的版本**；[变更日志](CHANGELOG.md)说明每个版本改了什么。
 * 每个仓库中的**锁文件** `tools/devtools.lock.json`，由 URTC-DOCS 的 `tools/sync_repo_tools.py` 写入：整套工具的版本和每个副本的 SHA-256。`tools/check_repo_tools.py` 能发现被手工改动的副本，并且在本仓库与其他仓库并排放置时，发现已过时的副本。参见[锁文件格式](docs/LOCK_FORMAT.md)。
 * 每个仓库仍可凭自己的检出内容构建和检查：锁是仓库里的一个文件，任何操作都不需要网络。
@@ -75,7 +75,7 @@ URTC-DEVTOOLS 是共用工具获得名称和版本的地方。以前改动其中
 ```bash
 python tools/devtools_set.py list            # 整套工具的版本和每个文件的 SHA-256
 python tools/devtools_set.py check           # 本仓库自带的副本就是规范文件
-python tools/tooling_registry.py check       # 各系列共用工具的登记表：校验哈希与相同来源
+python tools/tooling_registry.py check       # 各家族共用工具的登记表：校验哈希与相同来源
 python -m unittest discover -s tests         # 测试
 python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工具和锁放入相邻的仓库
 ```
@@ -99,7 +99,7 @@ python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工�
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     15 个规范文件，路径与它们在每个仓库中的相同
+├── files/                                     18 个规范文件，路径与它们在每个仓库中的相同
 ├── tools/                                     整套工具的检查、仓库校验以及本仓库自带的副本
 ├── tests/                                     整套工具、锁文件和仓库的单元测试
 ├── docs/                                      锁文件的格式以及如何采用整套工具
@@ -131,7 +131,6 @@ URTC-DEVTOOLS/
 
 **下一步**
 
-* 让家族的仓库逐个改用锁。
 * 让本仓库成为同步工具读取的来源，并停用 URTC-DOCS 的模板。
 
 ## 🌍 语言
@@ -174,7 +173,7 @@ URTC 由相互独立的仓库组成，每个仓库都有自己的版本、测试
 
 ## 🤝 参与贡献与社区
 
-* 提交拉取请求之前运行 `URTC_CI=1 python tools/ci_validate.py`：必须通过。参见 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。
+* 提交 Pull Request 之前运行 `URTC_CI=1 python tools/ci_validate.py`：必须通过。参见 [CONTRIBUTING.md](CONTRIBUTING.md) 和[行为准则](CODE_OF_CONDUCT.md)。
 * README 提供八种语言：修改文本时要同时修改八个文件。
 * 不要把仅仅构建过的内容描述成已在板卡上运行。
 * 请私下报告漏洞：[SECURITY.md](SECURITY.md)。问题、想法和报告：electrohobby3d@gmail.com（[SUPPORT.md](SUPPORT.md)）。

@@ -8,14 +8,14 @@
       "span": 1,
       "accent": "a",
       "tree": {
-        "en": "the 15 canonical files, at the path they have in every repository",
-        "es": "los 15 archivos canónicos, en la ruta que tienen en cada repositorio",
-        "de": "die 15 kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben",
-        "fr": "les 15 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt",
-        "it": "i 15 file canonici, nel percorso che hanno in ogni repository",
-        "zh": "15 个规范文件，路径与它们在每个仓库中的相同",
-        "ja": "15 個の正規ファイル。各リポジトリでのパスと同じ場所に置かれています",
-        "pt": "os 15 ficheiros canónicos, no caminho que têm em cada repositório"
+        "en": "the 18 canonical files, at the path they have in every repository",
+        "es": "los 18 archivos canónicos, en la ruta que tienen en cada repositorio",
+        "de": "die 18 kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben",
+        "fr": "les 18 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt",
+        "it": "i 18 file canonici, nel percorso che hanno in ogni repository",
+        "zh": "18 个规范文件，路径与它们在每个仓库中的相同",
+        "ja": "18 個の正規ファイル。各リポジトリでのパスと同じ場所に置かれています",
+        "pt": "os 18 ficheiros canónicos, no caminho que têm em cada repositório"
       },
       "rows": [
         {

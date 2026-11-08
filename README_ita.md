@@ -19,7 +19,7 @@
 
 ---
 
-**Controllo di onestà - cosa funziona oggi:** questo repository contiene i 15 file che i repository della famiglia portano come la stessa copia, un piccolo strumento che li elenca e controlla le copie che il repository porta, test e documentazione. Tutto viene eseguito e testato in CI. Il file di lock è scritto e controllato da URTC-DOCS; finora solo questo repository ne porta uno, gli altri non hanno ancora preso l'insieme, e niente qui è stato eseguito su hardware.
+**Controllo di onestà - cosa funziona oggi:** questo repository contiene i 18 file che i repository della famiglia portano come la stessa copia, un piccolo strumento che li elenca e controlla le copie che il repository porta, test e documentazione. Tutto viene eseguito e testato in CI. Il file di lock è scritto e controllato da URTC-DOCS; ogni repository della famiglia ne porta uno, e niente qui è stato eseguito su hardware.
 
 ---
 
@@ -51,7 +51,7 @@
 
 Gli strumenti che ogni repository della famiglia porta come la stessa copia, riuniti in un solo posto e dotati di una versione:
 
-* [`files/`](files): la copia canonica dei 15 file condivisi (i controlli della politica di documentazione e della parità dei README, i generatori di immagini, il pannello dal vivo degli script di build, lo strumento che alza la versione del manifesto, il controllo delle luci di stato e l'avviso alla dashboard). Il nome del repository è scritto `<REPO>` e sostituito quando un file viene messo in un repository.
+* [`files/`](files): la copia canonica dei 18 file condivisi (i controlli della politica di documentazione e della parità dei README, i generatori di immagini, il pannello dal vivo degli script di build, lo strumento che alza la versione del manifesto, il controllo delle luci di stato e l'avviso alla dashboard). Il nome del repository è scritto `<REPO>` e sostituito quando un file viene messo in un repository.
 * La **versione di questo repository è la versione dell'insieme**; il [registro delle modifiche](CHANGELOG.md) dice cosa è cambiato in ogni versione.
 * Un **file di lock** in ogni repository, `tools/devtools.lock.json`, scritto da `tools/sync_repo_tools.py` di URTC-DOCS: la versione dell'insieme e lo SHA-256 di ogni copia. `tools/check_repo_tools.py` trova una copia modificata a mano e, quando questo repository è accanto agli altri, una copia rimasta indietro. Vedi [il formato del lock](docs/LOCK_FORMAT.md).
 * Ogni repository resta compilabile e controllabile con il proprio checkout: il lock è un file del repository e nulla richiede la rete.
@@ -99,7 +99,7 @@ La suite ha 95 test (`python -m unittest discover -s tests`). Verificano che `fi
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     i 15 file canonici, nel percorso che hanno in ogni repository
+├── files/                                     i 18 file canonici, nel percorso che hanno in ogni repository
 ├── tools/                                     il controllo dell'insieme, la validazione del repository e le copie che porta
 ├── tests/                                     test dell'insieme, del lock e del repository
 ├── docs/                                      il formato del lock e come prendere l'insieme
@@ -131,7 +131,6 @@ URTC-DEVTOOLS/
 
 **Prossimi passi**
 
-* Portare i repository della famiglia al lock uno alla volta.
 * Fare di questo repository la fonte letta dal sincronizzatore e ritirare il modello di URTC-DOCS.
 
 ## 🌍 Lingue
