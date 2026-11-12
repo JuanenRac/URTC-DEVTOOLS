@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Versión | `0.0.4` |
+| Versión | `0.0.5` |
 | Madurez | Andamiaje |
 | Tests | 95 (`python -m unittest discover -s tests`) |
 | Tecnología | Python / GitHub Actions / JSON |

@@ -2,6 +2,12 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
+## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
+
+- **The shared document policy check is refreshed:** `tools/_doc_policy.py` and `tools/ci_validate.py` are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of running its python directly. The build script only reads the project version (raise it with `bump_version.py`).
+
+- **The shared set carries the current document policy:** `files/tools/_doc_policy.py` is the current copy, the tooling registry holds its hash and the lock of each of the eleven repositories names it, so the set and every repository that takes it agree again.
+
 ## [0.0.4] - The manifest says which version of the shared contracts it needs: mincommon in urtc.project.json is the oldest version of URTC-COMMON among the copies this repository carries, the value the updater compares with what is... (and 4 more changes)
 
 - **The manifest says which version of the shared contracts it needs:** `min_common` in `urtc.project.json` is the oldest version of URTC-COMMON among the copies this repository carries, the value the updater compares with what is installed (a warning only). `tools/min_common.py` of URTC-COMMON checks it and a new copy brings it up to date.

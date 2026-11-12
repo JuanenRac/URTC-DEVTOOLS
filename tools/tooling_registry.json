@@ -204,7 +204,7 @@
           "path": "tools/_doc_policy.py"
         }
       },
-      "urtc_sha256": "71ac980f57d5ec8350a1d96c5cc568c05d757cc12c50e83a00d5f581c97bcf4b"
+      "urtc_sha256": "84fd76d4bdb232894a1e0a00bb417bf918620f853d6732738e88317db0c06812"
     },
     {
       "path": "tools/_tracked_names.py",

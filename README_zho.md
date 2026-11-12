@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| 版本 | `0.0.4` |
+| 版本 | `0.0.5` |
 | 成熟度 | 雏形 |
 | 测试 | 95 (`python -m unittest discover -s tests`) |
 | 技术栈 | Python / GitHub Actions / JSON |
