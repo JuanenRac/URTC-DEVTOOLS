@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-95-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-109-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | バージョン | `0.0.5` |
 | 成熟度 | 足場段階 |
-| テスト | 95 (`python -m unittest discover -s tests`) |
+| テスト | 109 (`python -m unittest discover -s tests`) |
 | 技術 | Python / GitHub Actions / JSON |
 | 対象 | 利用者の PC |
 | 実機での確認 | 対象外：ここにあるものはハードウェア上では動きません |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # URTC-DOCS から：隣のリポ�
 
 ## 🧪 テスト
 
-テストスイートには 95 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
+テストスイートには 109 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
 
 ## 🏗️ ビルドとリリース
 

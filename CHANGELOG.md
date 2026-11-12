@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
 
+- **The check of versioned file names is tested:** every shape of name that comes from an untranslated Windows path (a colon, the character a drive colon turns into, a folder named like a drive, a user profile folder at the root in any case), the names that must pass, and the check over a real temporary git repository.
+
 - **The shared document policy check is refreshed:** `tools/_doc_policy.py` and `tools/ci_validate.py` are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of running its python directly. The build script only reads the project version (raise it with `bump_version.py`).
 
 - **The shared set carries the current document policy:** `files/tools/_doc_policy.py` is the current copy, the tooling registry holds its hash and the lock of each of the eleven repositories names it, so the set and every repository that takes it agree again.
