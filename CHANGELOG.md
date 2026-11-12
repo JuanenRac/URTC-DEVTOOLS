@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
 
+- **The test counter and the status lights are tested at their edges:** how the counter reads the output of pytest, vitest, unittest, ctest, cargo and node (with failures and errors, several runners in one output, and output that says nothing), the kind of each label, the status table read, limited and rewritten (an escaped pipe, a code fence, a table with no rows) and the ceiling of each light by maturity, tests, workflow, evidence and the state of the last run.
+
 - **The check of versioned file names is tested:** every shape of name that comes from an untranslated Windows path (a colon, the character a drive colon turns into, a folder named like a drive, a user profile folder at the root in any case), the names that must pass, and the check over a real temporary git repository.
 
 - **The shared document policy check is refreshed:** `tools/_doc_policy.py` and `tools/ci_validate.py` are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of running its python directly. The build script only reads the project version (raise it with `bump_version.py`).

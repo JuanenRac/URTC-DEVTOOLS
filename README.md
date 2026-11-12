@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.1-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-109-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-131-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.5` |
 | Maturity | Scaffolding |
-| Tests | 109 (`python -m unittest discover -s tests`) |
+| Tests | 131 (`python -m unittest discover -s tests`) |
 | Stack | Python / GitHub Actions / JSON |
 | Target | The PC of the person using it |
 | On real hardware | Not applicable: nothing here runs on hardware |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # from URTC-DOCS: put the set and t
 
 ## 🧪 Testing
 
-The suite has 109 tests (`python -m unittest discover -s tests`). They check that `files/` holds exactly the shared files, that each one is valid and renders with the name of a repository, that an edited or missing copy is found, that the lock of this repository matches its files and version, and the manifest, the changelog and the documents. One test compares `files/` with the template of URTC-DOCS and skips when that repository is not next to this one. The lock logic itself is tested in URTC-DOCS.
+The suite has 131 tests (`python -m unittest discover -s tests`). They check that `files/` holds exactly the shared files, that each one is valid and renders with the name of a repository, that an edited or missing copy is found, that the lock of this repository matches its files and version, and the manifest, the changelog and the documents. One test compares `files/` with the template of URTC-DOCS and skips when that repository is not next to this one. The lock logic itself is tested in URTC-DOCS.
 
 ## 🏗️ Build & Release
 
