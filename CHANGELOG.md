@@ -2,11 +2,13 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
-## [Unreleased]
+## [0.0.6] - The shared set carries the current host test executor and the limits of the dashboard notice
 
 - **The shared set carries the current host test executor and the limits of the dashboard notice:** `files/tools/run_host_tests.py` is the copy the main repository improved (the static analysis no longer reports the loops that are meant never to return), and the notice workflow has a time limit and a concurrency group; the lock of each repository and the registry hold the new hashes.
 
 - **The Related Projects section follows the shared texts of the documentation repository:** the programs are called the same way in every language (tester, updater, Web Studio) and the rate limit of the gateway is a frequency, never a bit rate.
+
+## [Unreleased]
 
 ## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
 
