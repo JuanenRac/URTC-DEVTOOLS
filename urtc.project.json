@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "ecosystem": "URTC",
   "name": "URTC-DEVTOOLS",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "min_common": "0.1.9",
   "role": "tool",
   "stack": "python",
