@@ -143,5 +143,28 @@ class CeilingTests(unittest.TestCase):
         self.assertEqual({sl.WORDS[sl.NAMES[name]] for name in sl.NAMES}, set(sl.NAMES))
 
 
+class WhiteLightTests(unittest.TestCase):
+    """A line that does not apply is white, and white is never a step of the scale; green on the hardware line of a repository with no hardware is refused."""
+
+    def problems(self, manifest, light):
+        state = {"manifest": manifest, "items": [{"index": 0, "label": "Hardware", "kind": "hardware", "light": light, "ceiling": sl.GREEN, "why": "no limit"}]}
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            return sl.problems_of(Path(tmp) / "URTC-DEMO", state)
+
+    def test_white_has_a_name_and_is_not_on_the_scale(self):
+        self.assertEqual(sl.NAMES["white"], sl.WHITE)
+        self.assertNotIn(sl.WHITE, sl.ORDER)
+
+    def test_no_hardware_may_be_white_and_never_green(self):
+        unbound = {"maturity": "functional", "evidence": "none", "hardware_bound": False}
+        self.assertEqual(self.problems(unbound, sl.WHITE), [])
+        self.assertTrue(any("never green" in line for line in self.problems(unbound, sl.GREEN)))
+
+    def test_white_is_refused_where_hardware_applies(self):
+        bound = {"maturity": "functional", "evidence": "field"}
+        self.assertTrue(any("hardware_bound" in line for line in self.problems(bound, sl.WHITE)))
+
+
 if __name__ == "__main__":
     unittest.main()

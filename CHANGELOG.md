@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The status check knows a white light for a line that does not apply:** white is accepted only where nothing applies (the hardware line of a repository that says `hardware_bound` is false) and is refused on software, tests and documentation lines; green on the hardware line of a repository with no hardware is refused. The check and its tests are the same in A.R.M.O.R.
+
 - **The shared set carries the current host test executor and the limits of the dashboard notice:** `files/tools/run_host_tests.py` is the copy the main repository improved (the static analysis no longer reports the loops that are meant never to return), and the notice workflow has a time limit and a concurrency group; the lock of each repository and the registry hold the new hashes.
 
 - **The Related Projects section follows the shared texts of the documentation repository:** the programs are called the same way in every language (tester, updater, Web Studio) and the rate limit of the gateway is a frequency, never a bit rate.
