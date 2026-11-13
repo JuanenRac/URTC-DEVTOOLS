@@ -2,6 +2,10 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
+## [Unreleased]
+
+- **The Related Projects section follows the shared texts of the documentation repository:** the programs are called the same way in every language (tester, updater, Web Studio) and the rate limit of the gateway is a frequency, never a bit rate.
+
 ## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
 
 - **The test counter and the status lights are tested at their edges:** how the counter reads the output of pytest, vitest, unittest, ctest, cargo and node (with failures and errors, several runners in one output, and output that says nothing), the kind of each label, the status table read, limited and rewritten (an escaped pipe, a code fence, a table with no rows) and the ceiling of each light by maturity, tests, workflow, evidence and the state of the last run.
