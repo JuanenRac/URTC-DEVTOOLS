@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| バージョン | `0.0.5` |
+| バージョン | `0.0.6` |
 | 成熟度 | 足場段階 |
 | テスト | 131 (`python -m unittest discover -s tests`) |
 | 技術 | Python / GitHub Actions / JSON |
