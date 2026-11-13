@@ -284,7 +284,7 @@
           "path": ".github/workflows/dashboard-dispatch.yml"
         }
       },
-      "urtc_sha256": "fa4852d0f489ee8a701a6418e24cbe3c8978b1bbc5c38b904981b8e2445b440a"
+      "urtc_sha256": "e9509931993785c1b6497a0f40b8a2a51ba90c23f25d9a8ca2fa84bc33083b9d"
     },
     {
       "path": ".github/actions/urtc-baseline/action.yml",
@@ -312,7 +312,7 @@
           "path": "files/tools/run_host_tests.py"
         }
       },
-      "urtc_sha256": "39d3b0e8a41bff59f6d602c701bd3a20b5d6c49fc54b04f4ab94b2d6bf066aec"
+      "urtc_sha256": "37d26ef348f0a3e353b54bfbbea71b46175dce86890cc428335a61f16fd5f8fe"
     },
     {
       "path": "tools/build_test.py",
