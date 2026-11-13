@@ -123,7 +123,7 @@
           "path": "tools/status_lights.py"
         }
       },
-      "urtc_sha256": "7e71dd24c828a07a3b842446dbab7921784df1e5538a463e88a1f33181550019"
+      "urtc_sha256": "792e013550498cd62c3af3c6680db779345fbf50e5d4f4bbf37c6ef55de00386"
     },
     {
       "path": "test.sh",

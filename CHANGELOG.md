@@ -2,6 +2,10 @@
 
 All notable changes to this repository are listed here. The version of this repository is the version of the set of shared tools it holds.
 
+## [Unreleased]
+
+- **The status check knows a white light for a line that does not apply:** white is accepted only where nothing applies (the hardware line of a repository that says `hardware_bound` is false) and is refused on software, tests and documentation lines; green on the hardware line of a repository with no hardware is refused. The check and its tests are the same in A.R.M.O.R.
+
 ## [0.0.6] - The shared set carries the current host test executor and the limits of the dashboard notice
 
 - **The shared set carries the current host test executor and the limits of the dashboard notice:** `files/tools/run_host_tests.py` is the copy the main repository improved (the static analysis no longer reports the loops that are meant never to return), and the notice workflow has a time limit and a concurrency group; the lock of each repository and the registry hold the new hashes.
