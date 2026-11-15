@@ -67,3 +67,20 @@ python tools/tooling_registry.py update    # write the hashes of the URTC source
 
 `check` needs nothing but this repository (the hashes and the list of the set); next to the repositories of the other families it also compares their sources. It never writes to another repository. A new file of the set needs an entry, and the check fails until it has one.
 
+## Trying the set without the family: a virtual fleet
+
+`tools/fleet_simulation.py` builds a family of virtual repositories in a temporary folder (evidence: simulator). Each one takes the real files of `files/`, rendered with its own name, and a lock written the way `docs/LOCK_FORMAT.md` says. Faults are then injected on purpose and the checks of the set find them:
+
+| Fault | What is found |
+|---|---|
+| A copy edited by hand | `edited after the set was taken`, in that repository only |
+| A copy deleted | `in the lock but missing` |
+| A shared file the lock does not list | `a shared file that the lock does not list` |
+| A new version of the set | every repository that has not taken it says `the lock says set X, URTC-DEVTOOLS is at Y` |
+| A lock that is not JSON, or has another schema | `cannot be read` |
+| Windows line endings | nothing: it is the same text |
+| An action not pinned to a commit, or a workflow on `pull_request_target` | a `SECURITY` line of `tools/workflow_templates.py`, and a `DRIFT` line when the copies of the workflow differ |
+
+`python tools/fleet_simulation.py` takes the set into the family, breaks it three ways and heals it, and prints `FLEET_SIMULATION=PASS`. `tests/test_fleet_simulation.py` runs the scenarios; when URTC-DOCS is next to this repository the same virtual family is also checked with `urtc_docs.devtools_lock`, the checker that runs every night, and both must give the same findings.
+
+What it does not prove: the real repositories moving to the lock one by one, the bot that writes the workflows, and the nightly job over days. The physical test is the first real run of `sync_repo_tools.py --apply` over the family followed by a night of `check_repo_tools.py --require-siblings` with nothing reported.

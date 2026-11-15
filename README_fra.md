@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.6-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-134-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-153-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.6` |
 | Maturité | Ébauche |
-| Tests | 134 (`python -m unittest discover -s tests`) |
+| Tests | 153 (`python -m unittest discover -s tests`) |
 | Technologie | Python / GitHub Actions / JSON |
 | Cible | Le PC de la personne qui l'utilise |
 | Sur matériel réel | Sans objet : rien ici ne s'exécute sur du matériel |
@@ -42,7 +42,7 @@
 
 | Partie | État | Ce que le dépôt peut démontrer |
 | --- | :---: | --- |
-| Logiciel | 🟡 | L'ensemble, son listage et son contrôle ; exécuté seulement sur un ordinateur. |
+| Logiciel | 🟡 | L'ensemble, son listage et son contrôle ; exécuté seulement sur un ordinateur, sur une famille virtuelle de dépôts qui prend l'ensemble, est abîmée puis guérit ; aucun dépôt réel n'est encore passé au verrou. |
 | Tests | 🟡 | La suite de tests passe dans la CI à chaque push. |
 | Sécurité | 🟠 | Le verrou garde des empreintes SHA-256 pour repérer une modification ou une copie en retard ; c'est un contrôle de cohérence, pas une signature. |
 | Documentation | 🟡 | README en huit langues et format du verrou ; les traductions n'ont pas été relues par des locuteurs natifs. |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # depuis URTC-DOCS : placer l'ensem
 
 ## 🧪 Tests
 
-La suite compte 134 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
+La suite compte 153 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
 
 ## 🏗️ Compilation et publication
 
