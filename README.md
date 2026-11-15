@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.6-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-134-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-153-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.6` |
 | Maturity | Scaffolding |
-| Tests | 134 (`python -m unittest discover -s tests`) |
+| Tests | 153 (`python -m unittest discover -s tests`) |
 | Stack | Python / GitHub Actions / JSON |
 | Target | The PC of the person using it |
 | On real hardware | Not applicable: nothing here runs on hardware |
@@ -42,7 +42,7 @@
 
 | Part | Status | What the repository can show |
 | --- | :---: | --- |
-| Software | 🟡 | The set, its listing and its check; run only on a computer. |
+| Software | 🟡 | The set, its listing and its check; run only on a computer, on a virtual family of repositories that takes the set, is broken and heals; no real repository has moved to the lock yet. |
 | Tests | 🟡 | The test suite passes in the CI on every push. |
 | Security | 🟠 | The lock records SHA-256 hashes to find an edit or a copy that fell behind; it is a consistency check, not a signature. |
 | Documentation | 🟡 | README in eight languages and the lock format; the translations were not reviewed by native speakers. |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # from URTC-DOCS: put the set and t
 
 ## 🧪 Testing
 
-The suite has 134 tests (`python -m unittest discover -s tests`). They check that `files/` holds exactly the shared files, that each one is valid and renders with the name of a repository, that an edited or missing copy is found, that the lock of this repository matches its files and version, and the manifest, the changelog and the documents. One test compares `files/` with the template of URTC-DOCS and skips when that repository is not next to this one. The lock logic itself is tested in URTC-DOCS.
+The suite has 153 tests (`python -m unittest discover -s tests`). They check that `files/` holds exactly the shared files, that each one is valid and renders with the name of a repository, that an edited or missing copy is found, that the lock of this repository matches its files and version, and the manifest, the changelog and the documents. One test compares `files/` with the template of URTC-DOCS and skips when that repository is not next to this one. The lock logic itself is tested in URTC-DOCS.
 
 ## 🏗️ Build & Release
 

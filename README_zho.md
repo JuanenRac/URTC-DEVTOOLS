@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.6-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-134-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-153-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | 版本 | `0.0.6` |
 | 成熟度 | 雏形 |
-| 测试 | 134 (`python -m unittest discover -s tests`) |
+| 测试 | 153 (`python -m unittest discover -s tests`) |
 | 技术栈 | Python / GitHub Actions / JSON |
 | 目标 | 使用者的电脑 |
 | 真实硬件 | 不适用：这里的内容不在硬件上运行 |
@@ -42,7 +42,7 @@
 
 | 部分 | 状态 | 仓库能够证明的内容 |
 | --- | :---: | --- |
-| 软件 | 🟡 | 整套工具、它的列表和检查；只在电脑上运行过。 |
+| 软件 | 🟡 | 整套工具、它的列表和检查；只在电脑上运行过，在一个虚拟的仓库家族上试验：它取用整套工具、被人为弄坏、再恢复；真实仓库尚未迁移到锁文件。 |
 | 测试 | 🟡 | 每次推送时测试套件都会在 CI 中通过。 |
 | 安全 | 🟠 | 锁文件记录 SHA-256 哈希，用来发现被改动的副本或已过时的副本；它是一致性检查，不是签名。 |
 | 文档 | 🟡 | 提供八种语言的 README 和锁文件格式；翻译未经母语者审阅。 |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工�
 
 ## 🧪 测试
 
-测试套件共有 134 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
+测试套件共有 153 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
 
 ## 🏗️ 构建与发布
 

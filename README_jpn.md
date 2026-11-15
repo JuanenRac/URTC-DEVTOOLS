@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.6-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-134-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-153-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | バージョン | `0.0.6` |
 | 成熟度 | 足場段階 |
-| テスト | 134 (`python -m unittest discover -s tests`) |
+| テスト | 153 (`python -m unittest discover -s tests`) |
 | 技術 | Python / GitHub Actions / JSON |
 | 対象 | 利用者の PC |
 | 実機での確認 | 対象外：ここにあるものはハードウェア上では動きません |
@@ -42,7 +42,7 @@
 
 | 項目 | 状態 | リポジトリが示せること |
 | --- | :---: | --- |
-| ソフトウェア | 🟡 | セット、その一覧と検査。コンピューター上でのみ実行しています。 |
+| ソフトウェア | 🟡 | セット、その一覧と検査。コンピューター上でのみ実行しており、セットを取り込み、壊され、直る仮想のリポジトリ群で試しています。実際のリポジトリはまだロックに移っていません。 |
 | テスト | 🟡 | テストスイートはプッシュごとに CI で通ります。 |
 | セキュリティ | 🟠 | ロックは SHA-256 ハッシュを記録し、編集されたコピーや古いコピーを見つけます。整合性の検査であり、署名ではありません。 |
 | ドキュメント | 🟡 | 8 言語の README とロックの形式があります。翻訳はネイティブによるレビューを受けていません。 |
@@ -82,7 +82,7 @@ python tools/sync_repo_tools.py --apply      # URTC-DOCS から：隣のリポ�
 
 ## 🧪 テスト
 
-テストスイートには 134 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
+テストスイートには 153 件のテストがあります（`python -m unittest discover -s tests`）。`files/` が共有ファイルだけを含むこと、各ファイルが有効でリポジトリ名で生成できること、編集または欠落したコピーが見つかること、このリポジトリのロックがファイルと版数に一致すること、そしてマニフェスト、変更履歴、ドキュメントを確認します。1 件は `files/` を URTC-DOCS のテンプレートと比較し、そのリポジトリが隣にないときはスキップされます。ロックの処理自体は URTC-DOCS でテストしています。
 
 ## 🏗️ ビルドとリリース
 

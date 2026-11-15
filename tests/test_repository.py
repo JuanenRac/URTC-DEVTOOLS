@@ -26,7 +26,7 @@ class Manifest(unittest.TestCase):
         manifest = json.loads((ROOT / "urtc.project.json").read_text(encoding="utf-8"))
         self.assertEqual(manifest["name"], "URTC-DEVTOOLS")
         self.assertEqual(manifest["ecosystem"], "URTC")
-        self.assertEqual((manifest["maturity"], manifest["evidence"]), ("scaffolding", "host-test"))
+        self.assertEqual((manifest["maturity"], manifest["evidence"]), ("scaffolding", "simulator"))
         self.assertIn(manifest["role"], {"api", "ui", "cli", "firmware", "library", "service", "tool", "docs", "node"})
         self.assertIn(manifest["deployment_target"], {"cm5", "user-pc", "mobile", "wearable", "dev-server", "mcu"})
 

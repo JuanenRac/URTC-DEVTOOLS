@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **A virtual family of repositories takes the set, is broken and heals, with no real repository:** `tools/fleet_simulation.py` builds the family in a temporary folder (every copy of `files/` rendered with the name of its repository and a lock written as `docs/LOCK_FORMAT.md` says), injects the faults the checks know (a hand edit, a deleted copy, a file the lock does not list, a new version of the set, a lock that cannot be read, an action that is not pinned, a workflow on `pull_request_target`) and reports what a night of the comparison would. 19 tests (`tests/test_fleet_simulation.py`) run the scenarios; when URTC-DOCS is next to this repository they also check that its `urtc_docs.devtools_lock` gives the same findings. The manifest says `evidence: simulator`; the repositories of the family have not moved to the lock yet, so the physical test (a real `sync_repo_tools.py --apply` over the family and a quiet night) stays pending (see `docs/TAKING_THE_SET.md`).
+
 - **The status check knows a white light for a line that does not apply:** white is accepted only where nothing applies (the hardware line of a repository that says `hardware_bound` is false) and is refused on software, tests and documentation lines; green on the hardware line of a repository with no hardware is refused. The check and its tests are the same in A.R.M.O.R.
 
 ## [0.0.6] - The shared set carries the current host test executor and the limits of the dashboard notice
