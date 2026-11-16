@@ -34,6 +34,11 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = "urtc.project.json"
 USES = re.compile(r"^\s*-?\s*uses:\s*(\S+)")
 SHA = re.compile(r"^[^@\s]+@[0-9a-f]{40}$")
+DOCKER_DIGEST = re.compile(r"@sha256:[0-9a-f]{64}$")
+WRITE_ALL = re.compile(r"^\s*permissions\s*:\s*[\"']?write-all[\"']?\s*$")
+# `pull_request_target` as a key or a list item of the trigger, or anywhere on the `on:` line itself ("on: [push, pull_request_target]")
+TRIGGER_KEY = re.compile(r"^\s*(-\s*)?[\"']?pull_request_target[\"']?\s*:?\s*$")
+ON_LINE = re.compile(r"^\s*[\"']?on[\"']?\s*:")
 CRON = re.compile(r"^\s*-\s*cron:")
 LANGUAGE = re.compile(r'^\s*-\s*"?(javascript-typescript|python|c-cpp|actions|java-kotlin)"?\s*$')
 
@@ -44,7 +49,9 @@ def repositories(workspace: Path) -> list[Path]:
 
 def workflows(repo: Path) -> dict[str, str]:
     folder = repo / ".github" / "workflows"
-    return {p.name: p.read_text(encoding="utf-8").replace("\r\n", "\n") for p in sorted(folder.glob("*.yml"))}
+    # GitHub runs both spellings of the extension
+    files = sorted([*folder.glob("*.yml"), *folder.glob("*.yaml")])
+    return {p.name: p.read_text(encoding="utf-8").replace("\r\n", "\n") for p in files}
 
 
 def security_findings(name: str, text: str) -> list[str]:
@@ -54,14 +61,23 @@ def security_findings(name: str, text: str) -> list[str]:
         if not match:
             continue
         target = match.group(1)
-        if target.startswith("./") or target.startswith("docker://"):
+        if target.startswith("./"):
+            continue
+        if target.startswith("docker://"):
+            if not DOCKER_DIGEST.search(target):
+                found.append(f"{name}:{number}: {target} is not pinned to an image digest")
             continue
         if not SHA.match(target):
             found.append(f"{name}:{number}: {target} is not pinned to a commit hash")
     if not re.search(r"(?m)^permissions:", text):
         found.append(f"{name}: no top-level permissions block")
-    if re.search(r"(?m)^\s*pull_request_target\s*:", text):
-        found.append(f"{name}: runs on pull_request_target")
+    for number, line in enumerate(text.splitlines(), 1):
+        code = line.split("#", 1)[0]
+        if WRITE_ALL.match(code):
+            found.append(f"{name}:{number}: grants write-all permissions")
+        if TRIGGER_KEY.match(code) or (ON_LINE.match(code) and re.search(r"\bpull_request_target\b", code)):
+            found.append(f"{name}: runs on pull_request_target")
+            break
     return found
 
 

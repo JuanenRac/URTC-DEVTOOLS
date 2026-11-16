@@ -205,8 +205,34 @@ class TheWorkflowFindings(unittest.TestCase):
         self.assertEqual(len(wt.security_findings("ci.yml", GOOD.replace(SHA, "a" * 41))), 0 if wt.SHA.match("a" * 41) else 1)
 
     def test_local_and_docker_actions_need_no_pin(self):
-        text = GOOD + "      - uses: ./.github/actions/local\n      - uses: docker://alpine:3\n"
+        text = GOOD + "      - uses: ./.github/actions/local\n      - uses: docker://alpine@sha256:" + "a" * 64 + "\n"
         self.assertEqual(wt.security_findings("ci.yml", text), [])
+
+    def test_a_docker_action_by_tag_is_not_pinned(self):
+        found = wt.security_findings("ci.yml", GOOD + "      - uses: docker://alpine:3\n")
+        self.assertEqual(len(found), 1)
+        self.assertIn("is not pinned to an image digest", found[0])
+
+    def test_pull_request_target_is_found_in_every_spelling_of_the_trigger(self):
+        base = GOOD.replace("on: push", "ON")
+        for trigger in ("on: pull_request_target", "on: [push, pull_request_target]", "on:\n  - pull_request_target", "on:\n  pull_request_target:\n    types: [opened]", '"on": pull_request_target'):
+            found = wt.security_findings("ci.yml", base.replace("ON", trigger))
+            self.assertTrue(any("pull_request_target" in f for f in found), trigger)
+
+    def test_pull_request_target_in_a_comment_or_a_condition_is_not_a_trigger(self):
+        text = GOOD.replace("on: push", "on: push  # not pull_request_target") + "      - if: github.event_name != 'pull_request_target'\n"
+        self.assertEqual(wt.security_findings("ci.yml", text), [])
+
+    def test_write_all_permissions_are_named_at_any_level(self):
+        found = wt.security_findings("ci.yml", GOOD.replace("permissions:\n  contents: read\n", "permissions: write-all\n"))
+        self.assertEqual(len(found), 1)
+        self.assertIn("grants write-all", found[0])
+        self.assertTrue(any("grants write-all" in f for f in wt.security_findings("ci.yml", GOOD + "    permissions: write-all\n")))
+
+    def test_a_workflow_with_the_yaml_extension_is_read(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = make_repo(Path(tmp), "R", **{"ci.yml": GOOD, "extra.yaml": GOOD.replace(SHA, "v4")})
+            self.assertEqual(sorted(wt.workflows(repo)), ["ci.yml", "extra.yaml"])
 
     def test_a_missing_permissions_block_and_pull_request_target_are_named(self):
         found = wt.security_findings("ci.yml", GOOD.replace("permissions:\n  contents: read\n", "").replace("on: push", "on:\n  pull_request_target:"))
