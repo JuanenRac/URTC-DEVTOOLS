@@ -4,6 +4,10 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+## [0.0.7] - The shared set carries the document policy check with its time limits
+
+- **The shared set carries the document policy check with its time limits:** `files/tools/_doc_policy.py` is the canonical copy in which every git search and child process has a time limit (set by environment variables, with defaults), so a stuck step ends with a message instead of holding a runner; a search that runs out of time is read as one that could not check. The copy this repository carries, the lock, the registry and the template of the documentation repository hold the new copy.
+
 - **The security check of the workflows has fewer gaps:** it also reads `*.yaml` files, finds `pull_request_target` as a list item, in an inline list or on the `on:` line, asks for an image digest on `docker://` actions and names `permissions: write-all`; a comment or a condition that only mentions the event is not a finding. Tests cover each form.
 - **A virtual family of repositories takes the set, is broken and heals, with no real repository:** `tools/fleet_simulation.py` builds the family in a temporary folder (every copy of `files/` rendered with the name of its repository and a lock written as `docs/LOCK_FORMAT.md` says), injects the faults the checks know (a hand edit, a deleted copy, a file the lock does not list, a new version of the set, a lock that cannot be read, an action that is not pinned, a workflow on `pull_request_target`) and reports what a night of the comparison would. 19 tests (`tests/test_fleet_simulation.py`) run the scenarios; when URTC-DOCS is next to this repository they also check that its `urtc_docs.devtools_lock` gives the same findings. The manifest says `evidence: simulator`; the repositories of the family have not moved to the lock yet, so the physical test (a real `sync_repo_tools.py --apply` over the family and a quiet night) stays pending (see `docs/TAKING_THE_SET.md`).
 
