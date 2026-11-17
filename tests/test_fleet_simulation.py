@@ -72,6 +72,20 @@ class TakingTheSet(FleetCase):
 
     def test_the_demonstration_passes(self):
         self.assertEqual(fs.demonstration(), [])
+        # and its result as data: each fault injected is named by the report, and --json keeps the output valid JSON
+        import contextlib
+        import io
+        report = fs.structured_report()
+        self.assertEqual(report["set_version"], "9.9.9")
+        self.assertEqual({fault["id"]: fault["found"] for fault in report["faults_injected"]}, {"hand_edit": True, "delete": True})
+        self.assertTrue(any("build_test.py" in line for line in report["repositories"]["URTC-GATEWAY"]["lock"]))
+        self.assertTrue(any("pretty_run.py" in line for line in report["repositories"]["URTC-TESTER"]["lock"]))
+        out, err = io.StringIO(), io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+            code = fs.main(["--json"])
+        self.assertEqual(code, 0)
+        self.assertEqual(json.loads(out.getvalue())["set_version"], "9.9.9")
+        self.assertIn("FLEET_SIMULATION=PASS", err.getvalue())
 
 
 class FindingTheFaults(FleetCase):
@@ -178,26 +192,6 @@ class SameVerdictAsTheChecker(FleetCase):
                 self.fleet.reset()
                 scenario()
                 self.assertEqual(sorted(self.fleet.check("URTC")), sorted(self.real_check("URTC")))
-
-class StructuredReportCase(unittest.TestCase):
-    def test_each_fault_injected_is_named_by_the_report(self):
-        report = fs.structured_report()
-        self.assertEqual(report["set_version"], "9.9.9")
-        self.assertEqual({fault["id"]: fault["found"] for fault in report["faults_injected"]}, {"hand_edit": True, "delete": True})
-        self.assertTrue(any("build_test.py" in line for line in report["repositories"]["URTC-GATEWAY"]["lock"]))
-        self.assertTrue(any("pretty_run.py" in line for line in report["repositories"]["URTC-TESTER"]["lock"]))
-        json.dumps(report)
-
-    def test_json_goes_to_the_output_and_the_verdict_to_the_error_stream(self):
-        import contextlib
-        import io
-        out, err = io.StringIO(), io.StringIO()
-        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
-            code = fs.main(["--json"])
-        self.assertEqual(code, 0)
-        self.assertEqual(json.loads(out.getvalue())["set_version"], "9.9.9")
-        self.assertIn("FLEET_SIMULATION=PASS", err.getvalue())
-
 
 
 if __name__ == "__main__":
