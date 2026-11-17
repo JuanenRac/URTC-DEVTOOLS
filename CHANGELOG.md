@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The simulation of the family can print its result as data:** `tools/fleet_simulation.py --json` prints the version of the set, the problems of the lock and of the workflows of each repository and the faults it injected, each with an identifier and whether the report named it; the verdict line goes to the error stream so the output stays valid JSON.
+
 ## [0.0.7] - The shared set carries the document policy check with its time limits
 
 - **The shared set carries the document policy check with its time limits:** `files/tools/_doc_policy.py` is the canonical copy in which every git search and child process has a time limit (set by environment variables, with defaults), so a stuck step ends with a message instead of holding a runner; a search that runs out of time is read as one that could not check. The copy this repository carries, the lock, the registry and the template of the documentation repository hold the new copy.

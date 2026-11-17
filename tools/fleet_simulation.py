@@ -243,11 +243,42 @@ def demonstration() -> list[str]:
     return problems
 
 
-def main() -> int:
+def structured_report() -> dict:
+    """The same night as ``demonstration``, as data: each fault injected has an identifier and the report must name it.
+
+    ``{"set_version", "repositories": {name: {"lock": [...], "workflows": [...]}}, "faults_injected": [{"id", "repository", "found"}]}``;
+    ``found`` is True when the problems of that repository mention the fault, so a fault that nothing noticed is visible in the data.
+    """
+    with tempfile.TemporaryDirectory() as folder:
+        fleet = VirtualFleet(Path(folder))
+        fleet.hand_edit("URTC-GATEWAY", "tools/build_test.py")
+        fleet.delete("URTC-TESTER", "tools/pretty_run.py")
+        fleet.publish_set("9.9.9")
+        _code, printed = fleet.workflows()
+        found = fleet.check_all()
+        report: dict = {
+            "set_version": fleet.set_version,
+            "repositories": {name: {"lock": found.get(name, []), "workflows": [line for line in printed if line.startswith(("SECURITY", "DRIFT")) and name in line]} for name in fleet.names},
+            "faults_injected": [],
+        }
+        for fault, name, marker in (
+            ("hand_edit", "URTC-GATEWAY", "tools/build_test.py"),
+            ("delete", "URTC-TESTER", "tools/pretty_run.py"),
+        ):
+            report["faults_injected"].append({"id": fault, "repository": name, "found": any(marker in line for line in found.get(name, []))})
+        return report
+
+
+def main(argv: list[str] | None = None) -> int:
+    arguments = sys.argv[1:] if argv is None else argv
     problems = demonstration()
+    if "--json" in arguments:
+        report = structured_report()
+        problems += [f"the fault {fault['id']} in {fault['repository']} is not named by the report" for fault in report["faults_injected"] if not fault["found"]]
+        print(json.dumps(report, indent=2, sort_keys=True))
     for line in problems:
-        print(line)
-    print(f"FLEET_SIMULATION={'FAIL' if problems else 'PASS'}")
+        print(line, file=sys.stderr if "--json" in arguments else sys.stdout)
+    print(f"FLEET_SIMULATION={'FAIL' if problems else 'PASS'}", file=sys.stderr if "--json" in arguments else sys.stdout)
     return 1 if problems else 0
 
 
