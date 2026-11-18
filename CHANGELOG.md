@@ -4,6 +4,7 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **A copy is compared with the canonical file, not only with its own lock, and a missing lock is counted:** `tools/devtools_set.py verify --repo PATH` compares the copies of a repository with `files/`, so an edit whose lock was recalculated is found; `tools/tooling_registry.json` lists `expected_repositories` (the repositories that must carry the lock) and `tooling_registry.py check` counts those without one, as a note by default (`--allow-missing-lock`, kept during one version) and as a failure with `--no-allow-missing-lock`. The virtual fleet gained the fault of an edit with a recalculated lock and the count of missing locks.
 - **The simulation of the family can print its result as data:** `tools/fleet_simulation.py --json` prints the version of the set, the problems of the lock and of the workflows of each repository and the faults it injected, each with an identifier and whether the report named it; the verdict line goes to the error stream so the output stays valid JSON.
 
 ## [0.0.7] - The shared set carries the document policy check with its time limits

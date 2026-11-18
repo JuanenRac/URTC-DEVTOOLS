@@ -183,11 +183,22 @@ class VirtualFleet:
         path.write_text("name: extra\non:\n  pull_request_target:\npermissions:\n  contents: read\njobs: {}\n", encoding="utf-8", newline="\n")
 
     # ---- the checks ---------------------------------------------------------------
-    def check(self, name: str) -> list[str]:
-        """The problems of the lock of one repository, with the rules of docs/LOCK_FORMAT.md; empty when it has none or all is as it should be."""
+    def relock(self, name: str) -> None:
+        """A hand edit that hides itself: the lock is written again from the files as they are now."""
+        hashes = {relative: digest((self.repo(name) / relative).read_bytes().decode("utf-8")) for relative in self.files if (self.repo(name) / relative).is_file()}
+        self._write_lock(name, self._lock(name).get("version", self.set_version), hashes)
+
+    def missing_locks(self) -> list[str]:
+        """The repositories of the family that carry no lock (counted, whatever the check lets pass)."""
+        return [name for name in self.names if not (self.repo(name) / LOCK_FILE).is_file()]
+
+    def check(self, name: str, allow_missing_lock: bool = True) -> list[str]:
+        """The problems of the lock of one repository, with the rules of docs/LOCK_FORMAT.md; empty when it has none (unless ``allow_missing_lock`` is False) or all is as it should be.
+
+        A file whose hash agrees with the lock but is not the canonical file is also a problem: the lock was recalculated after an edit."""
         path = self.repo(name) / LOCK_FILE
         if not path.is_file():
-            return []
+            return [] if allow_missing_lock else [f"{LOCK_FILE} is missing (the repository is expected to carry it)"]
         try:
             lock = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
@@ -206,10 +217,12 @@ class VirtualFleet:
                 problems.append(f"{relative}: a shared file that the lock does not list")
         if lock.get("version") != self.set_version:
             problems.append(f"the lock says set {lock.get('version')!r}, URTC-DEVTOOLS is at {self.set_version!r}: run sync_repo_tools.py --apply")
+        elif not problems:
+            problems += [f"{problem.split(':')[0]}: edited and the lock recalculated (it differs from the canonical file)" for problem in devtools_set.verify_repo(self.repo(name))]
         return problems
 
-    def check_all(self) -> dict[str, list[str]]:
-        return {name: problems for name in self.names if (problems := self.check(name))}
+    def check_all(self, allow_missing_lock: bool = True) -> dict[str, list[str]]:
+        return {name: problems for name in self.names if (problems := self.check(name, allow_missing_lock))}
 
     def workflows(self) -> tuple[int, list[str]]:
         """``workflow_templates.py check`` over the virtual family: its exit status and the lines it prints."""
@@ -221,6 +234,7 @@ class VirtualFleet:
     def nightly(self) -> list[str]:
         """What a night of the comparison would report: the problem of every lock and every line of the workflow check that is not a pass."""
         lines = [f"{name}: {problem}" for name, problems in self.check_all().items() for problem in problems]
+        lines += [f"NOTICE {name}: {LOCK_FILE} is missing (allowed for now)" for name in self.missing_locks()]
         _code, printed = self.workflows()
         return lines + [line for line in printed if line.startswith(("SECURITY", "DRIFT"))]
 

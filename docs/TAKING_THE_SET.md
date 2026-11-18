@@ -67,6 +67,8 @@ python tools/tooling_registry.py update    # write the hashes of the URTC source
 
 `check` needs nothing but this repository (the hashes and the list of the set); next to the repositories of the other families it also compares their sources. It never writes to another repository. A new file of the set needs an entry, and the check fails until it has one.
 
+The registry also lists `expected_repositories`: the repositories that must carry `tools/devtools.lock.json`. `check` counts the ones that are next to this repository without a lock; during the transition that is only a note (`--allow-missing-lock`, the default), and `--no-allow-missing-lock` makes it a failure. A repository can be compared with the canonical files themselves, whatever its own lock says, with `python tools/devtools_set.py verify --repo PATH`: an edit whose lock was written again afterwards is found that way.
+
 ## Trying the set without the family: a virtual fleet
 
 `tools/fleet_simulation.py` builds a family of virtual repositories in a temporary folder (evidence: simulator). Each one takes the real files of `files/`, rendered with its own name, and a lock written the way `docs/LOCK_FORMAT.md` says. Faults are then injected on purpose and the checks of the set find them:

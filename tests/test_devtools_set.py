@@ -85,6 +85,11 @@ class TheSet(unittest.TestCase):
             (copy / "tools" / "pretty_run.py").write_text("edited\n", encoding="utf-8")
             (copy / "bump_manifest_version.py").unlink()
             self.assertEqual(devtools_set.check_own_copies(copy), ["bump_manifest_version.py: missing", "tools/pretty_run.py: differs from files/tools/pretty_run.py"])
+            # the same edit seen from outside: the copy is compared with the canonical files of this repository, whatever the lock of the copy says
+            self.assertEqual(devtools_set.verify_repo(copy, copy / "files"), ["tools/pretty_run.py: differs from the canonical file"])
+            self.assertEqual(devtools_set.verify_repo(Path(folder) / "nothing"), [])
+            self.assertEqual(devtools_set.main(["verify", "--repo", str(copy)]), 1)
+            self.assertEqual(devtools_set.main(["verify"]), 2)
 
     def test_the_digest_ignores_the_line_endings(self):
         self.assertEqual(devtools_set.digest("a\r\nb\r\n"), devtools_set.digest("a\nb\n"))
