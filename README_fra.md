@@ -76,6 +76,8 @@ Comment les parties de ce dépôt s'articulent : qui prend l'ensemble, ce qu'il 
 python tools/devtools_set.py list            # la version de l'ensemble et le SHA-256 de chaque fichier
 python tools/devtools_set.py check           # les copies de ce dépôt sont les fichiers canoniques
 python tools/tooling_registry.py check       # le registre des outils que les familles partagent : empreintes et sources identiques
+python tools/tooling_registry.py check --no-allow-missing-lock  # échoue aussi pour un dépôt d'expected_repositories sans son verrou (sans l'option il ne fait que les compter)
+python tools/devtools_set.py verify --repo PATH  # les copies d'un autre dépôt sont les fichiers canoniques ; trouve une modification dont le verrou a été recalculé
 python -m unittest discover -s tests         # les tests
 python tools/sync_repo_tools.py --apply      # depuis URTC-DOCS : placer l'ensemble et les verrous dans les dépôts voisins
 ```

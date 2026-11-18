@@ -76,6 +76,8 @@ URTC-DEVTOOLS 是共用工具获得名称和版本的地方。以前改动其中
 python tools/devtools_set.py list            # 整套工具的版本和每个文件的 SHA-256
 python tools/devtools_set.py check           # 本仓库自带的副本就是规范文件
 python tools/tooling_registry.py check       # 各家族共用工具的登记表：校验哈希与相同来源
+python tools/tooling_registry.py check --no-allow-missing-lock  # 对 expected_repositories 中没有锁文件的仓库也会失败（不加该选项时只统计）
+python tools/devtools_set.py verify --repo PATH  # 另一个仓库的副本就是规范文件；能发现连锁文件也被重新计算的编辑
 python -m unittest discover -s tests         # 测试
 python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工具和锁放入相邻的仓库
 ```

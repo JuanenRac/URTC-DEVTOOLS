@@ -76,6 +76,8 @@ How the parts of this repository fit together: who takes the set, what it holds 
 python tools/devtools_set.py list            # the version of the set and the SHA-256 of each file
 python tools/devtools_set.py check           # the copies this repository carries are the canonical files
 python tools/tooling_registry.py check       # the registry of the tooling the families share: hashes and equal sources
+python tools/tooling_registry.py check --no-allow-missing-lock  # also fails for a repository of expected_repositories without its lock (without the option it only counts them)
+python tools/devtools_set.py verify --repo PATH  # the copies of another repository are the canonical files; finds an edit whose lock was recalculated
 python -m unittest discover -s tests         # the tests
 python tools/sync_repo_tools.py --apply      # from URTC-DOCS: put the set and the locks into the repositories next to it
 ```

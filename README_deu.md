@@ -76,6 +76,8 @@ Wie die Teile dieses Repositorys zusammenpassen: wer den Satz übernimmt, was er
 python tools/devtools_set.py list            # die Version des Satzes und der SHA-256 jeder Datei
 python tools/devtools_set.py check           # die Kopien dieses Repositorys sind die kanonischen Dateien
 python tools/tooling_registry.py check       # das Register der Werkzeuge, die die Familien teilen: Hashes und gleiche Quellen
+python tools/tooling_registry.py check --no-allow-missing-lock  # schlägt auch für ein Repository aus expected_repositories ohne Sperrdatei fehl (ohne die Option zählt es sie nur)
+python tools/devtools_set.py verify --repo PATH  # die Kopien eines anderen Repositorys sind die kanonischen Dateien; findet eine Änderung, deren Sperrdatei neu berechnet wurde
 python -m unittest discover -s tests         # die Tests
 python tools/sync_repo_tools.py --apply      # aus URTC-DOCS: den Satz und die Sperrdateien in die Nachbar-Repositories legen
 ```

@@ -76,6 +76,8 @@ Come si incastrano le parti di questo repository: chi prende l'insieme, cosa con
 python tools/devtools_set.py list            # la versione dell'insieme e lo SHA-256 di ogni file
 python tools/devtools_set.py check           # le copie di questo repository sono i file canonici
 python tools/tooling_registry.py check       # il registro degli strumenti condivisi tra le famiglie: hash e sorgenti uguali
+python tools/tooling_registry.py check --no-allow-missing-lock  # fallisce anche per un repository di expected_repositories senza il suo lock (senza l'opzione si limita a contarli)
+python tools/devtools_set.py verify --repo PATH  # le copie di un altro repository sono i file canonici; trova una modifica il cui lock è stato ricalcolato
 python -m unittest discover -s tests         # i test
 python tools/sync_repo_tools.py --apply      # da URTC-DOCS: mettere l'insieme e i lock nei repository accanto
 ```

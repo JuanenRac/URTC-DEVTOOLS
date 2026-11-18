@@ -76,6 +76,8 @@ URTC-DEVTOOLS は、共有ツールに名前と版数を与える場所です。
 python tools/devtools_set.py list            # セットの版数と各ファイルの SHA-256
 python tools/devtools_set.py check           # このリポジトリのコピーが正規ファイルと一致
 python tools/tooling_registry.py check       # 各ファミリーが共有するツールの登録簿：ハッシュと同一ソースの確認
+python tools/tooling_registry.py check --no-allow-missing-lock  # expected_repositories のうちロックのないリポジトリがあっても失敗（指定しなければ数えるだけ）
+python tools/devtools_set.py verify --repo PATH  # 別のリポジトリのコピーが正規のファイルであることを確認；ロックを再計算した編集も見つける
 python -m unittest discover -s tests         # テスト
 python tools/sync_repo_tools.py --apply      # URTC-DOCS から：隣のリポジトリにセットとロックを置く
 ```
