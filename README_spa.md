@@ -76,6 +76,8 @@ Cómo encajan las partes de este repositorio: quién toma el conjunto, qué cont
 python tools/devtools_set.py list            # la versión del conjunto y el SHA-256 de cada archivo
 python tools/devtools_set.py check           # las copias que lleva este repositorio son los archivos canónicos
 python tools/tooling_registry.py check       # el registro de las herramientas que comparten las familias: hashes y fuentes iguales
+python tools/tooling_registry.py check --no-allow-missing-lock  # falla también por un repositorio de expected_repositories sin su bloqueo (sin la opción solo los cuenta)
+python tools/devtools_set.py verify --repo PATH  # las copias de otro repositorio son los archivos canónicos; encuentra una edición cuyo bloqueo se recalculó
 python -m unittest discover -s tests         # las pruebas
 python tools/sync_repo_tools.py --apply      # desde URTC-DOCS: poner el conjunto y los bloqueos en los repositorios de al lado
 ```
