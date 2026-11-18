@@ -9,6 +9,7 @@
     python tools/devtools_set.py            # the version of the set and the SHA-256 of each file
     python tools/devtools_set.py list       # the same
     python tools/devtools_set.py check      # the copies this repository carries itself equal the canonical files
+    python tools/devtools_set.py verify --repo PATH   # the copies of another repository equal the canonical files (a recalculated lock does not hide an edit)
 
 The canonical files sit in ``files/``, at the path they have in every repository, with the name of the repository written ``<REPO>``. The version
 of the set is the version of this repository (``urtc.project.json``). A repository takes the set with ``tools/sync_repo_tools.py`` of URTC-DOCS, which
@@ -19,6 +20,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -26,6 +28,8 @@ ROOT = Path(__file__).resolve().parents[1]
 FILES = ROOT / "files"
 PLACEHOLDER = "<REPO>"
 LOCK_NAME = "tools/devtools.lock.json"
+# any name of a repository of the family: a header says which repository the file sits in, and the name is the one thing allowed to differ
+_FAMILY_NAME = re.compile(r"(?<![A-Za-z0-9_-])URTC(?:-[A-Z0-9]+)*(?![A-Za-z0-9_])")
 
 
 def version() -> str:
@@ -65,9 +69,38 @@ def check_own_copies(root: Path = ROOT) -> list[str]:
     return problems
 
 
+def same_as_canonical(repository: str, relative: str, text: str, files: Path = FILES) -> bool:
+    """True when a copy is the canonical file: line endings as newlines, with the name of its repository where the canonical file says <REPO> (or, read the other
+    way, with every name of a repository of the family turned into the placeholder, because a header may name another repository on purpose)."""
+    text = text.replace("\r\n", "\n")
+    return text == render_for(repository, relative, files) or _FAMILY_NAME.sub(PLACEHOLDER, text) == _FAMILY_NAME.sub(PLACEHOLDER, canonical_text(relative, files))
+
+
+def verify_repo(repo: Path, files: Path = FILES) -> list[str]:
+    """The copies of the set that a repository carries, compared with the canonical files themselves (not with its own lock, which can be recalculated after an edit)."""
+    problems = []
+    for relative in shared_files(files):
+        path = repo / relative
+        if path.is_file() and not same_as_canonical(repo.name, relative, path.read_bytes().decode("utf-8", errors="replace"), files):
+            problems.append(f"{relative}: differs from the canonical file")
+    return problems
+
+
 def main(argv: list[str] | None = None) -> int:
     arguments = list(sys.argv[1:] if argv is None else argv)
     command = arguments[0] if arguments else "list"
+    if command == "verify":
+        if len(arguments) != 3 or arguments[1] != "--repo":
+            print("usage: devtools_set.py verify --repo PATH", file=sys.stderr)
+            return 2
+        problems = verify_repo(Path(arguments[2]).resolve())
+        for problem in problems:
+            print(f"  {problem}", file=sys.stderr)
+        if problems:
+            print(f"DEVTOOLS_VERIFY=FAIL {len(problems)} file(s)", file=sys.stderr)
+            return 1
+        print("DEVTOOLS_VERIFY=PASS every copy is the canonical file")
+        return 0
     if command == "list":
         print(f"URTC-DEVTOOLS set version {version()}")
         for relative in shared_files():

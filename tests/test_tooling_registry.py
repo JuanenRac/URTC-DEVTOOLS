@@ -38,6 +38,19 @@ class TheRegistryOfThisRepository(unittest.TestCase):
     def test_it_passes_its_own_check(self):
         data = tooling_registry.load()
         self.assertEqual(tooling_registry.check_own_side(data), [])
+        # the repositories that must carry a lock: listed once each, this one among them; a missing lock is counted, and fails only when it is not allowed
+        expected = tooling_registry.expected_repositories(data)
+        self.assertIn("URTC-DEVTOOLS", expected)
+        self.assertEqual(len(expected), len(set(expected)))
+        with tempfile.TemporaryDirectory() as folder:
+            (Path(folder) / "URTC-COMMON").mkdir()
+            (Path(folder) / "URTC-GATEWAY" / "tools").mkdir(parents=True)
+            (Path(folder) / "URTC-GATEWAY" / "tools" / "devtools.lock.json").write_text("{}", encoding="utf-8")
+            self.assertEqual(tooling_registry.missing_locks(data, Path(folder)), ["URTC-COMMON"])
+            self.assertEqual(tooling_registry.main(["check", "--workspace", folder]), 0)
+            self.assertEqual(tooling_registry.main(["check", "--workspace", folder, "--no-allow-missing-lock"]), 1)
+        self.assertTrue(tooling_registry.check_registry_shape({"files": [], "expected_repositories": ["A", "A"]}))
+        self.assertTrue(tooling_registry.check_registry_shape({"files": [], "expected_repositories": "A"}))
 
     def test_it_lists_every_file_of_the_set(self):
         listed = {e["path"] for e in tooling_registry.load()["files"] if e["in_set"]}

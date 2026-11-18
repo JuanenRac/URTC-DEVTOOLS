@@ -1,5 +1,18 @@
 {
   "schema": 1,
+  "expected_repositories": [
+    "URTC",
+    "URTC-COMMON",
+    "URTC-DEVTOOLS",
+    "URTC-DOCS",
+    "URTC-FLASHER",
+    "URTC-GATEWAY",
+    "URTC-SMART-RACK",
+    "URTC-TESTER",
+    "URTC-UPDATER",
+    "URTC-VISION-TOOL",
+    "URTC-WEB-STUDIO"
+  ],
   "files": [
     {
       "path": "tools/pretty_run.py",

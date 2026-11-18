@@ -117,6 +117,20 @@ class FindingTheFaults(FleetCase):
     def test_a_repository_without_a_lock_is_not_an_error_yet(self):
         self.fleet.remove_lock("URTC-COMMON")
         self.assertEqual(self.fleet.check("URTC-COMMON"), [])
+        # ... but it is counted, and it is an error when the check is told not to allow it
+        self.assertEqual(self.fleet.missing_locks(), ["URTC-COMMON"])
+        self.assertEqual(len(self.fleet.check("URTC-COMMON", allow_missing_lock=False)), 1)
+        self.assertIn("URTC-COMMON", self.fleet.check_all(allow_missing_lock=False))
+        self.assertNotIn("URTC-COMMON", self.fleet.check_all())
+        self.assertTrue(any(line.startswith("NOTICE URTC-COMMON") for line in self.fleet.nightly()))
+        # an edit whose lock was recalculated is seen against the canonical file
+        self.fleet.take_set("URTC-COMMON")
+        self.fleet.hand_edit("URTC-COMMON", SHARED)
+        self.fleet.relock("URTC-COMMON")
+        self.assertEqual([p.split(":")[0] for p in self.fleet.check("URTC-COMMON")], [SHARED])
+        self.assertIn("recalculated", self.fleet.check("URTC-COMMON")[0])
+        self.fleet.take_set("URTC-COMMON")
+        self.assertEqual(self.fleet.check("URTC-COMMON"), [])
 
     def test_a_new_version_of_the_set_leaves_every_repository_behind_until_it_takes_it(self):
         self.fleet.publish_set("9.9.9")

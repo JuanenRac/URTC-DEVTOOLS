@@ -14,6 +14,7 @@ family keeps its source, how two sources are compared, and the SHA-256 of the UR
     python tools/tooling_registry.py report             # the table: for each file, the sources of the families and how many repositories carry each text
     python tools/tooling_registry.py update             # write the hashes of the URTC sources into the registry (after a change to files/)
     python tools/tooling_registry.py ... --workspace DIR  # the folder that holds the repositories side by side (default: the parent of this one)
+    python tools/tooling_registry.py check --no-allow-missing-lock   # a repository of ``expected_repositories`` without its lock fails (during the transition it is only counted)
 
 ``check`` works with this repository alone (the hashes of the registry against ``files/`` and the list of the set); when the repositories of the other
 families are next to this one it also compares the sources that the registry says must be equal. Nothing is ever written to another repository.
@@ -96,6 +97,9 @@ def source_text(workspace: Path, entry: dict[str, Any], family: str) -> tuple[st
 def check_registry_shape(data: dict[str, Any]) -> list[str]:
     problems: list[str] = []
     seen: set[str] = set()
+    listed = data.get("expected_repositories", [])
+    if not isinstance(listed, list) or not all(isinstance(n, str) and n for n in listed) or len(set(listed)) != len(listed):
+        problems.append("expected_repositories must be a list of different repository names")
     for entry in data["files"]:
         path = entry.get("path", "?")
         if path in seen:
@@ -118,6 +122,17 @@ def check_registry_shape(data: dict[str, Any]) -> list[str]:
             if family not in FAMILIES:
                 problems.append(f"{path}: unknown family {family}")
     return problems
+
+
+def expected_repositories(data: dict[str, Any]) -> list[str]:
+    """The repositories that must carry ``tools/devtools.lock.json`` (the key is optional: without it none is expected)."""
+    names = data.get("expected_repositories", [])
+    return [n for n in names if isinstance(n, str)] if isinstance(names, list) else []
+
+
+def missing_locks(data: dict[str, Any], workspace: Path) -> list[str]:
+    """The expected repositories that are next to this one and carry no lock."""
+    return [name for name in expected_repositories(data) if (workspace / name).is_dir() and not (workspace / name / devtools_set.LOCK_NAME).is_file()]
 
 
 def check_own_side(data: dict[str, Any], root: Path = ROOT) -> list[str]:
@@ -229,6 +244,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("command", choices=("check", "report", "update"))
     parser.add_argument("--workspace", type=Path, default=ROOT.parent)
+    parser.add_argument("--allow-missing-lock", action=argparse.BooleanOptionalAction, default=True,
+                        help="a repository of expected_repositories without its lock is only counted (the default during the transition); --no-allow-missing-lock makes it a failure")
     args = parser.parse_args(argv)
     data = load()
     workspace = args.workspace.resolve()
@@ -240,10 +257,15 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     problems = check_own_side(data)
     failures, notes, compared = check_across(data, workspace)
+    absent = missing_locks(data, workspace)
+    if absent and not args.allow_missing_lock:
+        failures += [f"{name}: {devtools_set.LOCK_NAME} is missing (it is in expected_repositories)" for name in absent]
     for line in problems + failures:
         print(f"  {line}", file=sys.stderr)
     for line in notes:
         print(f"  note: {line}")
+    if absent and args.allow_missing_lock:
+        print(f"  note: {len(absent)} expected repositor{'y' if len(absent) == 1 else 'ies'} without a lock, allowed for now: {', '.join(absent)}")
     if problems or failures:
         print(f"TOOLING_REGISTRY=FAIL {len(problems) + len(failures)} problem(s)", file=sys.stderr)
         return 1
