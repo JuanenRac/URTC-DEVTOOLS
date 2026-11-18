@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -27,6 +28,8 @@ ROOT = Path(__file__).resolve().parents[1]
 FILES = ROOT / "files"
 PLACEHOLDER = "<REPO>"
 LOCK_NAME = "tools/devtools.lock.json"
+# any name of a repository of the family: a header says which repository the file sits in, and the name is the one thing allowed to differ
+_FAMILY_NAME = re.compile(r"(?<![A-Za-z0-9_-])URTC(?:-[A-Z0-9]+)*(?![A-Za-z0-9_])")
 
 
 def version() -> str:
@@ -68,9 +71,9 @@ def check_own_copies(root: Path = ROOT) -> list[str]:
 
 def same_as_canonical(repository: str, relative: str, text: str, files: Path = FILES) -> bool:
     """True when a copy is the canonical file: line endings as newlines, with the name of its repository where the canonical file says <REPO> (or, read the other
-    way, with that name turned back into the placeholder, because a source may name its own repository on purpose)."""
+    way, with every name of a repository of the family turned into the placeholder, because a header may name another repository on purpose)."""
     text = text.replace("\r\n", "\n")
-    return text == render_for(repository, relative, files) or text.replace(repository, PLACEHOLDER) == canonical_text(relative, files)
+    return text == render_for(repository, relative, files) or _FAMILY_NAME.sub(PLACEHOLDER, text) == _FAMILY_NAME.sub(PLACEHOLDER, canonical_text(relative, files))
 
 
 def verify_repo(repo: Path, files: Path = FILES) -> list[str]:
