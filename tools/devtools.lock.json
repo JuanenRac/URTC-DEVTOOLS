@@ -4,7 +4,7 @@
   "version": "0.0.7",
   "files": {
     ".github/actions/urtc-baseline/action.yml": "fc48fb71ee26679c22088363784754ec67d38a3b1174dfeb76af3bcda0449eb5",
-    ".github/workflows/dashboard-dispatch.yml": "e77d0a8d1371882e6e580124508c3f9bef832003e20423c8051fc83bad635ad5",
+    ".github/workflows/dashboard-dispatch.yml": "1cebe2eda2789c6d153b5c1e8e5b8349c9c5347d1ed921cdf8a84f8e6fd41678",
     "bump_manifest_version.py": "fbd3433f100e701457c2053495e2ba86771f9cb25f8d396eba2d173ef5462bda",
     "test.bat": "7065e4856b83aca3e9943b1271b4175dc55c443ca568af78e273be631ea98547",
     "test.sh": "ff14d18b249625a6495afff03d05fd5563901e934fc1d14d83cf730fff582a33",

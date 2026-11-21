@@ -297,7 +297,7 @@
           "path": ".github/workflows/dashboard-dispatch.yml"
         }
       },
-      "urtc_sha256": "e9509931993785c1b6497a0f40b8a2a51ba90c23f25d9a8ca2fa84bc33083b9d"
+      "urtc_sha256": "3478290f3b88075b5326043790dcf16ce930a60a213fd83a42bdd060c68e6da7"
     },
     {
       "path": ".github/actions/urtc-baseline/action.yml",
