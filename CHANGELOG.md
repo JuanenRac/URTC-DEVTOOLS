@@ -4,6 +4,10 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+## [0.0.8] - The dashboard notice names the reason for its workflow_run trigger
+
+- **The dashboard notice carries the reason for its trigger:** `files/.github/workflows/dashboard-dispatch.yml` marks the `workflow_run` trigger with the comment that tells the workflow analyser it is a same-repository CI run on main that checks out and runs no code from it, so the copies the repositories already carry are the canonical file again.
+
 - **The README lists the new options of the tooling check:** the commands block shows `tooling_registry.py check --no-allow-missing-lock` and `devtools_set.py verify --repo PATH`. The README and its seven translations are updated.
 
 - **A copy is compared with the canonical file, not only with its own lock, and a missing lock is counted:** `tools/devtools_set.py verify --repo PATH` compares the copies of a repository with `files/`, so an edit whose lock was recalculated is found; `tools/tooling_registry.json` lists `expected_repositories` (the repositories that must carry the lock) and `tooling_registry.py check` counts those without one, as a note by default (`--allow-missing-lock`, kept during one version) and as a failure with `--no-allow-missing-lock`. The virtual fleet gained the fault of an edit with a recalculated lock and the count of missing locks.
