@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The workflows of this repository are analysed with zizmor:** `.github/workflows/zizmor.yml` calls the shared reusable workflow, pinned by its full commit SHA, on every change to a workflow and on main; only findings of high severity fail the job.
+
 ## [0.0.8] - The dashboard notice names the reason for its workflow_run trigger
 
 - **The dashboard notice carries the reason for its trigger:** `files/.github/workflows/dashboard-dispatch.yml` marks the `workflow_run` trigger with the comment that tells the workflow analyser it is a same-repository CI run on main that checks out and runs no code from it, so the copies the repositories already carry are the canonical file again.
