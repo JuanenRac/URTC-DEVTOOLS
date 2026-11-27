@@ -325,7 +325,7 @@
           "path": "files/tools/run_host_tests.py"
         }
       },
-      "urtc_sha256": "1ad6ef12fde27947dc440153d3ef5205f98cbcec0d0eb1272f8584af4e562fe5"
+      "urtc_sha256": "cd68638d867d382544dbc3d63c9bcd8ab576aec07e736b762c2a6de79f1d7d98"
     },
     {
       "path": "tools/build_test.py",
