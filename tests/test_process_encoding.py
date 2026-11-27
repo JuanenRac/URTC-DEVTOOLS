@@ -15,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
+import status_lights  # noqa: E402
 import universal_readme_check  # noqa: E402
 
 NOISY_TEST = """import sys
@@ -57,6 +58,22 @@ class ProcessEncodingTests(unittest.TestCase):
             tests.mkdir()
             (tests / "test_noise.py").write_text(NOISY_TEST.replace("{name}", "test_noise"), encoding="utf-8")
             self.assertEqual(universal_readme_check.run_tests(Path(folder)), 1)
+
+
+class SharedRowsTests(unittest.TestCase):
+    """The Security, Updates and Writing rows have their own ceiling only in an A.R.M.O.R. repository."""
+
+    def kinds(self, manifest_name: str) -> list[str]:
+        rows = "| Security | x | s |\n| Updates | x | u |\n| Writing | x | w |\n"
+        with tempfile.TemporaryDirectory() as folder:
+            repo = Path(folder)
+            (repo / manifest_name).write_text('{"evidence": "none"}', encoding="utf-8")
+            (repo / "README.md").write_text("## \U0001F6A6 Project status\n\n| Area | State | Note |\n|---|---|---|\n" + rows, encoding="utf-8")
+            return [item["kind"] for item in status_lights.evaluate(repo, "off")["items"]]
+
+    def test_the_rows_are_read_in_an_armor_repository_only(self):
+        self.assertEqual(self.kinds("armor.project.json"), ["security", "updates", "writing"])
+        self.assertEqual(self.kinds("urtc.project.json"), ["other", "other", "other"])
 
 
 if __name__ == "__main__":
