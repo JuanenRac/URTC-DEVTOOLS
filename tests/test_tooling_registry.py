@@ -47,8 +47,8 @@ class TheRegistryOfThisRepository(unittest.TestCase):
             (Path(folder) / "URTC-GATEWAY" / "tools").mkdir(parents=True)
             (Path(folder) / "URTC-GATEWAY" / "tools" / "devtools.lock.json").write_text("{}", encoding="utf-8")
             self.assertEqual(tooling_registry.missing_locks(data, Path(folder)), ["URTC-COMMON"])
-            self.assertEqual(tooling_registry.main(["check", "--workspace", folder]), 0)
-            self.assertEqual(tooling_registry.main(["check", "--workspace", folder, "--no-allow-missing-lock"]), 1)
+            self.assertEqual(tooling_registry.main(["check", "--workspace", folder]), 1)
+            self.assertEqual(tooling_registry.main(["check", "--workspace", folder, "--allow-missing-lock"]), 0)
         self.assertTrue(tooling_registry.check_registry_shape({"files": [], "expected_repositories": ["A", "A"]}))
         self.assertTrue(tooling_registry.check_registry_shape({"files": [], "expected_repositories": "A"}))
 

@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-166-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Versione | `0.0.9` |
 | Maturità | Impalcatura |
-| Test | 165 (`python -m unittest discover -s tests`) |
+| Test | 166 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
 | Destinazione | Il PC di chi lo usa |
 | Su hardware reale | Non applicabile: nulla qui gira su hardware |
@@ -76,7 +76,7 @@ Come si incastrano le parti di questo repository: chi prende l'insieme, cosa con
 python tools/devtools_set.py list            # la versione dell'insieme e lo SHA-256 di ogni file
 python tools/devtools_set.py check           # le copie di questo repository sono i file canonici
 python tools/tooling_registry.py check       # il registro degli strumenti condivisi tra le famiglie: hash e sorgenti uguali
-python tools/tooling_registry.py check --no-allow-missing-lock  # fallisce anche per un repository di expected_repositories senza il suo lock (senza l'opzione si limita a contarli)
+python tools/tooling_registry.py check --allow-missing-lock     # si limita a contare un repository di expected_repositories senza il suo lock (senza l'opzione fallisce)
 python tools/devtools_set.py verify --repo PATH  # le copie di un altro repository sono i file canonici; trova una modifica il cui lock è stato ricalcolato
 python -m unittest discover -s tests         # i test
 python tools/sync_repo_tools.py --apply      # da URTC-DOCS: mettere l'insieme e i lock nei repository accanto
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # da URTC-DOCS: mettere l'insieme e
 
 ## 🧪 Test
 
-La suite ha 165 test (`python -m unittest discover -s tests`). Verificano che `files/` contenga esattamente i file condivisi, che ciascuno sia valido e si generi con il nome di un repository, che una copia modificata o mancante venga trovata, che il lock di questo repository corrisponda ai suoi file e alla sua versione, oltre a manifesto, registro delle modifiche e documenti. Un test confronta `files/` con il modello di URTC-DOCS e viene saltato quando quel repository non è accanto. La logica del lock è testata in URTC-DOCS.
+La suite ha 166 test (`python -m unittest discover -s tests`). Verificano che `files/` contenga esattamente i file condivisi, che ciascuno sia valido e si generi con il nome di un repository, che una copia modificata o mancante venga trovata, che il lock di questo repository corrisponda ai suoi file e alla sua versione, oltre a manifesto, registro delle modifiche e documenti. Un test confronta `files/` con il modello di URTC-DOCS e viene saltato quando quel repository non è accanto. La logica del lock è testata in URTC-DOCS.
 
 ## 🏗️ Compilazione e rilascio
 

@@ -14,7 +14,7 @@ family keeps its source, how two sources are compared, and the SHA-256 of the UR
     python tools/tooling_registry.py report             # the table: for each file, the sources of the families and how many repositories carry each text
     python tools/tooling_registry.py update             # write the hashes of the URTC sources into the registry (after a change to files/)
     python tools/tooling_registry.py ... --workspace DIR  # the folder that holds the repositories side by side (default: the parent of this one)
-    python tools/tooling_registry.py check --no-allow-missing-lock   # a repository of ``expected_repositories`` without its lock fails (during the transition it is only counted)
+    python tools/tooling_registry.py check --allow-missing-lock      # only count a repository of ``expected_repositories`` without its lock (by default it fails)
 
 ``check`` works with this repository alone (the hashes of the registry against ``files/`` and the list of the set); when the repositories of the other
 families are next to this one it also compares the sources that the registry says must be equal. Nothing is ever written to another repository.
@@ -244,8 +244,8 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     parser.add_argument("command", choices=("check", "report", "update"))
     parser.add_argument("--workspace", type=Path, default=ROOT.parent)
-    parser.add_argument("--allow-missing-lock", action=argparse.BooleanOptionalAction, default=True,
-                        help="a repository of expected_repositories without its lock is only counted (the default during the transition); --no-allow-missing-lock makes it a failure")
+    parser.add_argument("--allow-missing-lock", action=argparse.BooleanOptionalAction, default=False,
+                        help="only count a repository of expected_repositories without its lock, for one that is being added (by default it fails)")
     args = parser.parse_args(argv)
     data = load()
     workspace = args.workspace.resolve()
