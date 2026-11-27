@@ -64,7 +64,7 @@
           "path": "tools/universal_readme_check.py"
         }
       },
-      "urtc_sha256": "ddb5f9986119a8b16800cba627d8a13af8b39ff1e044adc992fd06defea301e5"
+      "urtc_sha256": "ad56c0a62fd7cb0a74291c62324b8234bfa904737926158db8bcac24175ffeaf"
     },
     {
       "path": "tools/_readme_svg.py",
@@ -136,7 +136,7 @@
           "path": "tools/status_lights.py"
         }
       },
-      "urtc_sha256": "792e013550498cd62c3af3c6680db779345fbf50e5d4f4bbf37c6ef55de00386"
+      "urtc_sha256": "db9c7af17940a645fd027fcf1113b83d5e6ee521173cc85cb295fcef791ee74d"
     },
     {
       "path": "test.sh",
@@ -217,7 +217,7 @@
           "path": "tools/_doc_policy.py"
         }
       },
-      "urtc_sha256": "8cbaae5ec33b35e118a14fc1460a3c731c4c887a375e4f38fa2ee35b91585b57"
+      "urtc_sha256": "5b25d141fe51e3f9c85bbaacf5cbe6cea0469cb00efcf8f7badcf093858f4022"
     },
     {
       "path": "tools/_tracked_names.py",
@@ -325,7 +325,7 @@
           "path": "files/tools/run_host_tests.py"
         }
       },
-      "urtc_sha256": "37d26ef348f0a3e353b54bfbbea71b46175dce86890cc428335a61f16fd5f8fe"
+      "urtc_sha256": "1ad6ef12fde27947dc440153d3ef5205f98cbcec0d0eb1272f8584af4e562fe5"
     },
     {
       "path": "tools/build_test.py",
@@ -339,7 +339,7 @@
           "path": "files/tools/build_test.py"
         }
       },
-      "urtc_sha256": "51880e5d74cee59eca939a19b3c20b1f666a71602182bf3c51a5c95ef76e80b4"
+      "urtc_sha256": "c20ab0f8aed5a102eb2e9682b31e411f9c7245e5b1d588ea8e47fa1e688d5770"
     },
     {
       "path": "tools/sync_manifests.py",
@@ -365,7 +365,7 @@
           "path": "tools/sync_manifests.py"
         }
       },
-      "urtc_sha256": "5ca8257fe91b5fad8c86d330ae5d907a36bb7a022d299067af922af9cf86fc03"
+      "urtc_sha256": "07c0c34233d17a33127164b2a40dd7277504758f656cf193c33a8ac4cd880c06"
     }
   ]
 }
