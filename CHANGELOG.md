@@ -4,6 +4,8 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **A repository expected to carry the lock and without it fails the check:** until now it was only counted. `tooling_registry.py check` and the fleet simulation fail by default; `--allow-missing-lock` only counts it, for a repository that is being added.
+
 ## [0.0.9] - Union coverage of the C host suites, optional strict evidence check, one Unreleased heading and zizmor analysis
 
 - **The documents say who carries the lock:** every repository of the family carries `tools/devtools.lock.json`; the status table, the manifest notes and the lock format no longer say that none had moved to it.

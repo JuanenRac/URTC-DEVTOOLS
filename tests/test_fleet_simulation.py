@@ -114,15 +114,15 @@ class FindingTheFaults(FleetCase):
                 self.fleet.break_lock("URTC-COMMON", how)
                 self.assertEqual(self.fleet.check("URTC-COMMON"), [f"{fs.LOCK_FILE} cannot be read (schema 1 expected)"])
 
-    def test_a_repository_without_a_lock_is_not_an_error_yet(self):
+    def test_a_repository_without_its_lock_is_an_error(self):
         self.fleet.remove_lock("URTC-COMMON")
-        self.assertEqual(self.fleet.check("URTC-COMMON"), [])
-        # ... but it is counted, and it is an error when the check is told not to allow it
         self.assertEqual(self.fleet.missing_locks(), ["URTC-COMMON"])
-        self.assertEqual(len(self.fleet.check("URTC-COMMON", allow_missing_lock=False)), 1)
-        self.assertIn("URTC-COMMON", self.fleet.check_all(allow_missing_lock=False))
-        self.assertNotIn("URTC-COMMON", self.fleet.check_all())
-        self.assertTrue(any(line.startswith("NOTICE URTC-COMMON") for line in self.fleet.nightly()))
+        self.assertEqual(len(self.fleet.check("URTC-COMMON")), 1)
+        self.assertIn("URTC-COMMON", self.fleet.check_all())
+        self.assertTrue(any(line.startswith("URTC-COMMON: ") and "is missing" in line for line in self.fleet.nightly()))
+        # only a run that says so lets it pass, for a repository that is being added
+        self.assertEqual(self.fleet.check("URTC-COMMON", allow_missing_lock=True), [])
+        self.assertNotIn("URTC-COMMON", self.fleet.check_all(allow_missing_lock=True))
         # an edit whose lock was recalculated is seen against the canonical file
         self.fleet.take_set("URTC-COMMON")
         self.fleet.hand_edit("URTC-COMMON", SHARED)
@@ -199,13 +199,19 @@ class SameVerdictAsTheChecker(FleetCase):
             lambda: self.fleet.to_crlf("URTC", SHARED),
             lambda: self.fleet.break_lock("URTC", "json"),
             lambda: self.fleet.publish_set("9.9.9"),
-            lambda: self.fleet.remove_lock("URTC"),
         ]
         for index, scenario in enumerate(scenarios):
             with self.subTest(scenario=index):
                 self.fleet.reset()
                 scenario()
                 self.assertEqual(sorted(self.fleet.check("URTC")), sorted(self.real_check("URTC")))
+
+    def test_both_refuse_a_repository_without_its_lock(self):
+        self.fleet.remove_lock("URTC")
+        self.assertEqual(len(self.fleet.check("URTC")), 1)
+        found, _locked = self.real.check_workspace(self.fleet.root, [self.fleet.repo("URTC")], self.fleet.files)
+        self.assertEqual([name for name, _problem in found], ["URTC"])
+        self.assertIn("is missing", found[0][1])
 
 
 if __name__ == "__main__":

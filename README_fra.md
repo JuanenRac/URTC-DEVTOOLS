@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-166-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.9` |
 | Maturité | Ébauche |
-| Tests | 165 (`python -m unittest discover -s tests`) |
+| Tests | 166 (`python -m unittest discover -s tests`) |
 | Technologie | Python / GitHub Actions / JSON |
 | Cible | Le PC de la personne qui l'utilise |
 | Sur matériel réel | Sans objet : rien ici ne s'exécute sur du matériel |
@@ -76,7 +76,7 @@ Comment les parties de ce dépôt s'articulent : qui prend l'ensemble, ce qu'il 
 python tools/devtools_set.py list            # la version de l'ensemble et le SHA-256 de chaque fichier
 python tools/devtools_set.py check           # les copies de ce dépôt sont les fichiers canoniques
 python tools/tooling_registry.py check       # le registre des outils que les familles partagent : empreintes et sources identiques
-python tools/tooling_registry.py check --no-allow-missing-lock  # échoue aussi pour un dépôt d'expected_repositories sans son verrou (sans l'option il ne fait que les compter)
+python tools/tooling_registry.py check --allow-missing-lock     # ne fait que compter un dépôt d'expected_repositories sans son verrou (sans l'option il échoue)
 python tools/devtools_set.py verify --repo PATH  # les copies d'un autre dépôt sont les fichiers canoniques ; trouve une modification dont le verrou a été recalculé
 python -m unittest discover -s tests         # les tests
 python tools/sync_repo_tools.py --apply      # depuis URTC-DOCS : placer l'ensemble et les verrous dans les dépôts voisins
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # depuis URTC-DOCS : placer l'ensem
 
 ## 🧪 Tests
 
-La suite compte 165 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
+La suite compte 166 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
 
 ## 🏗️ Compilation et publication
 

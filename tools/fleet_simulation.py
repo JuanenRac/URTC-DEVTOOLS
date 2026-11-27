@@ -192,8 +192,8 @@ class VirtualFleet:
         """The repositories of the family that carry no lock (counted, whatever the check lets pass)."""
         return [name for name in self.names if not (self.repo(name) / LOCK_FILE).is_file()]
 
-    def check(self, name: str, allow_missing_lock: bool = True) -> list[str]:
-        """The problems of the lock of one repository, with the rules of docs/LOCK_FORMAT.md; empty when it has none (unless ``allow_missing_lock`` is False) or all is as it should be.
+    def check(self, name: str, allow_missing_lock: bool = False) -> list[str]:
+        """The problems of the lock of one repository, with the rules of docs/LOCK_FORMAT.md; empty when it has none (only with ``allow_missing_lock``) or all is as it should be.
 
         A file whose hash agrees with the lock but is not the canonical file is also a problem: the lock was recalculated after an edit."""
         path = self.repo(name) / LOCK_FILE
@@ -221,7 +221,7 @@ class VirtualFleet:
             problems += [f"{problem.split(':')[0]}: edited and the lock recalculated (it differs from the canonical file)" for problem in devtools_set.verify_repo(self.repo(name))]
         return problems
 
-    def check_all(self, allow_missing_lock: bool = True) -> dict[str, list[str]]:
+    def check_all(self, allow_missing_lock: bool = False) -> dict[str, list[str]]:
         return {name: problems for name in self.names if (problems := self.check(name, allow_missing_lock))}
 
     def workflows(self) -> tuple[int, list[str]]:
@@ -234,7 +234,6 @@ class VirtualFleet:
     def nightly(self) -> list[str]:
         """What a night of the comparison would report: the problem of every lock and every line of the workflow check that is not a pass."""
         lines = [f"{name}: {problem}" for name, problems in self.check_all().items() for problem in problems]
-        lines += [f"NOTICE {name}: {LOCK_FILE} is missing (allowed for now)" for name in self.missing_locks()]
         _code, printed = self.workflows()
         return lines + [line for line in printed if line.startswith(("SECURITY", "DRIFT"))]
 
