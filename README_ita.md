@@ -13,13 +13,13 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-158-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-160-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
 ---
 
-**Controllo di onestà - cosa funziona oggi:** questo repository contiene i 18 file che i repository della famiglia portano come la stessa copia, un piccolo strumento che li elenca e controlla le copie che il repository porta, test e documentazione. Tutto viene eseguito e testato in CI. Il file di lock è scritto e controllato da URTC-DOCS; ogni repository della famiglia ne porta uno, e niente qui è stato eseguito su hardware.
+**Controllo di onestà - cosa funziona oggi:** questo repository contiene i 17 file che i repository della famiglia portano come la stessa copia, un piccolo strumento che li elenca e controlla le copie che il repository porta, test e documentazione. Tutto viene eseguito e testato in CI. Il file di lock è scritto e controllato da URTC-DOCS; ogni repository della famiglia ne porta uno, e niente qui è stato eseguito su hardware.
 
 ---
 
@@ -29,7 +29,7 @@
 |---|---|
 | Versione | `0.0.8` |
 | Maturità | Impalcatura |
-| Test | 158 (`python -m unittest discover -s tests`) |
+| Test | 160 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
 | Destinazione | Il PC di chi lo usa |
 | Su hardware reale | Non applicabile: nulla qui gira su hardware |
@@ -51,7 +51,7 @@
 
 Gli strumenti che ogni repository della famiglia porta come la stessa copia, riuniti in un solo posto e dotati di una versione:
 
-* [`files/`](files): la copia canonica dei 18 file condivisi (i controlli della politica di documentazione e della parità dei README, i generatori di immagini, il pannello dal vivo degli script di build, lo strumento che alza la versione del manifesto, il controllo delle luci di stato e l'avviso alla dashboard). Il nome del repository è scritto `<REPO>` e sostituito quando un file viene messo in un repository.
+* [`files/`](files): la copia canonica dei 17 file condivisi (i controlli della politica di documentazione e della parità dei README, i generatori di immagini, il pannello dal vivo degli script di build, lo strumento che alza la versione del manifesto, il controllo delle luci di stato e l'avviso alla dashboard). Il nome del repository è scritto `<REPO>` e sostituito quando un file viene messo in un repository.
 * La **versione di questo repository è la versione dell'insieme**; il [registro delle modifiche](CHANGELOG.md) dice cosa è cambiato in ogni versione.
 * Un **file di lock** in ogni repository, `tools/devtools.lock.json`, scritto da `tools/sync_repo_tools.py` di URTC-DOCS: la versione dell'insieme e lo SHA-256 di ogni copia. `tools/check_repo_tools.py` trova una copia modificata a mano e, quando questo repository è accanto agli altri, una copia rimasta indietro. Vedi [il formato del lock](docs/LOCK_FORMAT.md).
 * Ogni repository resta compilabile e controllabile con il proprio checkout: il lock è un file del repository e nulla richiede la rete.
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # da URTC-DOCS: mettere l'insieme e
 
 ## 🧪 Test
 
-La suite ha 158 test (`python -m unittest discover -s tests`). Verificano che `files/` contenga esattamente i file condivisi, che ciascuno sia valido e si generi con il nome di un repository, che una copia modificata o mancante venga trovata, che il lock di questo repository corrisponda ai suoi file e alla sua versione, oltre a manifesto, registro delle modifiche e documenti. Un test confronta `files/` con il modello di URTC-DOCS e viene saltato quando quel repository non è accanto. La logica del lock è testata in URTC-DOCS.
+La suite ha 160 test (`python -m unittest discover -s tests`). Verificano che `files/` contenga esattamente i file condivisi, che ciascuno sia valido e si generi con il nome di un repository, che una copia modificata o mancante venga trovata, che il lock di questo repository corrisponda ai suoi file e alla sua versione, oltre a manifesto, registro delle modifiche e documenti. Un test confronta `files/` con il modello di URTC-DOCS e viene saltato quando quel repository non è accanto. La logica del lock è testata in URTC-DOCS.
 
 ## 🏗️ Compilazione e rilascio
 
@@ -101,7 +101,7 @@ La suite ha 158 test (`python -m unittest discover -s tests`). Verificano che `f
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     i 18 file canonici, nel percorso che hanno in ogni repository
+├── files/                                     i 17 file canonici, nel percorso che hanno in ogni repository
 ├── tools/                                     il controllo dell'insieme, la validazione del repository e le copie che porta
 ├── tests/                                     test dell'insieme, del lock e del repository
 ├── docs/                                      il formato del lock e come prendere l'insieme

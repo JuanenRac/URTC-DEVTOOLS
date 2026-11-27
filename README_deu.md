@@ -13,13 +13,13 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-158-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-160-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
 ---
 
-**Ehrlichkeits-Check - was heute wirklich läuft:** Dieses Repository enthält die 18 Dateien, die die Repositories der Familie als dieselbe Kopie tragen, ein kleines Werkzeug, das sie auflistet und die Kopien des Repositorys selbst prüft, Tests und Dokumentation. Alles läuft und wird in der CI getestet. Die Sperrdatei schreibt und prüft URTC-DOCS; jedes Repository der Familie trägt eine, und nichts davon lief auf Hardware.
+**Ehrlichkeits-Check - was heute wirklich läuft:** Dieses Repository enthält die 17 Dateien, die die Repositories der Familie als dieselbe Kopie tragen, ein kleines Werkzeug, das sie auflistet und die Kopien des Repositorys selbst prüft, Tests und Dokumentation. Alles läuft und wird in der CI getestet. Die Sperrdatei schreibt und prüft URTC-DOCS; jedes Repository der Familie trägt eine, und nichts davon lief auf Hardware.
 
 ---
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.8` |
 | Reifegrad | Gerüst |
-| Tests | 158 (`python -m unittest discover -s tests`) |
+| Tests | 160 (`python -m unittest discover -s tests`) |
 | Technik | Python / GitHub Actions / JSON |
 | Ziel | Der PC der Person, die es benutzt |
 | Auf echter Hardware | Nicht zutreffend: nichts hiervon läuft auf Hardware |
@@ -51,7 +51,7 @@
 
 Die Werkzeuge, die jedes Repository der Familie als dieselbe Kopie trägt, an einem Ort gesammelt und mit einer Version versehen:
 
-* [`files/`](files): die kanonische Kopie der 18 gemeinsamen Dateien (die Prüfungen der Dokumentationsregeln und der README-Parität, die Bildgeneratoren, die Live-Anzeige der Build-Skripte, das Hochzählen der Manifest-Version, die Prüfung der Statusampeln und die Meldung an das Dashboard). Der Name des Repositorys steht als `<REPO>` und wird beim Ablegen einer Datei ersetzt.
+* [`files/`](files): die kanonische Kopie der 17 gemeinsamen Dateien (die Prüfungen der Dokumentationsregeln und der README-Parität, die Bildgeneratoren, die Live-Anzeige der Build-Skripte, das Hochzählen der Manifest-Version, die Prüfung der Statusampeln und die Meldung an das Dashboard). Der Name des Repositorys steht als `<REPO>` und wird beim Ablegen einer Datei ersetzt.
 * Die **Version dieses Repositorys ist die Version des Satzes**; das [Änderungsprotokoll](CHANGELOG.md) sagt, was sich in jeder Version geändert hat.
 * Eine **Sperrdatei** in jedem Repository, `tools/devtools.lock.json`, geschrieben von `tools/sync_repo_tools.py` aus URTC-DOCS: die Version des Satzes und der SHA-256 jeder Kopie. `tools/check_repo_tools.py` findet eine von Hand geänderte Kopie und, wenn dieses Repository neben den anderen liegt, eine veraltete Kopie. Siehe [das Format der Sperrdatei](docs/LOCK_FORMAT.md).
 * Jedes Repository bleibt mit seinem eigenen Checkout baubar und prüfbar: Die Sperrdatei ist eine Datei des Repositorys und nichts braucht das Netz.
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # aus URTC-DOCS: den Satz und die S
 
 ## 🧪 Tests
 
-Die Suite hat 158 Tests (`python -m unittest discover -s tests`). Sie prüfen, dass `files/` genau die gemeinsamen Dateien enthält, dass jede gültig ist und sich mit dem Namen eines Repositorys erzeugen lässt, dass eine geänderte oder fehlende Kopie gefunden wird, dass die Sperrdatei dieses Repositorys zu seinen Dateien und seiner Version passt, sowie Manifest, Änderungsprotokoll und Dokumente. Ein Test vergleicht `files/` mit der Vorlage von URTC-DOCS und wird übersprungen, wenn dieses Repository nicht daneben liegt. Die Logik der Sperrdatei wird in URTC-DOCS getestet.
+Die Suite hat 160 Tests (`python -m unittest discover -s tests`). Sie prüfen, dass `files/` genau die gemeinsamen Dateien enthält, dass jede gültig ist und sich mit dem Namen eines Repositorys erzeugen lässt, dass eine geänderte oder fehlende Kopie gefunden wird, dass die Sperrdatei dieses Repositorys zu seinen Dateien und seiner Version passt, sowie Manifest, Änderungsprotokoll und Dokumente. Ein Test vergleicht `files/` mit der Vorlage von URTC-DOCS und wird übersprungen, wenn dieses Repository nicht daneben liegt. Die Logik der Sperrdatei wird in URTC-DOCS getestet.
 
 ## 🏗️ Build und Veröffentlichung
 
@@ -101,7 +101,7 @@ Die Suite hat 158 Tests (`python -m unittest discover -s tests`). Sie prüfen, d
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     die 18 kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben
+├── files/                                     die 17 kanonischen Dateien, unter dem Pfad, den sie in jedem Repository haben
 ├── tools/                                     die Prüfung des Satzes, die Validierung des Repositorys und die Kopien, die es selbst trägt
 ├── tests/                                     Tests des Satzes, der Sperrdatei und des Repositorys
 ├── docs/                                      das Format der Sperrdatei und wie man den Satz übernimmt
