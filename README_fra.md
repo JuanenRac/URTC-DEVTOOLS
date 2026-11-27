@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Version | `0.0.8` |
+| Version | `0.0.9` |
 | Maturité | Ébauche |
 | Tests | 165 (`python -m unittest discover -s tests`) |
 | Technologie | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | Partie | État | Ce que le dépôt peut démontrer |
 | --- | :---: | --- |
-| Logiciel | 🟡 | L'ensemble, son listage et son contrôle ; exécuté seulement sur un ordinateur, sur une famille virtuelle de dépôts qui prend l'ensemble, est abîmée puis guérit ; aucun dépôt réel n'est encore passé au verrou. |
+| Logiciel | 🟡 | L'ensemble, son listage et son contrôle ; exécuté seulement sur un ordinateur, sur une famille virtuelle de dépôts qui prend l'ensemble, est abîmée puis guérit ; chaque dépôt de la famille porte le verrou et une exécution nocturne les compare. |
 | Tests | 🟡 | La suite de tests passe dans la CI à chaque push. |
 | Sécurité | 🟠 | Le verrou garde des empreintes SHA-256 pour repérer une modification ou une copie en retard ; c'est un contrôle de cohérence, pas une signature. |
 | Documentation | 🟡 | README en huit langues et format du verrou ; les traductions n'ont pas été relues par des locuteurs natifs. |

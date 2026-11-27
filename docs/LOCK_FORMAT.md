@@ -39,7 +39,7 @@ A repository that takes the shared tools carries `tools/devtools.lock.json`. It 
 | `the lock says set X, URTC-DEVTOOLS is at Y` | The copy fell behind. Only checked when URTC-DEVTOOLS is next to the repositories. |
 | `cannot be read` | The lock is not valid JSON or has another schema. |
 
-A repository without a lock is not an error yet: the family moves to the lock one repository at a time. The check that compares each copy with the template (or with the other repositories) keeps running next to it.
+Every repository of the family carries a lock; a repository without one is still only counted, not an error. The check that compares each copy with the template (or with the other repositories) keeps running next to it.
 
 ## What is not needed
 

@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Versão | `0.0.8` |
+| Versão | `0.0.9` |
 | Maturidade | Estrutura inicial |
 | Testes | 165 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | Parte | Estado | O que o repositório consegue demonstrar |
 | --- | :---: | --- |
-| Software | 🟡 | O conjunto, a sua listagem e a sua verificação; executado só num computador, numa família virtual de repositórios que recebe o conjunto, é danificada e recupera; nenhum repositório real passou ainda ao bloqueio. |
+| Software | 🟡 | O conjunto, a sua listagem e a sua verificação; executado só num computador, numa família virtual de repositórios que recebe o conjunto, é danificada e recupera; todos os repositórios da família levam o bloqueio e uma execução noturna compara-os. |
 | Testes | 🟡 | A bateria de testes passa na CI em cada envio. |
 | Segurança | 🟠 | O bloqueio guarda hashes SHA-256 para encontrar uma edição ou uma cópia desatualizada; é uma verificação de coerência, não uma assinatura. |
 | Documentação | 🟡 | README em oito línguas e o formato do bloqueio; as traduções não foram revistas por falantes nativos. |

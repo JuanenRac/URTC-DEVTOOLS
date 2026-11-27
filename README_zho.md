@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| 版本 | `0.0.8` |
+| 版本 | `0.0.9` |
 | 成熟度 | 雏形 |
 | 测试 | 165 (`python -m unittest discover -s tests`) |
 | 技术栈 | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | 部分 | 状态 | 仓库能够证明的内容 |
 | --- | :---: | --- |
-| 软件 | 🟡 | 整套工具、它的列表和检查；只在电脑上运行过，在一个虚拟的仓库家族上试验：它取用整套工具、被人为弄坏、再恢复；真实仓库尚未迁移到锁文件。 |
+| 软件 | 🟡 | 整套工具、它的列表和检查；只在电脑上运行过，在一个虚拟的仓库家族上试验：它取用整套工具、被人为弄坏、再恢复；家族中的每个仓库都带有锁文件，每晚的运行会对它们进行比较。 |
 | 测试 | 🟡 | 每次推送时测试套件都会在 CI 中通过。 |
 | 安全 | 🟠 | 锁文件记录 SHA-256 哈希，用来发现被改动的副本或已过时的副本；它是一致性检查，不是签名。 |
 | 文档 | 🟡 | 提供八种语言的 README 和锁文件格式；翻译未经母语者审阅。 |

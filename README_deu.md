@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Version | `0.0.8` |
+| Version | `0.0.9` |
 | Reifegrad | Gerüst |
 | Tests | 165 (`python -m unittest discover -s tests`) |
 | Technik | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | Teil | Status | Was das Repository belegen kann |
 | --- | :---: | --- |
-| Software | 🟡 | Der Satz, seine Auflistung und seine Prüfung; nur auf einem Computer ausgeführt, an einer virtuellen Familie von Repositories, die den Satz übernimmt, kaputtgemacht wird und heilt; noch kein echtes Repository ist auf die Sperrdatei umgestiegen. |
+| Software | 🟡 | Der Satz, seine Auflistung und seine Prüfung; nur auf einem Computer ausgeführt, an einer virtuellen Familie von Repositories, die den Satz übernimmt, kaputtgemacht wird und heilt; jedes Repository der Familie trägt die Sperrdatei, und ein nächtlicher Lauf vergleicht sie. |
 | Tests | 🟡 | Die Testsuite besteht bei jedem Push in der CI. |
 | Sicherheit | 🟠 | Die Sperrdatei hält SHA-256-Hashes fest, um eine Änderung oder eine veraltete Kopie zu finden; sie ist eine Konsistenzprüfung, keine Signatur. |
 | Dokumentation | 🟡 | README in acht Sprachen und das Format der Sperrdatei; die Übersetzungen wurden nicht von Muttersprachlern geprüft. |

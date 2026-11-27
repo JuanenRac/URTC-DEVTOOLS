@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| バージョン | `0.0.8` |
+| バージョン | `0.0.9` |
 | 成熟度 | 足場段階 |
 | テスト | 165 (`python -m unittest discover -s tests`) |
 | 技術 | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | 項目 | 状態 | リポジトリが示せること |
 | --- | :---: | --- |
-| ソフトウェア | 🟡 | セット、その一覧と検査。コンピューター上でのみ実行しており、セットを取り込み、壊され、直る仮想のリポジトリ群で試しています。実際のリポジトリはまだロックに移っていません。 |
+| ソフトウェア | 🟡 | セット、その一覧と検査。コンピューター上でのみ実行しており、セットを取り込み、壊され、直る仮想のリポジトリ群で試しています。ファミリーのすべてのリポジトリがロックを持ち、夜間の実行がそれらを比較します。 |
 | テスト | 🟡 | テストスイートはプッシュごとに CI で通ります。 |
 | セキュリティ | 🟠 | ロックは SHA-256 ハッシュを記録し、編集されたコピーや古いコピーを見つけます。整合性の検査であり、署名ではありません。 |
 | ドキュメント | 🟡 | 8 言語の README とロックの形式があります。翻訳はネイティブによるレビューを受けていません。 |
