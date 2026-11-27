@@ -4,6 +4,7 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **`status_lights.py` and `sync_manifests.py` are the same text as in the other families:** they carry the opt-in strict check of the evidence (`--strict-evidence`, off by default); the ceiling of the Security, Updates and Writing rows applies in A.R.M.O.R. repositories only, so nothing changes for URTC. 164 tests.
 - **The README files and the file tree state the real number of shared files:** they said 18 and the set has 17; a test now compares them.
 
 - **The workflows of this repository are analysed with zizmor:** `.github/workflows/zizmor.yml` calls the shared reusable workflow, pinned by its full commit SHA, on every change to a workflow and on main; only findings of high severity fail the job.

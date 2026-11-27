@@ -136,7 +136,7 @@
           "path": "tools/status_lights.py"
         }
       },
-      "urtc_sha256": "db9c7af17940a645fd027fcf1113b83d5e6ee521173cc85cb295fcef791ee74d"
+      "urtc_sha256": "79c7dcebb2e9c2dcb278e96ad21e068d32ec26faeb566dc60388494f4cc6de86"
     },
     {
       "path": "test.sh",
@@ -365,7 +365,7 @@
           "path": "tools/sync_manifests.py"
         }
       },
-      "urtc_sha256": "07c0c34233d17a33127164b2a40dd7277504758f656cf193c33a8ac4cd880c06"
+      "urtc_sha256": "a12202988d734ea8c0be62b086b6ad688ae999d48ccd9c722a36160ac354aba0"
     }
   ]
 }
