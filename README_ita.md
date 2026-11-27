@@ -12,7 +12,7 @@
   <img src="https://img.shields.io/badge/License-GPL%203.0--or--later-blue.svg" alt="GPL 3.0 or later">
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
-  <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
+  <img src="https://img.shields.io/badge/Version-0.0.9-0f6cbd.svg" alt="Version">
   <img src="https://img.shields.io/badge/Tests-165-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
@@ -27,7 +27,7 @@
 
 | | |
 |---|---|
-| Versione | `0.0.8` |
+| Versione | `0.0.9` |
 | Maturità | Impalcatura |
 | Test | 165 (`python -m unittest discover -s tests`) |
 | Tecnologia | Python / GitHub Actions / JSON |
@@ -42,7 +42,7 @@
 
 | Parte | Stato | Ciò che il repository può dimostrare |
 | --- | :---: | --- |
-| Software | 🟡 | L'insieme, il suo elenco e il suo controllo; eseguito solo su un computer, su una famiglia virtuale di repository che prende l'insieme, viene danneggiata e guarisce; nessun repository reale è ancora passato al lock. |
+| Software | 🟡 | L'insieme, il suo elenco e il suo controllo; eseguito solo su un computer, su una famiglia virtuale di repository che prende l'insieme, viene danneggiata e guarisce; ogni repository della famiglia porta il lock e un'esecuzione notturna li confronta. |
 | Test | 🟡 | La suite di test passa nella CI a ogni push. |
 | Sicurezza | 🟠 | Il lock registra hash SHA-256 per trovare una modifica o una copia rimasta indietro; è un controllo di coerenza, non una firma. |
 | Documentazione | 🟡 | README in otto lingue e formato del lock; le traduzioni non sono state riviste da madrelingua. |

@@ -4,6 +4,10 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+## [0.0.9] - Union coverage of the C host suites, optional strict evidence check, one Unreleased heading and zizmor analysis
+
+- **The documents say who carries the lock:** every repository of the family carries `tools/devtools.lock.json`; the status table, the manifest notes and the lock format no longer say that none had moved to it.
+
 - **`status_lights.py` and `sync_manifests.py` are the same text as in the other families:** they carry the opt-in strict check of the evidence (`--strict-evidence`, off by default); the ceiling of the Security, Updates and Writing rows applies in A.R.M.O.R. repositories only, so nothing changes for URTC. 164 tests.
 
 - **The coverage of the C host suites is the union of the lines the suites run:** `tools/run_host_tests.py` kept, for each source, the best figure of any one suite, so the lines that only another suite runs were not counted. It now reads the lines of every suite (`gcov -t`) and counts a line as run when any suite ran it, and as runnable when any suite compiled it.
