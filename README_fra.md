@@ -13,13 +13,13 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-158-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-160-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
 ---
 
-**Contrôle d'honnêteté - ce qui fonctionne aujourd'hui :** ce dépôt contient les 18 fichiers que les dépôts de la famille portent comme la même copie, un petit outil qui les liste et contrôle les copies que le dépôt porte lui-même, des tests et de la documentation. Tout cela s'exécute et est testé en CI. Le fichier de verrou est écrit et contrôlé par URTC-DOCS ; chaque dépôt de la famille en porte un, et rien ici n'a tourné sur du matériel.
+**Contrôle d'honnêteté - ce qui fonctionne aujourd'hui :** ce dépôt contient les 17 fichiers que les dépôts de la famille portent comme la même copie, un petit outil qui les liste et contrôle les copies que le dépôt porte lui-même, des tests et de la documentation. Tout cela s'exécute et est testé en CI. Le fichier de verrou est écrit et contrôlé par URTC-DOCS ; chaque dépôt de la famille en porte un, et rien ici n'a tourné sur du matériel.
 
 ---
 
@@ -29,7 +29,7 @@
 |---|---|
 | Version | `0.0.8` |
 | Maturité | Ébauche |
-| Tests | 158 (`python -m unittest discover -s tests`) |
+| Tests | 160 (`python -m unittest discover -s tests`) |
 | Technologie | Python / GitHub Actions / JSON |
 | Cible | Le PC de la personne qui l'utilise |
 | Sur matériel réel | Sans objet : rien ici ne s'exécute sur du matériel |
@@ -51,7 +51,7 @@
 
 Les outils que chaque dépôt de la famille porte comme la même copie, réunis en un seul endroit et dotés d'une version :
 
-* [`files/`](files) : la copie canonique des 18 fichiers partagés (les contrôles de la politique de documentation et de la parité des README, les générateurs d'images, le panneau en direct des scripts de compilation, l'outil qui monte la version du manifeste, le contrôle des feux d'état et l'avis au tableau de bord). Le nom du dépôt est écrit `<REPO>` et remplacé quand un fichier est placé dans un dépôt.
+* [`files/`](files) : la copie canonique des 17 fichiers partagés (les contrôles de la politique de documentation et de la parité des README, les générateurs d'images, le panneau en direct des scripts de compilation, l'outil qui monte la version du manifeste, le contrôle des feux d'état et l'avis au tableau de bord). Le nom du dépôt est écrit `<REPO>` et remplacé quand un fichier est placé dans un dépôt.
 * La **version de ce dépôt est la version de l'ensemble** ; le [journal des modifications](CHANGELOG.md) dit ce qui a changé à chaque version.
 * Un **fichier de verrou** dans chaque dépôt, `tools/devtools.lock.json`, écrit par `tools/sync_repo_tools.py` d'URTC-DOCS : la version de l'ensemble et le SHA-256 de chaque copie. `tools/check_repo_tools.py` trouve une copie modifiée à la main et, quand ce dépôt est à côté des autres, une copie en retard. Voir [le format du verrou](docs/LOCK_FORMAT.md).
 * Chaque dépôt reste compilable et contrôlable avec sa propre copie de travail : le verrou est un fichier du dépôt et rien n'a besoin du réseau.
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # depuis URTC-DOCS : placer l'ensem
 
 ## 🧪 Tests
 
-La suite compte 158 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
+La suite compte 160 tests (`python -m unittest discover -s tests`). Ils vérifient que `files/` contient exactement les fichiers partagés, que chacun est valide et se génère avec le nom d'un dépôt, qu'une copie modifiée ou absente est trouvée, que le verrou de ce dépôt correspond à ses fichiers et à sa version, ainsi que le manifeste, le journal des modifications et les documents. Un test compare `files/` au modèle d'URTC-DOCS et s'ignore quand ce dépôt n'est pas à côté. La logique du verrou est testée dans URTC-DOCS.
 
 ## 🏗️ Compilation et publication
 
@@ -101,7 +101,7 @@ La suite compte 158 tests (`python -m unittest discover -s tests`). Ils vérifie
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     les 18 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt
+├── files/                                     les 17 fichiers canoniques, au chemin qu'ils ont dans chaque dépôt
 ├── tools/                                     le contrôle de l'ensemble, la validation du dépôt et les copies que porte ce dépôt
 ├── tests/                                     tests de l'ensemble, du verrou et du dépôt
 ├── docs/                                      le format du verrou et comment prendre l'ensemble

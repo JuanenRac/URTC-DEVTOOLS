@@ -13,13 +13,13 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-158-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-160-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
 ---
 
-**诚实声明 - 今天真正能运行的内容：** 本仓库包含家族各仓库作为同一份副本携带的 18 个文件、一个列出它们并检查本仓库自带副本的小工具，以及测试和文档。这些全部可以运行，并在 CI 中测试。锁文件由 URTC-DOCS 写入和检查；家族中的每个仓库都带有锁，这里的任何内容也都没有在硬件上运行过。
+**诚实声明 - 今天真正能运行的内容：** 本仓库包含家族各仓库作为同一份副本携带的 17 个文件、一个列出它们并检查本仓库自带副本的小工具，以及测试和文档。这些全部可以运行，并在 CI 中测试。锁文件由 URTC-DOCS 写入和检查；家族中的每个仓库都带有锁，这里的任何内容也都没有在硬件上运行过。
 
 ---
 
@@ -29,7 +29,7 @@
 |---|---|
 | 版本 | `0.0.8` |
 | 成熟度 | 雏形 |
-| 测试 | 158 (`python -m unittest discover -s tests`) |
+| 测试 | 160 (`python -m unittest discover -s tests`) |
 | 技术栈 | Python / GitHub Actions / JSON |
 | 目标 | 使用者的电脑 |
 | 真实硬件 | 不适用：这里的内容不在硬件上运行 |
@@ -51,7 +51,7 @@
 
 家族中每个仓库都作为同一份副本携带的工具，集中在一处并带有版本：
 
-* [`files/`](files)：18 个共用文件的规范副本（文档规则检查和 README 一致性检查、图片生成器、构建脚本的实时面板、清单版本提升工具、状态灯检查和给仪表板的通知）。仓库名写作 `<REPO>`，文件放入仓库时会被替换。
+* [`files/`](files)：17 个共用文件的规范副本（文档规则检查和 README 一致性检查、图片生成器、构建脚本的实时面板、清单版本提升工具、状态灯检查和给仪表板的通知）。仓库名写作 `<REPO>`，文件放入仓库时会被替换。
 * **本仓库的版本就是整套工具的版本**；[变更日志](CHANGELOG.md)说明每个版本改了什么。
 * 每个仓库中的**锁文件** `tools/devtools.lock.json`，由 URTC-DOCS 的 `tools/sync_repo_tools.py` 写入：整套工具的版本和每个副本的 SHA-256。`tools/check_repo_tools.py` 能发现被手工改动的副本，并且在本仓库与其他仓库并排放置时，发现已过时的副本。参见[锁文件格式](docs/LOCK_FORMAT.md)。
 * 每个仓库仍可凭自己的检出内容构建和检查：锁是仓库里的一个文件，任何操作都不需要网络。
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工�
 
 ## 🧪 测试
 
-测试套件共有 158 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
+测试套件共有 160 个测试（`python -m unittest discover -s tests`）。它们检查 `files/` 恰好包含共用文件，每个文件都有效并能用仓库名生成，被改动或缺失的副本能被发现，本仓库的锁与其文件和版本一致，以及清单、变更日志和文档。一个测试把 `files/` 与 URTC-DOCS 的模板比较，该仓库不在旁边时会跳过。锁的逻辑在 URTC-DOCS 中测试。
 
 ## 🏗️ 构建与发布
 
@@ -101,7 +101,7 @@ python tools/sync_repo_tools.py --apply      # 在 URTC-DOCS 中：把整套工�
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     18 个规范文件，路径与它们在每个仓库中的相同
+├── files/                                     17 个规范文件，路径与它们在每个仓库中的相同
 ├── tools/                                     整套工具的检查、仓库校验以及本仓库自带的副本
 ├── tests/                                     整套工具、锁文件和仓库的单元测试
 ├── docs/                                      锁文件的格式以及如何采用整套工具

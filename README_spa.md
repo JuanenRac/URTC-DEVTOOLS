@@ -13,13 +13,13 @@
   <img src="https://img.shields.io/badge/Format-Python%20%2B%20JSON-083fa1.svg" alt="Format">
   <img src="https://img.shields.io/badge/Languages-8-00E5FF.svg" alt="Languages">
   <img src="https://img.shields.io/badge/Version-0.0.8-0f6cbd.svg" alt="Version">
-  <img src="https://img.shields.io/badge/Tests-158-2ea44f.svg" alt="Tests">
+  <img src="https://img.shields.io/badge/Tests-160-2ea44f.svg" alt="Tests">
   <img src="https://img.shields.io/badge/Maturity-scaffolding-FFB020.svg" alt="Maturity">
 </p>
 
 ---
 
-**Comprobación de honestidad - lo que funciona hoy:** este repositorio contiene los 18 archivos que los repositorios de la familia llevan como la misma copia, una pequeña herramienta que los lista y comprueba las copias que lleva el propio repositorio, pruebas y documentación. Todo se ejecuta y se prueba en la CI. El archivo de bloqueo lo escribe y lo comprueba URTC-DOCS; todos los repositorios de la familia llevan uno, y nada de esto se ha ejecutado en hardware.
+**Comprobación de honestidad - lo que funciona hoy:** este repositorio contiene los 17 archivos que los repositorios de la familia llevan como la misma copia, una pequeña herramienta que los lista y comprueba las copias que lleva el propio repositorio, pruebas y documentación. Todo se ejecuta y se prueba en la CI. El archivo de bloqueo lo escribe y lo comprueba URTC-DOCS; todos los repositorios de la familia llevan uno, y nada de esto se ha ejecutado en hardware.
 
 ---
 
@@ -29,7 +29,7 @@
 |---|---|
 | Versión | `0.0.8` |
 | Madurez | Andamiaje |
-| Tests | 158 (`python -m unittest discover -s tests`) |
+| Tests | 160 (`python -m unittest discover -s tests`) |
 | Tecnología | Python / GitHub Actions / JSON |
 | Destino | El PC de quien lo usa |
 | En hardware real | No aplica: nada de esto se ejecuta en hardware |
@@ -51,7 +51,7 @@
 
 Las herramientas que cada repositorio de la familia lleva como la misma copia, reunidas en un solo sitio y con una versión:
 
-* [`files/`](files): la copia canónica de los 18 archivos compartidos (las comprobaciones de política de documentación y de paridad de README, los generadores de dibujos, el panel en vivo de los scripts de compilación, el que sube la versión del manifiesto, la comprobación de las luces de estado y el aviso al panel). El nombre del repositorio se escribe `<REPO>` y se sustituye al poner un archivo en un repositorio.
+* [`files/`](files): la copia canónica de los 17 archivos compartidos (las comprobaciones de política de documentación y de paridad de README, los generadores de dibujos, el panel en vivo de los scripts de compilación, el que sube la versión del manifiesto, la comprobación de las luces de estado y el aviso al panel). El nombre del repositorio se escribe `<REPO>` y se sustituye al poner un archivo en un repositorio.
 * La **versión de este repositorio es la versión del conjunto**; el [registro de cambios](CHANGELOG.md) dice qué cambió en cada versión.
 * Un **archivo de bloqueo** en cada repositorio, `tools/devtools.lock.json`, escrito por `tools/sync_repo_tools.py` de URTC-DOCS: la versión del conjunto y el SHA-256 de cada copia. `tools/check_repo_tools.py` encuentra una copia editada a mano y, cuando este repositorio está junto a los demás, una copia desfasada. Véase [el formato del bloqueo](docs/LOCK_FORMAT.md).
 * Cada repositorio sigue pudiéndose compilar y comprobar con su propia copia de trabajo: el bloqueo es un archivo del repositorio y nada necesita la red.
@@ -84,7 +84,7 @@ python tools/sync_repo_tools.py --apply      # desde URTC-DOCS: poner el conjunt
 
 ## 🧪 Pruebas
 
-La batería tiene 158 pruebas (`python -m unittest discover -s tests`). Comprueban que `files/` contiene exactamente los archivos compartidos, que cada uno es válido y se genera con el nombre de un repositorio, que se detecta una copia editada o ausente, que el bloqueo de este repositorio coincide con sus archivos y su versión, y el manifiesto, el registro de cambios y los documentos. Una prueba compara `files/` con la plantilla de URTC-DOCS y se omite cuando ese repositorio no está al lado. La lógica del bloqueo se prueba en URTC-DOCS.
+La batería tiene 160 pruebas (`python -m unittest discover -s tests`). Comprueban que `files/` contiene exactamente los archivos compartidos, que cada uno es válido y se genera con el nombre de un repositorio, que se detecta una copia editada o ausente, que el bloqueo de este repositorio coincide con sus archivos y su versión, y el manifiesto, el registro de cambios y los documentos. Una prueba compara `files/` con la plantilla de URTC-DOCS y se omite cuando ese repositorio no está al lado. La lógica del bloqueo se prueba en URTC-DOCS.
 
 ## 🏗️ Compilación y publicación
 
@@ -101,7 +101,7 @@ La batería tiene 158 pruebas (`python -m unittest discover -s tests`). Comprueb
 
 ```text
 URTC-DEVTOOLS/
-├── files/                                     los 18 archivos canónicos, en la ruta que tienen en cada repositorio
+├── files/                                     los 17 archivos canónicos, en la ruta que tienen en cada repositorio
 ├── tools/                                     la comprobación del conjunto, la validación del repositorio y las copias que lleva este repositorio
 ├── tests/                                     pruebas del conjunto, del candado y del repositorio
 ├── docs/                                      el formato del candado y cómo tomar el conjunto
