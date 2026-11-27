@@ -8,17 +8,17 @@
     "bump_manifest_version.py": "fbd3433f100e701457c2053495e2ba86771f9cb25f8d396eba2d173ef5462bda",
     "test.bat": "7065e4856b83aca3e9943b1271b4175dc55c443ca568af78e273be631ea98547",
     "test.sh": "ff14d18b249625a6495afff03d05fd5563901e934fc1d14d83cf730fff582a33",
-    "tools/_doc_policy.py": "0e3ebad0f7b95fe5722c4597a608880f415be65bf9cad54e5a5f56a4622d47e8",
+    "tools/_doc_policy.py": "c4c945aade2cccab252c2f31cc2a882d9cf49bcd1a8441b09461f86e553620a5",
     "tools/_readme_parity.py": "0cd9418b8ab97209c8d8bb52214ae3982ee01cd83a23e8e59056ff375a172fca",
     "tools/_readme_svg.py": "7bb8388deb11c15dfbc202c8da1b808540853ec2c263260795d3cb2664d6f94d",
     "tools/_tracked_names.py": "30b7dcc0ee68b976c09a6a1316c094e244b582321a4a4ccea289347015f89b91",
-    "tools/build_test.py": "584ae835a991e3fb495848a2e3d54b2b79564a944d08110d5f5ab6826f87cfab",
+    "tools/build_test.py": "1593ab59367f2079c900c36f98f89f53d35b3e39126b6917030d338a09216001",
     "tools/make_architecture.py": "9df7d6c00af0f1178c44eae8e849c31218bae196984ec718a7fdc63daa2e2fa9",
     "tools/make_structure.py": "27615e9b6374cbb6cc21b52d52bad4e9db1c9307319a8910b4b75c4ecb9fe5c8",
     "tools/pretty_run.py": "1698bfec531568afaf5319f0a220e9bf7c0087f39cbf5e6e88e7035bfc1327c5",
-    "tools/run_host_tests.py": "98482e266c111db465dd8b040a8d4717a2516184333691838712371d3a9252ca",
-    "tools/status_lights.py": "792e013550498cd62c3af3c6680db779345fbf50e5d4f4bbf37c6ef55de00386",
-    "tools/sync_manifests.py": "5ca8257fe91b5fad8c86d330ae5d907a36bb7a022d299067af922af9cf86fc03",
-    "tools/universal_readme_check.py": "ddb5f9986119a8b16800cba627d8a13af8b39ff1e044adc992fd06defea301e5"
+    "tools/run_host_tests.py": "85de08d2fa07adfe19c41e80d0cd55e924ae704bb613c4cf44c26d18db2def79",
+    "tools/status_lights.py": "db9c7af17940a645fd027fcf1113b83d5e6ee521173cc85cb295fcef791ee74d",
+    "tools/sync_manifests.py": "07c0c34233d17a33127164b2a40dd7277504758f656cf193c33a8ac4cd880c06",
+    "tools/universal_readme_check.py": "ad56c0a62fd7cb0a74291c62324b8234bfa904737926158db8bcac24175ffeaf"
   }
 }
