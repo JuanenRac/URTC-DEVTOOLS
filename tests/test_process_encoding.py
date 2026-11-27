@@ -36,7 +36,8 @@ def text_calls_without_encoding(source: str) -> list[int]:
         if not (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr in {"run", "Popen", "check_output"}):
             continue
         keywords = {k.arg: k.value for k in node.keywords}
-        text_mode = any(isinstance(keywords.get(n), ast.Constant) and keywords[n].value is True for n in ("text", "universal_newlines"))
+        given = [keywords.get(name) for name in ("text", "universal_newlines")]
+        text_mode = any(isinstance(value, ast.Constant) and value.value is True for value in given)
         if text_mode and not {"encoding", "errors"} <= set(keywords):
             lines.append(node.lineno)
     return lines
