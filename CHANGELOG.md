@@ -4,6 +4,10 @@ All notable changes to this repository are listed here. The version of this repo
 
 ## [Unreleased]
 
+- **The coverage of the C host suites is the union of the lines the suites run:** `tools/run_host_tests.py` kept, for each source, the best figure of any one suite, so the lines that only another suite runs were not counted. It now reads the lines of every suite (`gcov -t`) and counts a line as run when any suite ran it, and as runnable when any suite compiled it.
+
+- **The change log has one "Unreleased" heading:** a second, empty one was left between two releases; a test now allows only the first.
+
 - **The README files and the file tree state the real number of shared files:** they said 18 and the set has 17; a test now compares them.
 
 - **The workflows of this repository are analysed with zizmor:** `.github/workflows/zizmor.yml` calls the shared reusable workflow, pinned by its full commit SHA, on every change to a workflow and on main; only findings of high severity fail the job.
@@ -31,8 +35,6 @@ All notable changes to this repository are listed here. The version of this repo
 - **The shared set carries the current host test executor and the limits of the dashboard notice:** `files/tools/run_host_tests.py` is the copy the main repository improved (the static analysis no longer reports the loops that are meant never to return), and the notice workflow has a time limit and a concurrency group; the lock of each repository and the registry hold the new hashes.
 
 - **The Related Projects section follows the shared texts of the documentation repository:** the programs are called the same way in every language (tester, updater, Web Studio) and the rate limit of the gateway is a frequency, never a bit rate.
-
-## [Unreleased]
 
 ## [0.0.5] - The shared document policy check is refreshed: tools/_doc_policy.py and tools/ci_validate.py are the current copies, which also fail when a build script changes a version and when a script switches into a virtual environment instead of... (and 1 more change)
 

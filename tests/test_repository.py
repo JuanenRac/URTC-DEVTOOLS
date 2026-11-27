@@ -34,6 +34,10 @@ class Manifest(unittest.TestCase):
         manifest = json.loads((ROOT / "urtc.project.json").read_text(encoding="utf-8"))
         self.assertIn(f"## [{manifest['version']}]", (ROOT / "CHANGELOG.md").read_text(encoding="utf-8"))
 
+    def test_the_changelog_has_one_unreleased_heading_above_every_release(self):
+        headings = [line for line in (ROOT / "CHANGELOG.md").read_text(encoding="utf-8").splitlines() if line.startswith("## ")]
+        self.assertEqual([i for i, line in enumerate(headings) if line.startswith("## [Unreleased]")], [0])
+
     def test_the_tests_badge_of_the_readme_is_the_number_of_tests_that_exist(self):
         badge = re.search(r"badge/Tests-(\d+)", (ROOT / "README.md").read_text(encoding="utf-8"))
         self.assertIsNotNone(badge)
